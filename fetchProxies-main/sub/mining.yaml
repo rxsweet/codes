@@ -1,0 +1,363 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: Rule
+log-level: info
+external-controller: :9090
+proxies:
+  - {name: "🇸🇬 VX被封,新V：wuligod2018", server: www.sstzi.com, port: 10086, type: ss, cipher: chacha20-ietf, password: W0lrBF, udp: true}
+  - {name: A-新域名：sstzi.com 或 joyssr.com, server: cmaisallin.debugspace.work, port: 560, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: "🇸🇬 俄罗斯 A-[使用前先更新订阅!]", server: eduall.buzzline.org, port: 560, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: "🇷🇺 俄罗斯 B-[用不了及时联系]", server: eduall.buzzline.org, port: 561, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇷🇺 俄罗斯 C, server: eduall.buzzline.org, port: 562, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇨🇳 台湾 B, server: cntwlayer1.standurl.xyz, port: 561, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇨🇳 台湾 D, server: cntwlayer1.standurl.xyz, port: 563, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇨🇳 台湾 E, server: cntwlayer1.standurl.xyz, port: 564, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇨🇳 台湾 H, server: cntwlayer1.standurl.xyz, port: 569, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇨🇳 台湾LINK O, server: cncutw2.eucdurl.me, port: 566, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇨🇳 台湾LINK P, server: cncutw2.eucdurl.me, port: 567, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇹🇷 土耳其, server: eduall.buzzline.org, port: 620, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇮🇹 意大利, server: eduall.buzzline.org, port: 612, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇸🇬 新加坡 优化1 A, server: cmaisallin.debugspace.work, port: 562, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇸🇬 新加坡 优化2 C, server: cnallaz2.eucdurl.me, port: 566, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇯🇵 日本 A, server: cmaisallin.debugspace.work, port: 560, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇺🇸 美国 优化 A 3.5, server: usstand1.eucdurl.me, port: 560, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇺🇸 美国 优化 B 3.5, server: usstand1.eucdurl.me, port: 561, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇺🇸 美国 优化 C 3.5, server: usstand1.eucdurl.me, port: 562, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇺🇸 美国 优化 D 3.5, server: usstand1.eucdurl.me, port: 563, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇺🇸 美国 优化 E 3.5, server: usstand1.eucdurl.me, port: 564, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇺🇸 美国 优化2 F 3.5, server: usstand2.eucdurl.me, port: 560, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇺🇸 美国 优化2 G 3.5, server: usstand2.eucdurl.me, port: 561, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇺🇸 美国 优化2 H 3.5, server: usstand2.eucdurl.me, port: 562, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇺🇸 美国 优化2 I 3.5, server: usstand2.eucdurl.me, port: 563, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇬🇧 英国 iplayer A, server: eduall.buzzline.org, port: 613, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇬🇧 英国 iplayer B, server: eduall.buzzline.org, port: 614, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇳🇱 荷兰, server: eduall.buzzline.org, port: 611, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇪🇸 西班牙, server: eduall.buzzline.org, port: 610, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇰🇷 韩国高速 A, server: cmaisallin.debugspace.work, port: 565, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇭🇰 香港 HKBN A, server: layercm05.initcloud.pro, port: 560, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇭🇰 香港 HKBN B, server: layercm05.initcloud.pro, port: 561, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇭🇰 香港 HKBN C, server: cmlayer6.standurls.co, port: 561, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇭🇰 香港 HKBN D, server: initest08.initcloud.pro, port: 562, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇭🇰 香港 HKT A, server: 1cnrelay.initcloud.pro, port: 560, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇭🇰 香港 HKT B, server: 2cnrelay2.initcloud.pro, port: 560, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇭🇰 香港 HKT C, server: shgez3.eucdurl.me, port: 568, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇭🇰 香港 HKT D, server: cnhkall.debugex.xyz, port: 561, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇭🇰 香港 HKT E, server: 2cnrelay2.initcloud.pro, port: 561, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇭🇰 香港 HKT F, server: inlayer7.standurls.co, port: 560, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇭🇰 香港 HKT G, server: inlayer7.standurls.co, port: 561, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇭🇰 香港 HKT H, server: 1cnrelay.initcloud.pro, port: 562, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇭🇰 香港 HKT I, server: inlayer7.standurls.co, port: 562, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇭🇰 香港 HKT J, server: cmlayer6.standurls.co, port: 560, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇭🇰 香港 HKT K, server: 3layer03.initcloud.pro, port: 560, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇭🇰 香港 HKT L, server: 3layer03.initcloud.pro, port: 561, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇭🇰 香港 HKT M, server: cnhkall.debugex.xyz, port: 560, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇭🇰 香港 HKT N, server: initest08.initcloud.pro, port: 561, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇭🇰 香港动态 HKT A, server: shcuzxhk.eucdurl.me, port: 560, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇭🇰 香港动态 HKT B, server: shcuzxhk.eucdurl.me, port: 561, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: 🇭🇰 香港动态 HKT C, server: shcuzxhk.eucdurl.me, port: 562, type: ssr, cipher: chacha20-ietf, password: mblank1port, protocol: auth_aes128_md5, obfs: plain, protocol-param: 16748:SVIPTIZ8, obfs-param: 23ffd711.microsoft.com, udp: true}
+  - {name: GetAFreeNode-LosAngeles, server: v2ray.online, port: 443, type: vmess, uuid: 2F094845-E2BD-EBF7-DEB7-995992436FAF, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /speedtest, headers: {Host: LosAngeles.v2ray.online}}, udp: true}
+  - {name: GetAFreeNode-Amsterdam, server: v2ray.online, port: 443, type: vmess, uuid: 2F094845-E2BD-EBF7-DEB7-995992436FAF, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /speedtest, headers: {Host: Amsterdam.v2ray.online}}, udp: true}
+  - {name: GetAFreeNode-Frankfurt, server: v2ray.online, port: 443, type: vmess, uuid: 2F094845-E2BD-EBF7-DEB7-995992436FAF, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /speedtest, headers: {Host: Frankfurt.v2ray.online}}, udp: true}
+  - {name: 🇦🇹 GetAFreeNode-Vienna, server: v2ray.online, port: 443, type: vmess, uuid: 2F094845-E2BD-EBF7-DEB7-995992436FAF, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /speedtest, headers: {Host: Vienna.v2ray.online}}, udp: true}
+  - {name: GetAFreeNode-Phoenix, server: v2ray.online, port: 443, type: vmess, uuid: 2F094845-E2BD-EBF7-DEB7-995992436FAF, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /speedtest, headers: {Host: Phoenix.v2ray.online}}, udp: true}
+  - {name: CA_AWS, server: awsypca.sylu.cyou, port: 443, type: vmess, uuid: 12e08256-da5d-4b1c-aeca-8c973ccceef8, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /Falling42awsypcanode, headers: {Host: awsypca.sylu.cyou}}, udp: true}
+  - {name: CA_AWS_CF, server: dnss.sylu.cyou, port: 443, type: vmess, uuid: 12e08256-da5d-4b1c-aeca-8c973ccceef8, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /Falling42awsypcanode, headers: {Host: awsypca.sylu.cyou}}, udp: true}
+  - {name: NL_CF, server: dnss.sylu.cyou, port: 443, type: vmess, uuid: 12e08256-da5d-4b1c-aeca-8c973ccceef8, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /Falling42hosmaticnode, headers: {Host: hosmatic.sylu.cyou}}, udp: true}
+  - {name: 距离下次重置剩余：21 天, server: dd1.bestcloud.tk, port: 443, type: vmess, uuid: 2eff2b3f-e645-4a4b-831a-f49e8fa9ff44, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /2, headers: {Host: uk3.mybestjj.com}}, udp: true}
+  - {name: 🇬🇧 英国-UK01, server: dd1.bestcloud.tk, port: 443, type: vmess, uuid: 2eff2b3f-e645-4a4b-831a-f49e8fa9ff44, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /2, headers: {Host: uk3.mybestjj.com}}, udp: true}
+  - {name: 🇬🇧 英国-UK02, server: dd2.bestcloud.tk, port: 443, type: vmess, uuid: 2eff2b3f-e645-4a4b-831a-f49e8fa9ff44, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /2, headers: {Host: uk3.mybestjj.com}}, udp: true}
+  - {name: 🇬🇧 英国-UK03, server: dd3.bestcloud.tk, port: 443, type: vmess, uuid: 2eff2b3f-e645-4a4b-831a-f49e8fa9ff44, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /2, headers: {Host: uk3.mybestjj.com}}, udp: true}
+  - {name: 🇬🇧 英国4-电信联通专线, server: dd4.bestcloud.tk, port: 443, type: vmess, uuid: 2eff2b3f-e645-4a4b-831a-f49e8fa9ff44, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /2, headers: {Host: uk3.mybestjj.com}}, udp: true}
+  - {name: 🇯🇵 日本, server: jp1.bestcloud.tk, port: 2053, type: vmess, uuid: 2eff2b3f-e645-4a4b-831a-f49e8fa9ff44, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /1654431, headers: {Host: jp1.mybestjj.com}}, udp: true}
+  - {name: 🇭🇰 香港1丨Tg群@bp520, server: dd1.bestcloud.tk, port: 443, type: vmess, uuid: 2eff2b3f-e645-4a4b-831a-f49e8fa9ff44, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /1653531, headers: {Host: hk3.mybestjj.com}}, udp: true}
+  - {name: 🇭🇰 香港2丨白嫖机场.com, server: dd2.bestcloud.tk, port: 443, type: vmess, uuid: 2eff2b3f-e645-4a4b-831a-f49e8fa9ff44, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /1653531, headers: {Host: hk3.mybestjj.com}}, udp: true}
+  - {name: 🇭🇰 香港3丨更新订阅解决99问题, server: dd3.bestcloud.tk, port: 443, type: vmess, uuid: 2eff2b3f-e645-4a4b-831a-f49e8fa9ff44, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /1653531, headers: {Host: hk3.mybestjj.com}}, udp: true}
+  - {name: 🇭🇰 香港4丨电信联通专线, server: dd4.bestcloud.tk, port: 443, type: vmess, uuid: 2eff2b3f-e645-4a4b-831a-f49e8fa9ff44, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /1653531, headers: {Host: hk3.mybestjj.com}}, udp: true}
+proxy-groups:
+  - name: 规则选择
+    type: select
+    proxies:
+      - 负载均衡
+      - 自动选择
+  - name: 中国节点
+    type: select
+    proxies:
+      - 🇨🇳 台湾 B
+      - 🇨🇳 台湾 D
+      - 🇨🇳 台湾 E
+      - 🇨🇳 台湾 H
+      - 🇨🇳 台湾LINK O
+      - 🇨🇳 台湾LINK P
+      - 🇭🇰 香港 HKBN A
+      - 🇭🇰 香港 HKBN B
+      - 🇭🇰 香港 HKBN C
+      - 🇭🇰 香港 HKBN D
+      - 🇭🇰 香港 HKT A
+      - 🇭🇰 香港 HKT B
+      - 🇭🇰 香港 HKT C
+      - 🇭🇰 香港 HKT D
+      - 🇭🇰 香港 HKT E
+      - 🇭🇰 香港 HKT F
+      - 🇭🇰 香港 HKT G
+      - 🇭🇰 香港 HKT H
+      - 🇭🇰 香港 HKT I
+      - 🇭🇰 香港 HKT J
+      - 🇭🇰 香港 HKT K
+      - 🇭🇰 香港 HKT L
+      - 🇭🇰 香港 HKT M
+      - 🇭🇰 香港 HKT N
+      - 🇭🇰 香港动态 HKT A
+      - 🇭🇰 香港动态 HKT B
+      - 🇭🇰 香港动态 HKT C
+      - 🇭🇰 香港1丨Tg群@bp520
+      - 🇭🇰 香港2丨白嫖机场.com
+      - 🇭🇰 香港3丨更新订阅解决99问题
+      - 🇭🇰 香港4丨电信联通专线
+  - name: 日本节点
+    type: select
+    proxies:
+      - 🇯🇵 日本 A
+      - 🇯🇵 日本
+  - name: 新加坡节点
+    type: select
+    proxies:
+      - 🇸🇬 新加坡 优化1 A
+      - 🇸🇬 新加坡 优化2 C
+  - name: 美国节点
+    type: select
+    proxies:
+      - 🇺🇸 美国 优化 A 3.5
+      - 🇺🇸 美国 优化 B 3.5
+      - 🇺🇸 美国 优化 C 3.5
+      - 🇺🇸 美国 优化 D 3.5
+      - 🇺🇸 美国 优化 E 3.5
+      - 🇺🇸 美国 优化2 F 3.5
+      - 🇺🇸 美国 优化2 G 3.5
+      - 🇺🇸 美国 优化2 H 3.5
+      - 🇺🇸 美国 优化2 I 3.5
+  - name: 手动切换
+    type: select
+    proxies:
+      - 🇸🇬 VX被封,新V：wuligod2018
+      - A-新域名：sstzi.com 或 joyssr.com
+      - 🇸🇬 俄罗斯 A-[使用前先更新订阅!]
+      - 🇷🇺 俄罗斯 B-[用不了及时联系]
+      - 🇷🇺 俄罗斯 C
+      - 🇨🇳 台湾 B
+      - 🇨🇳 台湾 D
+      - 🇨🇳 台湾 E
+      - 🇨🇳 台湾 H
+      - 🇨🇳 台湾LINK O
+      - 🇨🇳 台湾LINK P
+      - 🇹🇷 土耳其
+      - 🇮🇹 意大利
+      - 🇸🇬 新加坡 优化1 A
+      - 🇸🇬 新加坡 优化2 C
+      - 🇯🇵 日本 A
+      - 🇺🇸 美国 优化 A 3.5
+      - 🇺🇸 美国 优化 B 3.5
+      - 🇺🇸 美国 优化 C 3.5
+      - 🇺🇸 美国 优化 D 3.5
+      - 🇺🇸 美国 优化 E 3.5
+      - 🇺🇸 美国 优化2 F 3.5
+      - 🇺🇸 美国 优化2 G 3.5
+      - 🇺🇸 美国 优化2 H 3.5
+      - 🇺🇸 美国 优化2 I 3.5
+      - 🇬🇧 英国 iplayer A
+      - 🇬🇧 英国 iplayer B
+      - 🇳🇱 荷兰
+      - 🇪🇸 西班牙
+      - 🇰🇷 韩国高速 A
+      - 🇭🇰 香港 HKBN A
+      - 🇭🇰 香港 HKBN B
+      - 🇭🇰 香港 HKBN C
+      - 🇭🇰 香港 HKBN D
+      - 🇭🇰 香港 HKT A
+      - 🇭🇰 香港 HKT B
+      - 🇭🇰 香港 HKT C
+      - 🇭🇰 香港 HKT D
+      - 🇭🇰 香港 HKT E
+      - 🇭🇰 香港 HKT F
+      - 🇭🇰 香港 HKT G
+      - 🇭🇰 香港 HKT H
+      - 🇭🇰 香港 HKT I
+      - 🇭🇰 香港 HKT J
+      - 🇭🇰 香港 HKT K
+      - 🇭🇰 香港 HKT L
+      - 🇭🇰 香港 HKT M
+      - 🇭🇰 香港 HKT N
+      - 🇭🇰 香港动态 HKT A
+      - 🇭🇰 香港动态 HKT B
+      - 🇭🇰 香港动态 HKT C
+      - GetAFreeNode-LosAngeles
+      - GetAFreeNode-Amsterdam
+      - GetAFreeNode-Frankfurt
+      - 🇦🇹 GetAFreeNode-Vienna
+      - GetAFreeNode-Phoenix
+      - CA_AWS
+      - CA_AWS_CF
+      - NL_CF
+      - 距离下次重置剩余：21 天
+      - 🇬🇧 英国-UK01
+      - 🇬🇧 英国-UK02
+      - 🇬🇧 英国-UK03
+      - 🇬🇧 英国4-电信联通专线
+      - 🇯🇵 日本
+      - 🇭🇰 香港1丨Tg群@bp520
+      - 🇭🇰 香港2丨白嫖机场.com
+      - 🇭🇰 香港3丨更新订阅解决99问题
+      - 🇭🇰 香港4丨电信联通专线
+  - name: 自动选择
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies:
+      - 🇸🇬 VX被封,新V：wuligod2018
+      - A-新域名：sstzi.com 或 joyssr.com
+      - 🇸🇬 俄罗斯 A-[使用前先更新订阅!]
+      - 🇷🇺 俄罗斯 B-[用不了及时联系]
+      - 🇷🇺 俄罗斯 C
+      - 🇨🇳 台湾 B
+      - 🇨🇳 台湾 D
+      - 🇨🇳 台湾 E
+      - 🇨🇳 台湾 H
+      - 🇨🇳 台湾LINK O
+      - 🇨🇳 台湾LINK P
+      - 🇹🇷 土耳其
+      - 🇮🇹 意大利
+      - 🇸🇬 新加坡 优化1 A
+      - 🇸🇬 新加坡 优化2 C
+      - 🇯🇵 日本 A
+      - 🇺🇸 美国 优化 A 3.5
+      - 🇺🇸 美国 优化 B 3.5
+      - 🇺🇸 美国 优化 C 3.5
+      - 🇺🇸 美国 优化 D 3.5
+      - 🇺🇸 美国 优化 E 3.5
+      - 🇺🇸 美国 优化2 F 3.5
+      - 🇺🇸 美国 优化2 G 3.5
+      - 🇺🇸 美国 优化2 H 3.5
+      - 🇺🇸 美国 优化2 I 3.5
+      - 🇬🇧 英国 iplayer A
+      - 🇬🇧 英国 iplayer B
+      - 🇳🇱 荷兰
+      - 🇪🇸 西班牙
+      - 🇰🇷 韩国高速 A
+      - 🇭🇰 香港 HKBN A
+      - 🇭🇰 香港 HKBN B
+      - 🇭🇰 香港 HKBN C
+      - 🇭🇰 香港 HKBN D
+      - 🇭🇰 香港 HKT A
+      - 🇭🇰 香港 HKT B
+      - 🇭🇰 香港 HKT C
+      - 🇭🇰 香港 HKT D
+      - 🇭🇰 香港 HKT E
+      - 🇭🇰 香港 HKT F
+      - 🇭🇰 香港 HKT G
+      - 🇭🇰 香港 HKT H
+      - 🇭🇰 香港 HKT I
+      - 🇭🇰 香港 HKT J
+      - 🇭🇰 香港 HKT K
+      - 🇭🇰 香港 HKT L
+      - 🇭🇰 香港 HKT M
+      - 🇭🇰 香港 HKT N
+      - 🇭🇰 香港动态 HKT A
+      - 🇭🇰 香港动态 HKT B
+      - 🇭🇰 香港动态 HKT C
+      - GetAFreeNode-LosAngeles
+      - GetAFreeNode-Amsterdam
+      - GetAFreeNode-Frankfurt
+      - 🇦🇹 GetAFreeNode-Vienna
+      - GetAFreeNode-Phoenix
+      - CA_AWS
+      - CA_AWS_CF
+      - NL_CF
+      - 距离下次重置剩余：21 天
+      - 🇬🇧 英国-UK01
+      - 🇬🇧 英国-UK02
+      - 🇬🇧 英国-UK03
+      - 🇬🇧 英国4-电信联通专线
+      - 🇯🇵 日本
+      - 🇭🇰 香港1丨Tg群@bp520
+      - 🇭🇰 香港2丨白嫖机场.com
+      - 🇭🇰 香港3丨更新订阅解决99问题
+      - 🇭🇰 香港4丨电信联通专线
+  - name: 负载均衡
+    type: load-balance
+    strategy: consistent-hashing
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies:
+      - 🇸🇬 VX被封,新V：wuligod2018
+      - A-新域名：sstzi.com 或 joyssr.com
+      - 🇸🇬 俄罗斯 A-[使用前先更新订阅!]
+      - 🇷🇺 俄罗斯 B-[用不了及时联系]
+      - 🇷🇺 俄罗斯 C
+      - 🇨🇳 台湾 B
+      - 🇨🇳 台湾 D
+      - 🇨🇳 台湾 E
+      - 🇨🇳 台湾 H
+      - 🇨🇳 台湾LINK O
+      - 🇨🇳 台湾LINK P
+      - 🇹🇷 土耳其
+      - 🇮🇹 意大利
+      - 🇸🇬 新加坡 优化1 A
+      - 🇸🇬 新加坡 优化2 C
+      - 🇯🇵 日本 A
+      - 🇺🇸 美国 优化 A 3.5
+      - 🇺🇸 美国 优化 B 3.5
+      - 🇺🇸 美国 优化 C 3.5
+      - 🇺🇸 美国 优化 D 3.5
+      - 🇺🇸 美国 优化 E 3.5
+      - 🇺🇸 美国 优化2 F 3.5
+      - 🇺🇸 美国 优化2 G 3.5
+      - 🇺🇸 美国 优化2 H 3.5
+      - 🇺🇸 美国 优化2 I 3.5
+      - 🇬🇧 英国 iplayer A
+      - 🇬🇧 英国 iplayer B
+      - 🇳🇱 荷兰
+      - 🇪🇸 西班牙
+      - 🇰🇷 韩国高速 A
+      - 🇭🇰 香港 HKBN A
+      - 🇭🇰 香港 HKBN B
+      - 🇭🇰 香港 HKBN C
+      - 🇭🇰 香港 HKBN D
+      - 🇭🇰 香港 HKT A
+      - 🇭🇰 香港 HKT B
+      - 🇭🇰 香港 HKT C
+      - 🇭🇰 香港 HKT D
+      - 🇭🇰 香港 HKT E
+      - 🇭🇰 香港 HKT F
+      - 🇭🇰 香港 HKT G
+      - 🇭🇰 香港 HKT H
+      - 🇭🇰 香港 HKT I
+      - 🇭🇰 香港 HKT J
+      - 🇭🇰 香港 HKT K
+      - 🇭🇰 香港 HKT L
+      - 🇭🇰 香港 HKT M
+      - 🇭🇰 香港 HKT N
+      - 🇭🇰 香港动态 HKT A
+      - 🇭🇰 香港动态 HKT B
+      - 🇭🇰 香港动态 HKT C
+      - GetAFreeNode-LosAngeles
+      - GetAFreeNode-Amsterdam
+      - GetAFreeNode-Frankfurt
+      - 🇦🇹 GetAFreeNode-Vienna
+      - GetAFreeNode-Phoenix
+      - CA_AWS
+      - CA_AWS_CF
+      - NL_CF
+      - 距离下次重置剩余：21 天
+      - 🇬🇧 英国-UK01
+      - 🇬🇧 英国-UK02
+      - 🇬🇧 英国-UK03
+      - 🇬🇧 英国4-电信联通专线
+      - 🇯🇵 日本
+      - 🇭🇰 香港1丨Tg群@bp520
+      - 🇭🇰 香港2丨白嫖机场.com
+      - 🇭🇰 香港3丨更新订阅解决99问题
+      - 🇭🇰 香港4丨电信联通专线
+rules:
+ - MATCH,规则选择

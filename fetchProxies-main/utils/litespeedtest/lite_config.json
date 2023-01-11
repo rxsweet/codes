@@ -1,0 +1,15 @@
+{
+    "group":"fetchProxies",
+    "speedtestMode":"speedonly",
+    "pingMethod":"googleping",
+    "sortMethod":"rspeed",
+    "concurrency":32,
+    "testMode":2,
+    "subscription":"./sub/sources/fetchShareClash.yml",
+    "timeout":8,
+    "language":"en",
+    "fontSize":24,
+    "theme":"rainbow",
+    "generatePicMode": 0,
+    "outputPath":"./sub/sources/literx64"
+}
