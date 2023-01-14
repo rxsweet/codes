@@ -1,0 +1,479 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: Rule
+log-level: info
+external-controller: :9090
+proxies:
+  - {name: GetAFreeNode-Amsterdam, server: v2ray.online, port: 443, type: vmess, uuid: 2F094845-E2BD-EBF7-DEB7-995992436FAF, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /speedtest, headers: {Host: Amsterdam.v2ray.online}}, udp: true}
+  - {name: GetAFreeNode-Frankfurt, server: v2ray.online, port: 443, type: vmess, uuid: 2F094845-E2BD-EBF7-DEB7-995992436FAF, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /speedtest, headers: {Host: Frankfurt.v2ray.online}}, udp: true}
+  - {name: 🇦🇹 GetAFreeNode-Vienna, server: v2ray.online, port: 443, type: vmess, uuid: 2F094845-E2BD-EBF7-DEB7-995992436FAF, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /speedtest, headers: {Host: Vienna.v2ray.online}}, udp: true}
+  - {name: GetAFreeNode-LosAngeles, server: v2ray.online, port: 443, type: vmess, uuid: 2F094845-E2BD-EBF7-DEB7-995992436FAF, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /speedtest, headers: {Host: LosAngeles.v2ray.online}}, udp: true}
+  - {name: GetAFreeNode-Phoenix, server: v2ray.online, port: 443, type: vmess, uuid: 2F094845-E2BD-EBF7-DEB7-995992436FAF, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /speedtest, headers: {Host: Phoenix.v2ray.online}}, udp: true}
+  - {name: 🇭🇰 Hong Kong 01, server: jupiter.maailman.cyou, port: 20001, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇭🇰 Hong Kong 02, server: neptune.maailman.cyou, port: 20002, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇭🇰 Hong Kong 03, server: pluto.maailman.cyou, port: 20003, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇭🇰 Hong Kong 04, server: jupiter.maailman.cyou, port: 20004, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇭🇰 Hong Kong 05, server: neptune.maailman.cyou, port: 20005, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇯🇵 Japan 01, server: neptune.maailman.cyou, port: 20011, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇯🇵 Japan 02, server: jupiter.maailman.cyou, port: 20012, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇯🇵 Japan 03, server: pluto.maailman.cyou, port: 20024, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇸🇬 Singapore 01, server: neptune.maailman.cyou, port: 20014, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇸🇬 Singapore 02, server: jupiter.maailman.cyou, port: 20015, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇸🇬 Singapore 03, server: pluto.maailman.cyou, port: 20016, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇨🇳 Taiwan 01, server: neptune.maailman.cyou, port: 20017, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇨🇳 Taiwan 02, server: jupiter.maailman.cyou, port: 20018, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇺🇸 United States 01, server: jupiter.maailman.cyou, port: 20006, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇺🇸 United States 02, server: pluto.maailman.cyou, port: 20007, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇺🇸 United States 03, server: neptune.maailman.cyou, port: 20008, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇺🇸 United States 04, server: jupiter.maailman.cyou, port: 20009, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇺🇸 United States 05, server: pluto.maailman.cyou, port: 20010, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇭🇰 VIP-Hong Kong 01 | Media, server: venus.utjiwa.me, port: 26894, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇭🇰 VIP-Hong Kong 02 | Media, server: mars.utjiwa.me, port: 26892, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇭🇰 VIP-Hong Kong 03, server: mars.utjiwa.me, port: 26889, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇭🇰 VIP-Hong Kong 04, server: saturn.utjiwa.me, port: 26890, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇭🇰 VIP-Hong Kong 05 | Media, server: saturn.utjiwa.me, port: 26980, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇭🇰 VIP-Hong Kong 06 | Media, server: venus.utjiwa.me, port: 26981, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇭🇰 VIP-Hong Kong 07 | Media, server: venus.utjiwa.me, port: 26982, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇭🇰 VIP-Hong Kong 08 | Media, server: saturn.utjiwa.me, port: 26983, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇯🇵 VIP-Japan 01 | Media, server: venus.utjiwa.me, port: 26954, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇯🇵 VIP-Japan 02 | Media, server: venus.utjiwa.me, port: 26957, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇯🇵 VIP-Japan 03 | Media, server: mars.utjiwa.me, port: 26958, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇸🇬 VIP-Singapore 01 | Media, server: saturn.utjiwa.me, port: 26953, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇸🇬 VIP-Singapore 02 | Media, server: mars.utjiwa.me, port: 26955, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇸🇬 VIP-Singapore 03 | Media, server: saturn.utjiwa.me, port: 26956, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇨🇳 VIP-Taiwan 01 | Media, server: mars.utjiwa.me, port: 26959, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇨🇳 VIP-Taiwan 02 | Media, server: saturn.utjiwa.me, port: 26960, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇺🇸 VIP-United States 01 | Media, server: saturn.utjiwa.me, port: 26950, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇺🇸 VIP-United States 02 | Media, server: venus.utjiwa.me, port: 26951, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇺🇸 VIP-United States 03, server: mars.utjiwa.me, port: 26952, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇺🇸 VIP-United States 04 | Media, server: saturn.utjiwa.me, port: 26961, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇺🇸 VIP-United States 05 | Media, server: mars.utjiwa.me, port: 26962, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇨🇦 VIP-Z-Canada, server: mars.utjiwa.me, port: 26966, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇬🇧 VIP-Z-England, server: mars.utjiwa.me, port: 26963, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇩🇪 VIP-Z-Germany, server: venus.utjiwa.me, port: 26965, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇮🇳 VIP-Z-India, server: venus.utjiwa.me, port: 26964, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇨🇦 Z-Canada, server: pluto.maailman.cyou, port: 20022, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇬🇧 Z-England, server: pluto.maailman.cyou, port: 20019, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇩🇪 Z-Germany, server: jupiter.maailman.cyou, port: 20021, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇮🇳 Z-India, server: neptune.maailman.cyou, port: 20020, type: ssr, cipher: aes-128-ctr, password: v0nxhydtt4, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 182194:rgonZg, obfs-param: "", udp: true}
+  - {name: 🇭🇰 V5-香港1, server: hk01-vm5.entry.hsrtd.club, port: 450, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: bgp-01-01.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇯🇵 V5-京日1, server: jp01-vm5.entry.hsrtd.club, port: 448, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: bgp-02-01.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇭🇰 V5-香港2, server: hk02-vm5.entry.hsrtd.club, port: 451, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: bgp-01-02.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇯🇵 V5-京日2, server: jp02-vm5.entry.hsrtd.club, port: 447, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: bgp-02-02.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇭🇰 V5-香港3, server: hk03-vm5.entry.hsrtd.club, port: 452, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: bgp-01-03.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇯🇵 V5-京日3, server: jp03-vm5.entry.hsrtd.club, port: 449, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: bgp-02-03.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇭🇰 V5-香港4, server: hk04-vm5.entry.hsrtd.club, port: 446, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: bgp-01-04.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇯🇵 V5-日本4, server: jp04-vm5.entry.hsrtd.club, port: 12553, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: bgp-02-04.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇭🇰 V5-香港5, server: hk05-vm5.entry.hsrtd.club, port: 11200, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: bgp-01-05.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇯🇵 V5-日本5-下载专用, server: jp05-vm5.entry.rtysjur.quest, port: 665, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: assets.xboxlive.com}}, udp: true}
+  - {name: 🇭🇰 V5-香港6, server: hk06-vm5.entry.hsrtd.club, port: 472, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: bgp-01-06.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇯🇵 V5-日本6-下载专用, server: jp06-vm5.entry.rtysjur.quest, port: 668, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: assets.xboxlive.com}}, udp: true}
+  - {name: 🇭🇰 V5-香港7, server: hk07-vm5.entry.hsrtd.club, port: 470, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: bgp-01-07.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇯🇵 V5-日本7, server: jp07-vm5.entry.hsrtd.club, port: 460, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: bgp-02-07.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇭🇰 V5-香港8, server: hk08-vm5.entry.hsrtd.club, port: 471, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: bgp-01-08.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇯🇵 V5-日本8, server: jp08-vm5.entry.hsrtd.club, port: 461, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: bgp-02-08.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇭🇰 V5-香港9, server: hk09-vm5.entry.hsrtd.club, port: 457, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: bgp-01-09.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇯🇵 V5-日本9, server: jp09-vm5.entry.hsrtd.club, port: 462, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: bgp-02-09.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇭🇰 V5-香港10, server: hk10-vm5.entry.hsrtd.club, port: 458, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: bgp-01-10.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇯🇵 V5-日本10, server: jp10-vm5.entry.hsrtd.club, port: 463, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: bgp-02-10.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇭🇰 V5-香港11, server: hk11-vm5.entry.hsrtd.club, port: 459, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: bgp-01-11.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇯🇵 V5-日本11, server: jp11-vm5.entry.hsrtd.club, port: 464, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: bgp-02-11.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇸🇬 V5-新加坡, server: sg01-vm5.entry.hsrtd.club, port: 466, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: bgp-10-01.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇨🇳 V5-台湾 动画疯, server: tw02-vm5.entry.hsrtd.club, port: 453, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /tls/b60000_0001.ts, headers: {Host: bgp-03-02.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇺🇸 V5-美国1, server: us01-vm5.entry.hsrtd.club, port: 469, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: bgp-09-01.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇺🇸 V5-美国2, server: us02-vm5.entry.hsrtd.club, port: 17873, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /tutorial/iphone13.m3u8, headers: {Host: bgp-01-12.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇰🇷 V5-韩国 无可用性保障, server: kr01-vm5.entry.hsrtd.club, port: 454, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: bgp-04-01.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇬🇧 V5-英国, server: uk01-vm5.entry.hsrtd.club, port: 467, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: bgp-07-01.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇦🇷 V5-阿根廷, server: ar01-vm5.entry.hsrtd.club, port: 456, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: bgp-06-01.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇷🇺 V5-俄罗斯, server: ru01-vm5.entry.hsrtd.club, port: 455, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: bgp-05-01.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇹🇷 V5-土耳其 无可用性保障, server: tr01-vm5.entry.hsrtd.club, port: 468, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: bgp-08-01.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇮🇳 V5-印度01, server: in01-vm5.entry.hsrtd.club, port: 17556, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /tutorial/iphone13.m3u8, headers: {Host: bgp-01-12.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇩🇪 V5-德国1, server: de01-vm5.entry.hsrtd.club, port: 10391, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /tutorial/iphone13.m3u8, headers: {Host: bgp-01-12.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇨🇦 V5-加拿大1, server: ca01-vm5.entry.hsrtd.club, port: 12113, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /tutorial/iphone13.m3u8, headers: {Host: bgp-01-12.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇦🇺 V5-澳大利亚1, server: au01-vm5.entry.hsrtd.club, port: 16458, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /tutorial/iphone13.m3u8, headers: {Host: bgp-01-12.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇮🇩 V5-印度尼西亚1, server: idn01-vm5.entry.hsrtd.club, port: 15813, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /tutorial/iphone13.m3u8, headers: {Host: bgp-01-12.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇫🇷 V5-法国1, server: fr01-vm5.entry.hsrtd.club, port: 12054, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /tutorial/iphone13.m3u8, headers: {Host: bgp-01-12.entry-0.chinasnow.net}}, udp: true}
+  - {name: 🇯🇵 免费-日本1, server: jp01-vm0.entry.srthdw.art, port: 447, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: bf419d5f59f96a.windowsupdate.com}}, udp: true}
+  - {name: 🇯🇵 免费-日本2, server: jp02-vm0.entry.srthdw.art, port: 447, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: jp02-vm0.entry.srthdw.art}}, udp: true}
+  - {name: 🇯🇵 免费-日本3, server: jp03-vm0.entry.srthdw.art, port: 447, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: jp03-vm0.entry.srthdw.art}}, udp: true}
+  - {name: 🇯🇵 免费-日本4, server: jp04-vm0.entry.srthdw.art, port: 447, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: bf419d5f59f7d0.windowsupdate.com}}, udp: true}
+  - {name: 🇯🇵 免费-日本5, server: jp05-vm0.entry.srthdw.art, port: 447, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: jp05-vm0.entry.srthdw.art}}, udp: true}
+  - {name: 🇯🇵 免费-日本6, server: jp06-vm0.entry.srthdw.art, port: 447, type: vmess, uuid: 2d862f14-8d8a-3337-9405-e5ad1fd8eeed, alterId: 1, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /hls/cctv5phd.m3u8, headers: {Host: jp06-vm0.entry.srthdw.art}}, udp: true}
+  - {name: 🇭🇰 V5-京港1-SSR, server: hk01-sr5.entry.hsrtd.club, port: 8085, type: ssr, cipher: chacha20-ietf, password: iKuuuVPN, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 739878:v8WQ2o, obfs-param: d2ac2739878.microsoft.com, udp: true}
+  - {name: 🇯🇵 V5-京日1-SSR, server: jp01-sr5.entry.hsrtd.club, port: 8091, type: ssr, cipher: chacha20-ietf, password: iKuuuVPN, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 739878:v8WQ2o, obfs-param: d2ac2739878.microsoft.com, udp: true}
+  - {name: 🇭🇰 V5-京港2-SSR, server: hk02-sr5.entry.hsrtd.club, port: 8086, type: ssr, cipher: chacha20-ietf, password: iKuuuVPN, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 739878:v8WQ2o, obfs-param: d2ac2739878.microsoft.com, udp: true}
+  - {name: 🇯🇵 V5-京日2-SSR, server: jp02-sr5.entry.hsrtd.club, port: 8084, type: ssr, cipher: chacha20-ietf, password: iKuuuVPN, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 739878:v8WQ2o, obfs-param: d2ac2739878.microsoft.com, udp: true}
+  - {name: 🇭🇰 V5-京港3-SSR, server: hk03-sr5.entry.hsrtd.club, port: 8082, type: ssr, cipher: chacha20-ietf, password: iKuuuVPN, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 739878:v8WQ2o, obfs-param: d2ac2739878.microsoft.com, udp: true}
+  - {name: 🇯🇵 V5-京日3-SSR, server: jp03-sr5.entry.hsrtd.club, port: 8093, type: ssr, cipher: chacha20-ietf, password: iKuuuVPN, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 739878:v8WQ2o, obfs-param: d2ac2739878.microsoft.com, udp: true}
+  - {name: 🇺🇸 V5-美国-SSR, server: us01-sr5.entry.hsrtd.club, port: 8083, type: ssr, cipher: chacha20-ietf, password: iKuuuVPN, protocol: auth_aes128_md5, obfs: tls1.2_ticket_auth, protocol-param: 739878:v8WQ2o, obfs-param: d2ac2739878.microsoft.com, udp: true}
+proxy-groups:
+  - name: 手动切换
+    type: select
+    proxies:
+      - GetAFreeNode-Amsterdam
+      - GetAFreeNode-Frankfurt
+      - 🇦🇹 GetAFreeNode-Vienna
+      - GetAFreeNode-LosAngeles
+      - GetAFreeNode-Phoenix
+      - 🇭🇰 Hong Kong 01
+      - 🇭🇰 Hong Kong 02
+      - 🇭🇰 Hong Kong 03
+      - 🇭🇰 Hong Kong 04
+      - 🇭🇰 Hong Kong 05
+      - 🇯🇵 Japan 01
+      - 🇯🇵 Japan 02
+      - 🇯🇵 Japan 03
+      - 🇸🇬 Singapore 01
+      - 🇸🇬 Singapore 02
+      - 🇸🇬 Singapore 03
+      - 🇨🇳 Taiwan 01
+      - 🇨🇳 Taiwan 02
+      - 🇺🇸 United States 01
+      - 🇺🇸 United States 02
+      - 🇺🇸 United States 03
+      - 🇺🇸 United States 04
+      - 🇺🇸 United States 05
+      - 🇭🇰 VIP-Hong Kong 01 | Media
+      - 🇭🇰 VIP-Hong Kong 02 | Media
+      - 🇭🇰 VIP-Hong Kong 03
+      - 🇭🇰 VIP-Hong Kong 04
+      - 🇭🇰 VIP-Hong Kong 05 | Media
+      - 🇭🇰 VIP-Hong Kong 06 | Media
+      - 🇭🇰 VIP-Hong Kong 07 | Media
+      - 🇭🇰 VIP-Hong Kong 08 | Media
+      - 🇯🇵 VIP-Japan 01 | Media
+      - 🇯🇵 VIP-Japan 02 | Media
+      - 🇯🇵 VIP-Japan 03 | Media
+      - 🇸🇬 VIP-Singapore 01 | Media
+      - 🇸🇬 VIP-Singapore 02 | Media
+      - 🇸🇬 VIP-Singapore 03 | Media
+      - 🇨🇳 VIP-Taiwan 01 | Media
+      - 🇨🇳 VIP-Taiwan 02 | Media
+      - 🇺🇸 VIP-United States 01 | Media
+      - 🇺🇸 VIP-United States 02 | Media
+      - 🇺🇸 VIP-United States 03
+      - 🇺🇸 VIP-United States 04 | Media
+      - 🇺🇸 VIP-United States 05 | Media
+      - 🇨🇦 VIP-Z-Canada
+      - 🇬🇧 VIP-Z-England
+      - 🇩🇪 VIP-Z-Germany
+      - 🇮🇳 VIP-Z-India
+      - 🇨🇦 Z-Canada
+      - 🇬🇧 Z-England
+      - 🇩🇪 Z-Germany
+      - 🇮🇳 Z-India
+      - 🇭🇰 V5-香港1
+      - 🇯🇵 V5-京日1
+      - 🇭🇰 V5-香港2
+      - 🇯🇵 V5-京日2
+      - 🇭🇰 V5-香港3
+      - 🇯🇵 V5-京日3
+      - 🇭🇰 V5-香港4
+      - 🇯🇵 V5-日本4
+      - 🇭🇰 V5-香港5
+      - 🇯🇵 V5-日本5-下载专用
+      - 🇭🇰 V5-香港6
+      - 🇯🇵 V5-日本6-下载专用
+      - 🇭🇰 V5-香港7
+      - 🇯🇵 V5-日本7
+      - 🇭🇰 V5-香港8
+      - 🇯🇵 V5-日本8
+      - 🇭🇰 V5-香港9
+      - 🇯🇵 V5-日本9
+      - 🇭🇰 V5-香港10
+      - 🇯🇵 V5-日本10
+      - 🇭🇰 V5-香港11
+      - 🇯🇵 V5-日本11
+      - 🇸🇬 V5-新加坡
+      - 🇨🇳 V5-台湾 动画疯
+      - 🇺🇸 V5-美国1
+      - 🇺🇸 V5-美国2
+      - 🇰🇷 V5-韩国 无可用性保障
+      - 🇬🇧 V5-英国
+      - 🇦🇷 V5-阿根廷
+      - 🇷🇺 V5-俄罗斯
+      - 🇹🇷 V5-土耳其 无可用性保障
+      - 🇮🇳 V5-印度01
+      - 🇩🇪 V5-德国1
+      - 🇨🇦 V5-加拿大1
+      - 🇦🇺 V5-澳大利亚1
+      - 🇮🇩 V5-印度尼西亚1
+      - 🇫🇷 V5-法国1
+      - 🇯🇵 免费-日本1
+      - 🇯🇵 免费-日本2
+      - 🇯🇵 免费-日本3
+      - 🇯🇵 免费-日本4
+      - 🇯🇵 免费-日本5
+      - 🇯🇵 免费-日本6
+      - 🇭🇰 V5-京港1-SSR
+      - 🇯🇵 V5-京日1-SSR
+      - 🇭🇰 V5-京港2-SSR
+      - 🇯🇵 V5-京日2-SSR
+      - 🇭🇰 V5-京港3-SSR
+      - 🇯🇵 V5-京日3-SSR
+      - 🇺🇸 V5-美国-SSR
+  - name: 自动选择
+    type: url-test
+    url: https://www.google.com/favicon.ico
+    interval: 300
+    tolerance: 50
+    proxies:
+      - GetAFreeNode-Amsterdam
+      - GetAFreeNode-Frankfurt
+      - 🇦🇹 GetAFreeNode-Vienna
+      - GetAFreeNode-LosAngeles
+      - GetAFreeNode-Phoenix
+      - 🇭🇰 Hong Kong 01
+      - 🇭🇰 Hong Kong 02
+      - 🇭🇰 Hong Kong 03
+      - 🇭🇰 Hong Kong 04
+      - 🇭🇰 Hong Kong 05
+      - 🇯🇵 Japan 01
+      - 🇯🇵 Japan 02
+      - 🇯🇵 Japan 03
+      - 🇸🇬 Singapore 01
+      - 🇸🇬 Singapore 02
+      - 🇸🇬 Singapore 03
+      - 🇨🇳 Taiwan 01
+      - 🇨🇳 Taiwan 02
+      - 🇺🇸 United States 01
+      - 🇺🇸 United States 02
+      - 🇺🇸 United States 03
+      - 🇺🇸 United States 04
+      - 🇺🇸 United States 05
+      - 🇭🇰 VIP-Hong Kong 01 | Media
+      - 🇭🇰 VIP-Hong Kong 02 | Media
+      - 🇭🇰 VIP-Hong Kong 03
+      - 🇭🇰 VIP-Hong Kong 04
+      - 🇭🇰 VIP-Hong Kong 05 | Media
+      - 🇭🇰 VIP-Hong Kong 06 | Media
+      - 🇭🇰 VIP-Hong Kong 07 | Media
+      - 🇭🇰 VIP-Hong Kong 08 | Media
+      - 🇯🇵 VIP-Japan 01 | Media
+      - 🇯🇵 VIP-Japan 02 | Media
+      - 🇯🇵 VIP-Japan 03 | Media
+      - 🇸🇬 VIP-Singapore 01 | Media
+      - 🇸🇬 VIP-Singapore 02 | Media
+      - 🇸🇬 VIP-Singapore 03 | Media
+      - 🇨🇳 VIP-Taiwan 01 | Media
+      - 🇨🇳 VIP-Taiwan 02 | Media
+      - 🇺🇸 VIP-United States 01 | Media
+      - 🇺🇸 VIP-United States 02 | Media
+      - 🇺🇸 VIP-United States 03
+      - 🇺🇸 VIP-United States 04 | Media
+      - 🇺🇸 VIP-United States 05 | Media
+      - 🇨🇦 VIP-Z-Canada
+      - 🇬🇧 VIP-Z-England
+      - 🇩🇪 VIP-Z-Germany
+      - 🇮🇳 VIP-Z-India
+      - 🇨🇦 Z-Canada
+      - 🇬🇧 Z-England
+      - 🇩🇪 Z-Germany
+      - 🇮🇳 Z-India
+      - 🇭🇰 V5-香港1
+      - 🇯🇵 V5-京日1
+      - 🇭🇰 V5-香港2
+      - 🇯🇵 V5-京日2
+      - 🇭🇰 V5-香港3
+      - 🇯🇵 V5-京日3
+      - 🇭🇰 V5-香港4
+      - 🇯🇵 V5-日本4
+      - 🇭🇰 V5-香港5
+      - 🇯🇵 V5-日本5-下载专用
+      - 🇭🇰 V5-香港6
+      - 🇯🇵 V5-日本6-下载专用
+      - 🇭🇰 V5-香港7
+      - 🇯🇵 V5-日本7
+      - 🇭🇰 V5-香港8
+      - 🇯🇵 V5-日本8
+      - 🇭🇰 V5-香港9
+      - 🇯🇵 V5-日本9
+      - 🇭🇰 V5-香港10
+      - 🇯🇵 V5-日本10
+      - 🇭🇰 V5-香港11
+      - 🇯🇵 V5-日本11
+      - 🇸🇬 V5-新加坡
+      - 🇨🇳 V5-台湾 动画疯
+      - 🇺🇸 V5-美国1
+      - 🇺🇸 V5-美国2
+      - 🇰🇷 V5-韩国 无可用性保障
+      - 🇬🇧 V5-英国
+      - 🇦🇷 V5-阿根廷
+      - 🇷🇺 V5-俄罗斯
+      - 🇹🇷 V5-土耳其 无可用性保障
+      - 🇮🇳 V5-印度01
+      - 🇩🇪 V5-德国1
+      - 🇨🇦 V5-加拿大1
+      - 🇦🇺 V5-澳大利亚1
+      - 🇮🇩 V5-印度尼西亚1
+      - 🇫🇷 V5-法国1
+      - 🇯🇵 免费-日本1
+      - 🇯🇵 免费-日本2
+      - 🇯🇵 免费-日本3
+      - 🇯🇵 免费-日本4
+      - 🇯🇵 免费-日本5
+      - 🇯🇵 免费-日本6
+      - 🇭🇰 V5-京港1-SSR
+      - 🇯🇵 V5-京日1-SSR
+      - 🇭🇰 V5-京港2-SSR
+      - 🇯🇵 V5-京日2-SSR
+      - 🇭🇰 V5-京港3-SSR
+      - 🇯🇵 V5-京日3-SSR
+      - 🇺🇸 V5-美国-SSR
+  - name: 负载均衡
+    type: load-balance
+    strategy: consistent-hashing
+    url: https://www.google.com/favicon.ico
+    interval: 300
+    tolerance: 50
+    proxies:
+      - GetAFreeNode-Amsterdam
+      - GetAFreeNode-Frankfurt
+      - 🇦🇹 GetAFreeNode-Vienna
+      - GetAFreeNode-LosAngeles
+      - GetAFreeNode-Phoenix
+      - 🇭🇰 Hong Kong 01
+      - 🇭🇰 Hong Kong 02
+      - 🇭🇰 Hong Kong 03
+      - 🇭🇰 Hong Kong 04
+      - 🇭🇰 Hong Kong 05
+      - 🇯🇵 Japan 01
+      - 🇯🇵 Japan 02
+      - 🇯🇵 Japan 03
+      - 🇸🇬 Singapore 01
+      - 🇸🇬 Singapore 02
+      - 🇸🇬 Singapore 03
+      - 🇨🇳 Taiwan 01
+      - 🇨🇳 Taiwan 02
+      - 🇺🇸 United States 01
+      - 🇺🇸 United States 02
+      - 🇺🇸 United States 03
+      - 🇺🇸 United States 04
+      - 🇺🇸 United States 05
+      - 🇭🇰 VIP-Hong Kong 01 | Media
+      - 🇭🇰 VIP-Hong Kong 02 | Media
+      - 🇭🇰 VIP-Hong Kong 03
+      - 🇭🇰 VIP-Hong Kong 04
+      - 🇭🇰 VIP-Hong Kong 05 | Media
+      - 🇭🇰 VIP-Hong Kong 06 | Media
+      - 🇭🇰 VIP-Hong Kong 07 | Media
+      - 🇭🇰 VIP-Hong Kong 08 | Media
+      - 🇯🇵 VIP-Japan 01 | Media
+      - 🇯🇵 VIP-Japan 02 | Media
+      - 🇯🇵 VIP-Japan 03 | Media
+      - 🇸🇬 VIP-Singapore 01 | Media
+      - 🇸🇬 VIP-Singapore 02 | Media
+      - 🇸🇬 VIP-Singapore 03 | Media
+      - 🇨🇳 VIP-Taiwan 01 | Media
+      - 🇨🇳 VIP-Taiwan 02 | Media
+      - 🇺🇸 VIP-United States 01 | Media
+      - 🇺🇸 VIP-United States 02 | Media
+      - 🇺🇸 VIP-United States 03
+      - 🇺🇸 VIP-United States 04 | Media
+      - 🇺🇸 VIP-United States 05 | Media
+      - 🇨🇦 VIP-Z-Canada
+      - 🇬🇧 VIP-Z-England
+      - 🇩🇪 VIP-Z-Germany
+      - 🇮🇳 VIP-Z-India
+      - 🇨🇦 Z-Canada
+      - 🇬🇧 Z-England
+      - 🇩🇪 Z-Germany
+      - 🇮🇳 Z-India
+      - 🇭🇰 V5-香港1
+      - 🇯🇵 V5-京日1
+      - 🇭🇰 V5-香港2
+      - 🇯🇵 V5-京日2
+      - 🇭🇰 V5-香港3
+      - 🇯🇵 V5-京日3
+      - 🇭🇰 V5-香港4
+      - 🇯🇵 V5-日本4
+      - 🇭🇰 V5-香港5
+      - 🇯🇵 V5-日本5-下载专用
+      - 🇭🇰 V5-香港6
+      - 🇯🇵 V5-日本6-下载专用
+      - 🇭🇰 V5-香港7
+      - 🇯🇵 V5-日本7
+      - 🇭🇰 V5-香港8
+      - 🇯🇵 V5-日本8
+      - 🇭🇰 V5-香港9
+      - 🇯🇵 V5-日本9
+      - 🇭🇰 V5-香港10
+      - 🇯🇵 V5-日本10
+      - 🇭🇰 V5-香港11
+      - 🇯🇵 V5-日本11
+      - 🇸🇬 V5-新加坡
+      - 🇨🇳 V5-台湾 动画疯
+      - 🇺🇸 V5-美国1
+      - 🇺🇸 V5-美国2
+      - 🇰🇷 V5-韩国 无可用性保障
+      - 🇬🇧 V5-英国
+      - 🇦🇷 V5-阿根廷
+      - 🇷🇺 V5-俄罗斯
+      - 🇹🇷 V5-土耳其 无可用性保障
+      - 🇮🇳 V5-印度01
+      - 🇩🇪 V5-德国1
+      - 🇨🇦 V5-加拿大1
+      - 🇦🇺 V5-澳大利亚1
+      - 🇮🇩 V5-印度尼西亚1
+      - 🇫🇷 V5-法国1
+      - 🇯🇵 免费-日本1
+      - 🇯🇵 免费-日本2
+      - 🇯🇵 免费-日本3
+      - 🇯🇵 免费-日本4
+      - 🇯🇵 免费-日本5
+      - 🇯🇵 免费-日本6
+      - 🇭🇰 V5-京港1-SSR
+      - 🇯🇵 V5-京日1-SSR
+      - 🇭🇰 V5-京港2-SSR
+      - 🇯🇵 V5-京日2-SSR
+      - 🇭🇰 V5-京港3-SSR
+      - 🇯🇵 V5-京日3-SSR
+      - 🇺🇸 V5-美国-SSR
+  - name: 中国节点
+    type: select
+    proxies:
+      - 🇭🇰 V5-香港1
+      - 🇭🇰 V5-香港2
+      - 🇭🇰 V5-香港3
+      - 🇭🇰 V5-香港4
+      - 🇭🇰 V5-香港5
+      - 🇭🇰 V5-香港6
+      - 🇭🇰 V5-香港7
+      - 🇭🇰 V5-香港8
+      - 🇭🇰 V5-香港9
+      - 🇭🇰 V5-香港10
+      - 🇭🇰 V5-香港11
+      - 🇨🇳 V5-台湾 动画疯
+  - name: 日本节点
+    type: select
+    proxies:
+      - 🇯🇵 V5-日本4
+      - 🇯🇵 V5-日本5-下载专用
+      - 🇯🇵 V5-日本6-下载专用
+      - 🇯🇵 V5-日本7
+      - 🇯🇵 V5-日本8
+      - 🇯🇵 V5-日本9
+      - 🇯🇵 V5-日本10
+      - 🇯🇵 V5-日本11
+      - 🇯🇵 免费-日本1
+      - 🇯🇵 免费-日本2
+      - 🇯🇵 免费-日本3
+      - 🇯🇵 免费-日本4
+      - 🇯🇵 免费-日本5
+      - 🇯🇵 免费-日本6
+  - name: 新加坡节点
+    type: select
+    proxies:
+      - 🇸🇬 V5-新加坡
+  - name: 美国节点
+    type: url-test
+    url: https://www.google.com/favicon.ico
+    interval: 300
+    tolerance: 150
+    proxies:
+      - 🇺🇸 V5-美国1
+      - 🇺🇸 V5-美国2
+      - 🇺🇸 V5-美国-SSR
+rules:
+ - MATCH,手动切换
