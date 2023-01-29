@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "remarks": "pojiezhiyuanjun",
+    "site": "https://github.com/pojiezhiyuanjun/freev2",
+    "url": "https://raw.githubusercontent.com/pojiezhiyuanjun/freev2/master/0129.txt",
+    "update_method": "change_date",
+    "enabled": true
+  },
+  {
+    "id": 2,
+    "remarks": "ClashNode",
+    "site": "https://clashnode.com/f/freenode",
+    "url": "https://clashnode.com/wp-content/uploads/2023/01/20230124.txt",
+    "update_method": "change_date",
+    "enabled": true
+  },
+  {
+    "id": 3,
+    "remarks": "Nodefree.org",
+    "site": "https://github.com/Fukki-Z/nodefree",
+    "url": "https://nodefree.org/dy/2023/01/20230129.txt",
+    "update_method": "change_date",
+    "enabled": true
+  },
+  {
+    "id": 4,
+    "remarks": "kkzui.com",
+    "site": "https://kkzui.com/jd?orderby=modified",
+    "url": "https://oss.v2rayse.com/proxies/data/2023-01-28/V777L7.txt",
+    "update_method": "page_release",
+    "enabled": true
+  },
+  {
+    "id": 5,
+    "remarks": "changfengoss",
+    "site": "https://github.com/changfengoss/pub",
+    "url": "",
+    "update_method": "page_release",
+    "enabled": true
+  },
+  {
+    "id": 6,
+    "remarks": "www.cfmem.com",
+    "site": "https://www.cfmem.com/search/label/free",
+    "url": "https://oss.v2rayse.com/proxies/data/2023-01-29/29MCrVU.yaml",
+    "update_method": "page_release",
+    "enabled": true
+  },
+  {
+    "id": 7,
+    "remarks": "v2cross.com",
+    "site": "https://v2cross.com/",
+    "url": "https://9527521.xyz/pubconfig/f5ah72HZckNRViOx",
+    "update_method": "page_release",
+    "enabled": true
+  },
+  {
+    "id": 8,
+    "remarks": "mianfeifq",
+    "site": "https://github.com/mianfeifq/share",
+    "url": "https://raw.githubusercontent.com/mianfeifq/share/main/data2023016.txt",
+    "update_method": "page_release",
+    "enabled": true
+  }
+]
