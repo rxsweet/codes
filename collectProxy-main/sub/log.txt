@@ -1,6 +1,0 @@
-file update time
-
-TG
-airport: 2023-02-03 16:31:00
-static sub: 2023-02-03 16:27:30
-dynamic sub: 2023-02-03 16:17:07
