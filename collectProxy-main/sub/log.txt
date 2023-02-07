@@ -1,7 +1,0 @@
-updatetime: 7h-22h,every 3hour
-
-TG: 2023-02-06 12:21:03
-airport: 2023-02-06 12:23:44
-static sub: 2023-02-06 07:25:53
-dynamic sub: 2023-02-05 22:24:42
-
