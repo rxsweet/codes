@@ -255,3 +255,49 @@ jobs:
         user_name: 'rxsweet'
         commit_message: 'update message'
 ```
+# 删除记录
+## Delete Old Workflow Runs
+```
+name: Delete Old Workflow Runs
+on:
+  workflow_dispatch:
+  #schedule:
+    # - cron: '*/5 * * * *'
+    # 表达式生成  https://crontab.guru/
+    #- cron: '0 */24 * * *'
+    
+jobs:
+  del_runs:
+    name: Delete old runs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete workflow runs
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          retain_days: 0
+          keep_minimum_runs: 0
+```
+## Delete Commit Records Weekly
+```
+name: Delete Commit Records Weekly
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '* 3 1 * *'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Delete commit records
+      run: |
+        git config --global user.email "actions@github.com"
+        git config --global user.name "GitHub Action"
+        git checkout --orphan new_branch
+        git commit -m "init"
+        git branch -D main
+        git branch -m main
+        git push -f origin main 
+```
