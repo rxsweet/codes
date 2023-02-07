@@ -1,12 +1,3 @@
----
-layout: post
-title: 经验技术 - workflow说明
-date:   2023-01-31 
-tags: [经验技术]
-categories: 经验技术
-img: 
----
-
 # Workflow的具体实现
 
 ## CDN具体实现
