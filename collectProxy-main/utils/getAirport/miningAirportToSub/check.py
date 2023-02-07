@@ -113,7 +113,7 @@ def sub_check(url,bar):
                                 old_list.append(url)
                         else: # 没有时间信息
                             liuliang_str = pybyte(int(info_num[2])-int(info_num[1])-int(info_num[0]))
-                            new_list.append(' -- 剩余流量：'+ liuliang_str)
+                            new_list.append('到期时间：无 -- 剩余流量：'+ liuliang_str)
                             new_list.append(url)
                     else: # 流量小于10MB
                         #old_list.append(url)
