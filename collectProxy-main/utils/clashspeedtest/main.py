@@ -28,7 +28,7 @@ if __name__ == '__main__':
             p.join
         time.sleep(5)
         alive=list(alive)
-        testdone = push(alive,outfile)
-        if testdone != '没有可用节点':
-            print("begin - outputsub.py")
+        #测速后，有可用节点再写入
+        if int(len(alive)) > 0:
+            push(alive,outfile)
             outputsub.output()
