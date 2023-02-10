@@ -18,7 +18,7 @@ def push(list, outfile):
              'interval': 300}, {'name': '🌐 Proxy', 'type': 'select', 'proxies': ['automatic']}],
              'rules': ['MATCH,🌐 Proxy']}
     if int(len(list)) < 1:
-        print('\n 测速结束，没有可用节点 \n')
+        print('\n 没有可用节点 \n')
         return '没有可用节点'
     with maxminddb.open_database(Country_mmdb_path) as countrify:
         for i in tqdm(range(int(len(list))), desc="good Parse"):
