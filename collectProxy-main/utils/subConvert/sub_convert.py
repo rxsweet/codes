@@ -412,6 +412,8 @@ class sub_convert():
                         yaml_url.setdefault('server', vmess_config['add'])
                         yaml_url.setdefault('port', int(vmess_config['port']))
                         yaml_url.setdefault('type', 'vmess')
+                        if '-' not in vmess_config['id']: #用 '-'当UUID特征 
+                            continue
                         yaml_url.setdefault('uuid', vmess_config['id'])
                         yaml_url.setdefault('alterId', int(vmess_config['aid']))
                         yaml_url.setdefault('cipher', vmess_config['scy'])
