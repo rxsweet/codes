@@ -403,8 +403,12 @@ class sub_convert():
                     if vmess_config['id'] == '' or vmess_config['id'] is None:
                         print('节点格式错误')
                     else:
+                        #yaml_url.setdefault('name', urllib.parse.unquote(str(vmess_config['ps'])))
                         newname = urllib.parse.unquote(str(vmess_config['ps']))
-                        yaml_url.setdefault('name', urllib.parse.unquote(str(vmess_config['ps'])))
+                        if ':' in newname or ',' in newname:
+                            newname = re.sub(':|,','_',newname)
+                        yaml_url.setdefault('name', newname)
+                        
                         yaml_url.setdefault('server', vmess_config['add'])
                         yaml_url.setdefault('port', int(vmess_config['port']))
                         yaml_url.setdefault('type', 'vmess')
@@ -443,7 +447,12 @@ class sub_convert():
                 try:
                     ss_content =  line.replace('ss://', '')
                     part_list = ss_content.split('#', 1) # https://www.runoob.com/python/att-string-split.html
-                    yaml_url.setdefault('name', urllib.parse.unquote(part_list[1]))
+                    #yaml_url.setdefault('name', urllib.parse.unquote(part_list[1]))
+                    newname = urllib.parse.unquote(part_list[1])
+                    if ':' in newname or ',' in newname:
+                        newname = re.sub(':|,','_',newname)
+                    yaml_url.setdefault('name', newname)
+            
                     if '@' in part_list[0]:
                         mix_part = part_list[0].split('@', 1)
                         method_part = sub_convert.base64_decode(mix_part[0])
@@ -534,7 +543,11 @@ class sub_convert():
                 try:
                     url_content = line.replace('trojan://', '')
                     part_list = re.split('#', url_content, maxsplit=1) # https://www.runoob.com/python/att-string-split.html
-                    yaml_url.setdefault('name', urllib.parse.unquote(part_list[1]))
+                    #yaml_url.setdefault('name', urllib.parse.unquote(part_list[1]))
+                    newname = urllib.parse.unquote(part_list[1])
+                    if ':' in newname or ',' in newname:
+                        newname = re.sub(':|,','_',newname)
+                    yaml_url.setdefault('name', newname)
                     server_part = part_list[0].replace('trojan://', '')
                     server_part_list = re.split(':|@|\?|&', server_part) # 使用多个分隔符 https://blog.csdn.net/shidamowang/article/details/80254476 https://zhuanlan.zhihu.com/p/92287240
                     yaml_url.setdefault('server', server_part_list[1])
