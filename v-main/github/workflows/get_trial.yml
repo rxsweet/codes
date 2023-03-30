@@ -1,0 +1,50 @@
+name: get_trial.py
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: 0 0,6,12,18 * * * #北京时间：每6小时
+permissions: write-all
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    #env:
+      #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #DDAL_EMAIL: ${{ secrets.DDAL_EMAIL }}
+      #DDAL_PASSWORD: ${{ secrets.DDAL_PASSWORD }}
+    steps:
+      - name: 设置时区
+        run: sudo timedatectl set-timezone 'Asia/Shanghai' 
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Prepare #禁用了chrome
+        run: pip install requests beautifulsoup4 ruamel.yaml json5
+      - name: Run get_trial.py
+        run: python get_trial.py
+      - name: Commit
+        id: commit
+        continue-on-error: true
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions"
+          git add .
+          git commit -m "$(date '+%Y-%m-%d %H:%M:%S') v done"
+          #git commit -m "${{ github.workflow }} https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          git pull --rebase
+      - uses: ad-m/github-push-action@master
+        if: ${{ steps.commit.outcome == 'success' }}
+      #- name: Run get_trial_update_url.py
+        #run: python get_trial_update_url.py
+      - name: Pushes to proxies
+        uses: rxsweet/copy_file_to_another_repo_action@main
+        env:
+         API_TOKEN_GITHUB: ghp_xxx
+        with:
+          source_file: 'sub/'
+          destination_repo: 'rxsweet/proxies'
+          user_email: 'actions@github.com'
+          user_name: 'GitHub Actions'
+          commit_message: 'v node update'
