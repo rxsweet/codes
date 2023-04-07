@@ -1,2 +1,0 @@
-proxies:
-- {name: 🇯🇵 「SCP」JP-CF, server: cf-lt.sharecentre.online, port: 443, type: vmess, uuid: 20e92881-5fb4-4b05-bc77-57929476dc69, alterId: 0, cipher: auto, skip-cert-vertify: true, network: ws, tls: true, ws-opts: {path: /shirker, headers: {Host: jp1.sharecentre.online}}}
