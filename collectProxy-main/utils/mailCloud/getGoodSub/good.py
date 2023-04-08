@@ -46,6 +46,10 @@ def urllist_to_sub(airportListFile):    #将url订阅列表内容转换成url,ba
 if __name__ == '__main__':
     #good文件
     urllist_to_sub(airportListFile)
-    #copy原文件
+    #copy
     shutil.copyfile('./utils/mailCloud/trial', './sub/v.txt')
-    shutil.copyfile('./utils/mailCloud/trial.yaml', './sub/v.yaml')
+    #shutil.copyfile('./utils/mailCloud/trial.yaml', './sub/v.yaml')
+    #转clash
+    v_path = os.path.abspath('./utils/mailCloud/trial')
+    content = sub_convert.convert_remote(v_path,'clash')
+    write_file('./sub/v.yaml',content)
