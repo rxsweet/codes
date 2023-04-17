@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "remarks": "pojiezhiyuanjun",
+    "site": "https://github.com/pojiezhiyuanjun/freev2",
+    "url": "https://raw.githubusercontent.com/pojiezhiyuanjun/freev2/master/0417.txt",
+    "update_method": "change_date",
+    "enabled": true
+  },
+  {
+    "id": 2,
+    "remarks": "ClashNode",
+    "site": "https://clashnode.com/f/freenode",
+    "url": "https://clashnode.com/wp-content/uploads/2023/04/20230417.txt",
+    "update_method": "change_date",
+    "enabled": true
+  },
+  {
+    "id": 3,
+    "remarks": "Nodefree.org",
+    "site": "https://github.com/Fukki-Z/nodefree",
+    "url": "https://nodefree.org/dy/2023/04/20230417.txt",
+    "update_method": "change_date",
+    "enabled": true
+  },
+  {
+    "id": 4,
+    "remarks": "kkzui.com",
+    "site": "https://kkzui.com/jd?orderby=modified",
+    "url": "https://tt.vg/KjHoW",
+    "update_method": "page_release",
+    "enabled": true
+  },
+  {
+    "id": 5,
+    "remarks": "mianfeifq",
+    "site": "https://github.com/mianfeifq/share",
+    "url": "https://raw.githubusercontent.com/mianfeifq/share/main/data2023049.txt",
+    "update_method": "page_release",
+    "enabled": true
+  },
+  {
+    "id": 6,
+    "remarks": "www.cfmem.com",
+    "site": "https://www.cfmem.com/search/label/free",
+    "url": "https://oss.v2rayse.com/proxies/data/2023-04-17/XT0jv9K.yaml",
+    "update_method": "page_release",
+    "enabled": true
+  },
+  {
+    "id": 7,
+    "remarks": "v2cross.com",
+    "site": "https://v2cross.com/",
+    "url": "https://9527521.xyz/pubconfig/NpXZa6HBhWSEy0Oi",
+    "update_method": "page_release",
+    "enabled": true
+  },
+  {
+    "id": 8,
+    "remarks": "changfengoss",
+    "site": "https://github.com/changfengoss/pub",
+    "url": "https://raw.githubusercontent.com/changfengoss/pub/main/data/2023_04_17/42fzvy.txt|https://raw.githubusercontent.com/changfengoss/pub/main/data/2023_04_17/65TX7G.yaml|https://raw.githubusercontent.com/changfengoss/pub/main/data/2023_04_17/8Qqjsv.yaml|https://raw.githubusercontent.com/changfengoss/pub/main/data/2023_04_17/ArwvAj.yaml|https://raw.githubusercontent.com/changfengoss/pub/main/data/2023_04_17/Cri93X.yaml|https://raw.githubusercontent.com/changfengoss/pub/main/data/2023_04_17/bHd79j.yaml|https://raw.githubusercontent.com/changfengoss/pub/main/data/2023_04_17/kNew56.txt|https://raw.githubusercontent.com/changfengoss/pub/main/data/2023_04_17/maE1qO.yaml|https://raw.githubusercontent.com/changfengoss/pub/main/data/2023_04_17/sSHdzc.yaml",
+    "update_method": "page_release",
+    "enabled": true
+  }
+]
