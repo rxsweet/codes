@@ -1,7 +1,0 @@
-updatetime: 6h - 21h, every 3h
-
-[2023-04-07 09:56:12]: static sub
-[2023-04-07 12:24:04]: dynamic sub
-[2023-04-07 15:15:52]: TG
-[2023-04-07 15:19:05]: airport
-[2023-04-07 15:20:44]: mailCloud sub
