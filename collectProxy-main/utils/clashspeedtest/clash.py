@@ -123,7 +123,7 @@ def filter(config):
             name_same = 1
             while begin_2 <= (length - 1):
                 if proxy_compared['name'] == None:
-                    proxy_compared['name'] = 'name:None' + str(begin_2)
+                     proxies_list[begin]['name'] = 'name:None' + str(begin)
                     name_none += 1
                 if proxy_compared['name'] == proxies_list[begin_2]['name']:
                     proxies_list[begin_2]['name'] = str(proxies_list[begin_2]['name']) + '+' + str(name_same)
