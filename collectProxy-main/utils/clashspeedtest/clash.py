@@ -112,16 +112,21 @@ def filter(config):
         raw_length = len(proxies_list)
         length = len(proxies_list)
         rm = 0
+        name_none = 0
         while begin < length:
             if (begin + 1) == length:
-                print(f'\n-----去重名开始-----\n重名数量{rm}')
+                print(f'\n-----去重名开始-----\n')
+                print(f'重名数量{rm},空名数{name_none}')
                 print(f'-----去重名完成-----\n')
             proxy_compared = proxies_list[begin]
             begin_2 = begin + 1
             name_same = 1
             while begin_2 <= (length - 1):
+                if proxy_compared['name'] == None:
+                    proxy_compared['name'] = 'name:None' + str(begin_2)
+                    name_none += 1
                 if proxy_compared['name'] == proxies_list[begin_2]['name']:
-                    proxies_list[begin_2]['name'] = proxies_list[begin_2]['name'] + '+' + str(name_same)
+                    proxies_list[begin_2]['name'] = str(proxies_list[begin_2]['name']) + '+' + str(name_same)
                     name_same += 1
                 begin_2 += 1
             if name_same > 1:
