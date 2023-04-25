@@ -73,7 +73,7 @@ jobs:
     - name: Pushes to proxies
       uses: rxsweet/copy_file_to_another_repo_action@main
       env:
-        API_TOKEN_GITHUB: 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
+        API_TOKEN_GITHUB: ghp_xxx
       with:
         source_file: 'sub/'
         destination_repo: 'rxsweet/proxies'
