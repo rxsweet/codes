@@ -107,7 +107,7 @@ def filter(config):
             {'name': 'automatic', 'type': 'url-test', 'proxies': [], 'url': 'https://www.google.com/favicon.ico',
              'interval': 300}, {'name': '🌐 Proxy', 'type': 'select', 'proxies': ['automatic']}],
              'rules': ['MATCH,🌐 Proxy']}
-    # 去重复，重名，空名
+    # 去重复，重名，空名，int型password
     if True: #开关：True，False
         raw_length = len(proxies_list)
         length = len(proxies_list)
@@ -121,11 +121,10 @@ def filter(config):
                 print(f'当前基准{begin + 1}-----当前数量{length}')
             elif (begin + 1) == length and (begin + 1) % 100 != 0:
                 repetition = raw_length - length
-                print(f'当前基准{begin + 1}-----当前数量{length}\n--------\n重复数量{repetition}\n重名数量{rm}\n空名数{name_none}\n-----去重完成-----\n')
+                print(f'当前基准{begin + 1}-----当前数量{length}\n--------\n重复和int型password数量{repetition}\n重名数量{rm}\n空名数{name_none}\n-----去重完成-----\n')
             if proxies_list[begin]['name'] == None or proxies_list[begin]['name'] == '' or proxies_list[begin]['name'] == ' ':
                 proxies_list[begin]['name'] = 'name-None' + '-' + proxies_list[begin]['type'] + '+' +  str(name_none)
                 name_none += 1
-            proxy_compared = proxies_list[begin]
             begin_2 = begin + 1
             name_same = 0
             while begin_2 <= (length - 1):
@@ -139,8 +138,17 @@ def filter(config):
                         proxies_list[begin_2]['name'] = str(proxies_list[begin_2]['name']) + '+' + str(name_same)
                 begin_2 += 1
             #if name_same > 0:
-                #print(f"{proxy_compared['name']} 重名数量：{name_same}")
+                #print(f"{proxies_list[begin]['name']} 重名数量：{name_same}")
             rm += name_same
+            
+            #删除password为int型数字的节点
+            if proxies_list[begin]['type'] == 'ss' or proxies_list[begin]['type'] == 'trojan' or proxies_list[begin]['type'] == 'ssr':
+                if isinstance(proxies_list[begin]['password'],int):
+                    print(f"{proxies_list[begin]['name']}的password为int类型纯数字！")
+                    print(proxies_list[begin])
+                    proxies_list.pop(begin)
+                    length -= 1
+                    begin -= 1
             begin += 1 
 
     #查找不能用的节点删除		
