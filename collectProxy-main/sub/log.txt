@@ -1,0 +1,7 @@
+updatetime: 6h - 21h, every 3h
+
+[2023-08-30 11:51:02]: mining
+[2023-08-30 12:21:52]: dynamic sub
+[2023-08-30 12:34:13]: mailCloud sub
+[2023-08-30 15:15:26]: TG
+[2023-08-30 16:46:21]: static sub
