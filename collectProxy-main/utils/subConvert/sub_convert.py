@@ -429,7 +429,8 @@ class sub_convert():
                         yaml_url.setdefault('server', vmess_config['add'])
                         yaml_url.setdefault('port', int(vmess_config['port']))                       
                         yaml_url.setdefault('type', 'vmess')
-                        if '-' not in vmess_config['id']: #用 '-'当UUID特征 
+                        if len(vmess_config['id']) !=36 or vmess_config['id'].count('-') != 4: #UUID的位数36位，'-'为4个，统计字符串里某个字符或子字符串出现的次数：https://www.runoob.com/python/att-string-count.html
+                            print(f'yaml_encode 解析 vmess 节点{newname}时UUID错误')
                             continue
                         yaml_url.setdefault('uuid', vmess_config['id'])
                         yaml_url.setdefault('alterId', int(vmess_config['aid']))
@@ -478,9 +479,11 @@ class sub_convert():
                         server_part = f'{method_part}@{mix_part[1]}'
                     else:
                         server_part = sub_convert.base64_decode(part_list[0])
+                    """
                     if '�' in server_part:
                         print('错误： ss 中出现 � 字符 ---> ' + server_part)
                         continue
+                    """
                     server_part_list = server_part.split(':', 1) # 使用多个分隔符 https://blog.csdn.net/shidamowang/article/details/80254476 https://zhuanlan.zhihu.com/p/92287240
                     method_part = server_part_list[0]
                     server_part_list = server_part_list[1].rsplit('@', 1)
@@ -493,7 +496,7 @@ class sub_convert():
                     porttemp = server_part_list[1].split('/', 1)
                     newport = porttemp[0]
                     if len(newport)>5 or int(newport)>65535 or int(newport)<0:
-                        print(f'yaml_encode 解析 ss 节点port发生错误:port = ' + newport)
+                        print(f'yaml_encode 解析 ss 节点{newname}时port发生错误:port = ' + newport)
                         continue
                     yaml_url.setdefault('port',int(newport))
                     yaml_url.setdefault('type', 'ss')
@@ -536,7 +539,7 @@ class sub_convert():
                     #yaml_url.setdefault('port', parts[1])
                     newport = parts[1]
                     if len(newport)>5 or int(newport)>65535 or int(newport)<0:
-                        print(f'yaml_encode 解析 ssr 节点port发生错误:port = ' + newport)
+                        print(f'yaml_encode 解析 ssr 节点{newname}时port发生错误:port = ' + newport)
                         continue
                     yaml_url.setdefault('port',int(newport))
                     yaml_url.setdefault('type', 'ssr')
@@ -576,7 +579,7 @@ class sub_convert():
                     porttemp = server_part_list[2].split('/', 1)
                     newport = porttemp[0]
                     if len(newport)>5 or int(newport)>65535 or int(newport)<0:
-                        print(f'yaml_encode 解析 trojan 节点port发生错误:port = ' + newport)
+                        print(f'yaml_encode 解析 trojan 节点{newname}时port发生错误:port = ' + newport)
                         continue
                     yaml_url.setdefault('port',int(newport)) 
                     yaml_url.setdefault('type', 'trojan')
