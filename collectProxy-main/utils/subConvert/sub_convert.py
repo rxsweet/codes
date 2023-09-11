@@ -509,7 +509,7 @@ class sub_convert():
                     pass
 
             if 'ssr://' in line:
-
+                """
                 continue
                 #由于解析ssr老出现问题，先pass掉ssr
                 """
@@ -540,27 +540,41 @@ class sub_convert():
                     newport = parts[1]
                     if len(newport)>5 or int(newport)>65535 or int(newport)<0:
                         print(f'yaml_encode 解析 ssr 节点{newname}时port发生错误:port = ' + newport)
-                        continue
+                        
                     yaml_url.setdefault('port',int(newport))
                     yaml_url.setdefault('type', 'ssr')
                     yaml_url.setdefault('cipher', parts[3])
                     #yaml_url.setdefault('password', sub_convert.base64_decode(password_encode_str))
                     password_part = sub_convert.base64_decode(password_encode_str)
-                    if '^' in password_part or '|' in password_part:
-                        print(f'yaml_encode 解析 ssr 节点password发生错误:password = ' + password_part)
-                        continue
                     yaml_url.setdefault('password', password_part)
                     yaml_url.setdefault('obfs', parts[4])
                     yaml_url.setdefault('protocol', parts[2])
+                    """
                     yaml_url.setdefault('obfsparam', safe_base64_decode(param_dic['obfsparam']))
                     yaml_url.setdefault('protoparam', safe_base64_decode(param_dic['protoparam']))
                     yaml_url.setdefault('group', sub_convert.base64_decode(param_dic['group']))
-
+                    """
+                    ssr_obfsparam = safe_base64_decode(param_dic['obfsparam'])
+                    if ':' in ssr_obfsparam or ',' in ssr_obfsparam or '"' in ssr_obfsparam or '{' in ssr_obfsparam or '}' in ssr_obfsparam:
+                        continue
+                    yaml_url.setdefault('obfsparam', ssr_obfsparam)
+                    
+                    ssr_protoparam = safe_base64_decode(param_dic['protoparam'])
+                    if ':' in ssr_protoparam or ',' in ssr_protoparam or '"' in ssr_protoparam or '{' in ssr_protoparam or '}' in ssr_protoparam:
+                        continue
+                    yaml_url.setdefault('protoparam',ssr_protoparam )
+                    
+                    ssr_group = sub_convert.base64_decode(param_dic['group'])
+                    if ':' in ssr_group or ',' in ssr_group or '"' in ssr_group or '{' in ssr_group or '}' in ssr_group:
+                        continue
+                    yaml_url.setdefault('group',ssr_group)
+                    
+                    
                     url_list.append(yaml_url)
                 except Exception as err:
                     print(f'yaml_encode 解析 ssr 节点发生错误: {err}')
                     pass
-                """   
+                   
             if 'trojan://' in line:
                 try:
                     url_content = line.replace('trojan://', '')
