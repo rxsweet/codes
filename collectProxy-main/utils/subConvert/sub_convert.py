@@ -554,21 +554,23 @@ class sub_convert():
                     yaml_url.setdefault('protoparam', safe_base64_decode(param_dic['protoparam']))
                     yaml_url.setdefault('group', sub_convert.base64_decode(param_dic['group']))
                     """
+                    #match_ill错误的字符检测,有新的添加至此处
+                    match_ill = [':',',','"','{','}','�','*','&','^','%','$','#','@','!','[',']','|','?','<','>']
                     ssr_obfsparam = safe_base64_decode(param_dic['obfsparam'])
-                    if ':' in ssr_obfsparam or ',' in ssr_obfsparam or '"' in ssr_obfsparam or '{' in ssr_obfsparam or '}' in ssr_obfsparam or '�'  in ssr_obfsparam:
+                    if any(re.findall('|'.join(match_ill),ssr_obfsparam)):
                         #print(f'yaml_encode 解析 ssr 节点{newname}时obfsparam发生错误:obfsparam = ' + ssr_obfsparam)
                         continue
                     #print(f'yaml_encode 解析 ssr 节点{newname}的obfsparam = ' + ssr_obfsparam)
                     yaml_url.setdefault('obfsparam', ssr_obfsparam)
                     
                     ssr_protoparam = safe_base64_decode(param_dic['protoparam'])
-                    if ':' in ssr_protoparam or ',' in ssr_protoparam or '"' in ssr_protoparam or '{' in ssr_protoparam or '}' in ssr_protoparam or '�'  in ssr_protoparam:
+                    if any(re.findall('|'.join(match_ill),ssr_protoparam)):
                         #print(f'yaml_encode 解析 ssr 节点{newname}时protoparam发生错误:protoparam = ' + ssr_protoparam)
                         continue
                     yaml_url.setdefault('protoparam',ssr_protoparam )
                     
                     ssr_group = sub_convert.base64_decode(param_dic['group'])
-                    if ':' in ssr_group or ',' in ssr_group or '"' in ssr_group or '{' in ssr_group or '}' in ssr_group or '�'  in ssr_group:
+                    if any(re.findall('|'.join(match_ill),ssr_group)):
                         #print(f'yaml_encode 解析 ssr 节点{newname}时group发生错误:group = ' + ssr_group)
                         continue
                     yaml_url.setdefault('group',ssr_group)
