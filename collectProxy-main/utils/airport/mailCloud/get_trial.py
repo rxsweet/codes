@@ -345,7 +345,11 @@ def cache_sub_info(info, opt: dict, cache: dict[str, list[str]]):
     total = float(info["total"])
     rest = '(剩余 ' + size2str(total - used)
     if opt.get('expire') == 'never' or not info.get('expire'):
-        expire = '永不过期'
+        #expire = '永不过期'
+        #将'永不过期'改成了'2099-01-01'='4070883661',为了收集节点时能采集到
+        ts = 4070883661
+        expire = timestamp2str(ts)
+        rest += ' ' + str(timedelta(seconds=ts - time()))
     else:
         ts = str2timestamp(info['expire'])
         expire = timestamp2str(ts)
