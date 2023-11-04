@@ -15,7 +15,6 @@ from utils import (clear_files, g0, keep, list_file_paths, list_folder_paths,
                    timestamp2str, to_zero, write, write_cfg)
 
 errors = [
-    '更新旧订阅失败',
     '更新订阅链接/续费续签失败',
     '获取订阅失败',
     '保存base64/clash订阅失败',
@@ -303,7 +302,6 @@ def do_turn(session: PanelSession, opt: dict, cache: dict[str, list[str]], log: 
     log.append(f'{"更新订阅链接(新注册)" if is_new_reg else "续费续签"}({session.host}) {cache["sub_url"][0]}')
     return is_new_reg
 
-
 def try_turn(session: PanelSession, opt: dict, cache: dict[str, list[str]], log: list):
     try:
         turn, *sub = should_turn(session, opt, cache)
@@ -312,8 +310,9 @@ def try_turn(session: PanelSession, opt: dict, cache: dict[str, list[str]], log:
     except Exception as e:
         cache['更新旧订阅失败'] = [e]
         log.append(f'更新旧订阅失败({session.host})({cache["sub_url"][0]}): {e}')
-        return None
-
+        #return None
+        turn = 1
+      
     while turn:
         try:
             is_new_reg = do_turn(session, opt, cache, log, force_reg=turn == 2)
@@ -334,9 +333,7 @@ def try_turn(session: PanelSession, opt: dict, cache: dict[str, list[str]], log:
             cache['获取订阅失败'] = [e]
             log.append(f'获取订阅失败({session.host})({cache["sub_url"][0]}): {e}')
         break
-
     return sub
-
 
 def cache_sub_info(info, opt: dict, cache: dict[str, list[str]]):
     if not info:
@@ -345,11 +342,11 @@ def cache_sub_info(info, opt: dict, cache: dict[str, list[str]]):
     total = float(info["total"])
     rest = '(剩余 ' + size2str(total - used)
     if opt.get('expire') == 'never' or not info.get('expire'):
-        #expire = '永不过期'
+        expire = '永不过期'
         #将'永不过期'改成了'2099-01-01'='4070883661',为了收集节点时能采集到
-        ts = 4070883661
-        expire = timestamp2str(ts)
-        rest += ' ' + str(timedelta(seconds=ts - time()))
+        #ts = 4070883661
+        #expire = timestamp2str(ts)
+        #rest += ' ' + str(timedelta(seconds=ts - time()))
     else:
         ts = str2timestamp(info['expire'])
         expire = timestamp2str(ts)
