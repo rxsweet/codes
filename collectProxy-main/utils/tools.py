@@ -33,18 +33,16 @@ def mmdb_install():
         print('======Country.mmdb已经安装过了，不用重复安装！======')
 
 #下载clash
-#最新版https://github.com/Dreamacro/clash/releases/download/v1.15.1/clash-linux-amd64-v1.15.1.gz
-#现用版https://github.com/Dreamacro/clash/releases/download/v1.11.8/clash-linux-amd64-v1.11.8.gz
 def clash_install(
-    clash_url='https://github.com/Dreamacro/clash/releases/download/v1.18.0/clash-linux-amd64-v1.18.0.gz',
+    clash_url='https://raw.githubusercontent.com/rxsweet/all/main/githubTools/clash-linux-amd64-v1.18.0.gz',
     clash_path='./clash-linuxamd64',
 ):
     if not os.path.exists(clash_path):   #os.path.exists()就是判断括号里的文件是否存在，括号内的可以是文件路径
         download(clash_url, clash_path, unpack_gzip=True)#下载clash
         os.chmod(clash_path, 0o755)#os.chmod() 方法用于更改文件或目录的权限。
-        print('======clash-v1.11.8 下载安装结束！======')
+        print('======clash-v1.18.0 下载安装结束！======')
     else:
-        print('======clash-v1.11.8 已经安装过了，不用重复安装！======') 
+        print('======clash-v1.18.0 已经安装过了，不用重复安装！======') 
 
 #下载subconverter
 def subconverter_install():    
