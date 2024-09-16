@@ -423,8 +423,8 @@ class sub_convert():
                     else:
                         #yaml_url.setdefault('name', urllib.parse.unquote(str(vmess_config['ps'])))
                         newname = urllib.parse.unquote(str(vmess_config['ps']))
-                        if ':' in newname or ',' in newname or '"' in newname or '{' in newname or '}' in newname or '#' in newname or '*' in newname:
-                            newname = re.sub(':|,|{|}|"| |#|*','_',newname)
+                        if ':' in newname or ',' in newname or '"' in newname or '{' in newname or '}' in newname or '#' in newname or '*' in newname or '|' in newname:
+                            newname = re.sub(':|,|{|}|"| |#|*||','_',newname)
                         yaml_url.setdefault('name', newname)
                         yaml_url.setdefault('server', vmess_config['add'])
                         yaml_url.setdefault('port', int(vmess_config['port']))                       
@@ -469,8 +469,8 @@ class sub_convert():
                     part_list = ss_content.split('#', 1) # https://www.runoob.com/python/att-string-split.html
                     #yaml_url.setdefault('name', urllib.parse.unquote(part_list[1]))
                     newname = urllib.parse.unquote(part_list[1])
-                    if ':' in newname or ',' in newname or '"' in newname or '{' in newname or '}' in newname or '#' in newname or '*' in newname:
-                        newname = re.sub(':|,|{|}|"| |#|*','_',newname)
+                    if ':' in newname or ',' in newname or '"' in newname or '{' in newname or '}' in newname or '#' in newname or '*' in newname or '|' in newname:
+                        newname = re.sub(':|,|{|}|"| |#|*||','_',newname)
                     yaml_url.setdefault('name', newname)
             
                     if '@' in part_list[0]:
@@ -531,8 +531,8 @@ class sub_convert():
                         param_dic.update({key_and_value[0]: key_and_value[1]})
                     #yaml_url.setdefault('name', sub_convert.base64_decode(param_dic['remarks']))
                     newname = sub_convert.base64_decode(param_dic['remarks'])
-                    if ':' in newname or ',' in newname or '"' in newname or '{' in newname or '}' in newname or '#' in newname or '*' in newname:
-                        newname = re.sub(':|,|{|}|"| |#|*','_',newname)
+                    if ':' in newname or ',' in newname or '"' in newname or '{' in newname or '}' in newname or '#' in newname or '*' in newname or '|' in newname:
+                        newname = re.sub(':|,|{|}|"| |#|*||','_',newname)
                     yaml_url.setdefault('name', newname)
                     yaml_url.setdefault('server', parts[0])
                     #yaml_url.setdefault('port', parts[1])
@@ -586,8 +586,8 @@ class sub_convert():
                     part_list = re.split('#', url_content, maxsplit=1) # https://www.runoob.com/python/att-string-split.html
                     #yaml_url.setdefault('name', urllib.parse.unquote(part_list[1]))
                     newname = urllib.parse.unquote(part_list[1])
-                    if ':' in newname or ',' in newname or '"' in newname or '{' in newname or '}' in newname or '#' in newname or '*' in newname:
-                        newname = re.sub(':|,|{|}|"| |#|*','_',newname)
+                    if ':' in newname or ',' in newname or '"' in newname or '{' in newname or '}' in newname or '#' in newname or '*' in newname or '|' in newname:
+                        newname = re.sub(':|,|{|}|"| |#|*||','_',newname)
                     yaml_url.setdefault('name', newname)
                     server_part = part_list[0].replace('trojan://', '')
                     server_part_list = re.split(':|@|\?|&', server_part) # 使用多个分隔符 https://blog.csdn.net/shidamowang/article/details/80254476 https://zhuanlan.zhihu.com/p/92287240
