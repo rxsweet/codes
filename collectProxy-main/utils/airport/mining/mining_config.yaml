@@ -1,0 +1,24 @@
+sources:
+- fetcher: url
+  name: subs
+  options:
+    urls:
+    - http://subssr.xfxvpn.me/api/v1/client/subscribe?token=94cf85cd3fc3a6854ae6f433575753e1
+    - https://qingyun.zybs.eu.org/api/v1/client/subscribe?token=c4c76d31b05e4956c68179b12cda2f4c
+    - https://www.kuaidog010.top/api/v1/client/subscribe?token=5f86809c99b6c16c10ccc850a01b4b70
+    - https://a.aikllc.tech/api/v1/client/subscribe?token=80608a4701b46ac62e6f90e514832f61
+    - http://gbtgurl01.org/api/v1/client/subscribe?token=fa1b33c87e8d519fe59c890308577d3b
+    - http://hk.kjdjakskl.cyou/api/v1/client/subscribe?token=6de5d3c4bab28eb6eee53c82b7ce5a75
+    - https://aicaicai.dashuai.us/api/v1/client/subscribe?token=f1e753d3a90b7fe4b94db0225c2ea00c
+    - https://aa.needss.link/api/v1/client/subscribe?token=5b1e4aba7545a47d043b64a704d7c9e9
+    - http://8.129.23.122/api/v1/client/subscribe?token=b393e857a343e9e92db4fe70c9b54ddc
+    - https://dl.vfkum.website/api/v1/client/subscribe?token=76aefa5216d3e523f36d987791bc5a4e
+    - https://dj.taipeicity.news/api/v1/client/subscribe?token=f370a1dbf4c9f3de1cddfecf5a5b3ba2
+    - https://bpjc.lol/api/bpjclol?token=8c7bc3c18ebed94cbb6f8548d991f3cf
+    - https://3T7RNi.absslk.xyz/c4e54751aa0c77b84de1a524a328cc17
+    - https://YHzkQ6.tosslk.xyz/ea3285a147c9346d129f028e55208eba
+    - https://Pten3x.mcsslk.xyz/7ea670de7e65842aff49293fcb64c219
+    - https://dy.hy2.one/api/v1/client/subscribe?token=fc4eec4261f954c2425be0f57481c4f1
+    - https://console.veseai.com/api/v1/client/subscribe?token=db7d243c12f3fc815b95dbc5cad53123
+    - https://cainiao224.top/api/v1/client/subscribe?token=ddeb8db3c83d76f2bc0a6f568dafd0a4
+  output: sub/sources/miningAll.yaml
