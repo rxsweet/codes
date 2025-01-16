@@ -1,0 +1,8 @@
+updatetime: 6h - 21h, every 3h
+
+[2025-01-16 06:23:38]: airport sub
+[2025-01-16 07:39:04]: mailCloud sub
+[2025-01-16 10:28:10]: dynamic sub
+[2025-01-16 12:26:44]: static sub
+[2025-01-16 15:15:34]: TG
+[2025-01-16 17:01:53]: mining
