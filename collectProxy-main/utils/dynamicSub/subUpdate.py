@@ -42,41 +42,20 @@ class update():
                     else:
                         sub['url'] = new_url
                         print(f'ID {current_remarks} url updated to {new_url}\n')    
-                elif current_remarks == 'v2rayShare':
-                    new_url = self.v2rayshareUpdate(sub ['url'])
+                elif current_remarks == 'timeUpdate':
+                    new_url = self.timeUpdate(sub ['url'])
                     if new_url == sub ['url']:
                         print(f'No available update for ID {current_remarks}\n')
                     else:
                         sub['url'] = new_url
-                        print(f'ID {current_remarks} url updated to {new_url}\n') 
-                elif current_remarks == 'oneclash.cc':
-                    new_url = self.oneclashUpdate(sub ['url'])
-                    if new_url == sub ['url']:
-                        print(f'No available update for ID {current_remarks}\n')
-                    else:
-                        sub['url'] = new_url
-                        print(f'ID {current_remarks} url updated to {new_url}\n')                         
-                elif current_remarks == 'Nodefree.org':
-                    new_url = self.nodeFreeUpdate(sub ['url'])
-                    if new_url == sub ['url']:
-                        print(f'No available update for ID {current_remarks}\n')
-                    else:
-                        sub['url'] = new_url
-                        print(f'ID {current_remarks} url updated to {new_url}\n')                    
+                        print(f'ID {current_remarks} url updated to {new_url}\n')       
                 elif current_remarks == 'www.cfmem.com':
                     new_url = self.cfmemUpdate(sub ['url'])
                     if new_url == sub ['url']:
                         print(f'No available update for ID {current_remarks}\n')
                     else:
                         sub['url'] = new_url
-                        print(f'ID {current_remarks} url updated to {new_url}\n')       
-                elif current_remarks == 'v2cross.com':
-                    new_url = self.v2crossUpdate(sub ['url'])
-                    if new_url == sub ['url']:
-                        print(f'No available update for ID {current_remarks}\n')
-                    else:
-                        sub['url'] = new_url
-                        print(f'ID {current_remarks} url updated to {new_url}\n')   
+                        print(f'ID {current_remarks} url updated to {new_url}\n')         
                 elif current_remarks == 'clashgithub':
                     new_url = self.clashgithubUpdate(sub ['url'])
                     if new_url == sub ['url']:
@@ -126,44 +105,115 @@ class update():
             return new_url
         else:
             return current_url
-					
-	# ========== 抓取 https://v2rayshare.com 的订阅地址 ==========		
-    def v2rayshareUpdate(self,current_url):   
-        new_url = datetime.today().strftime('https://v2rayshare.githubrowcontent.com/%Y/%m/%Y%m%d.txt')
-        #链接是否已经更新
-        if self.url_updated(new_url):
-            return new_url
-        else:
-            return current_url 
-            
-	# ========== 抓取 https://oneclash.cc 的订阅地址 ==========		
-    def oneclashUpdate(self,current_url):   
-        new_url = datetime.today().strftime('https://oneclash.cc/wp-content/uploads/%Y/%m/%Y%m%d.txt')
-        #链接是否已经更新
-        if self.url_updated(new_url):
-            return new_url
-        else:
-            return current_url
-				
-    # ========== 抓取 https://nodefree.org/ 的订阅地址 ==========
-    def nodeFreeUpdate(self,current_url):
-        today = datetime.today().strftime('%Y/%m/%Y%m%d')
-        url_front = 'https://nodefree.org/dy/'
-        url_end = '.txt'
-        new_url = url_front + today + url_end
-        #链接是否已经更新
-        if self.url_updated(new_url):
-            return new_url
-        else:
-            return current_url  
-            
-    def clashgithubUpdate(self,current_url):
 
+    def timeUpdate(self,current_url):
+        #url = f'https://clashgithub.com/wp-content/uploads/rss/{today}.txt'
+        #nowtime = datetime.now()
+        #year = nowtime.year
+        #month = nowtime.month
+        #today = datetime.today().strftime('%Y%m%d') # 获取当天日期，格式为 YYYYMMDD,或者('%Y/%m/%Y%m%d')
+        #s = str(year) + '/' + str(month) + '/' + str(today)
+        
+        newlist = []
+        #nodefree.org
+        today = datetime.today().strftime('%Y/%m/%Y%m%d')
+        new_url = f'https://nodefree.githubrowcontent.com/{today}.yaml'
+        #链接是否已经更新
+        if self.url_updated(new_url):
+            newlist.append(new_url)
+        
+        #v2rayshare.com
+        new_url = datetime.today().strftime('https://v2rayshare.githubrowcontent.com/%Y/%m/%Y%m%d.yaml')
+        #链接是否已经更新
+        if self.url_updated(new_url):
+            newlist.append(new_url)
+        
+        #oneclash.cc
+        new_url = datetime.today().strftime('https://oneclash.githubrowcontent.com/%Y/%m/%Y%m%d.yaml')
+        #链接是否已经更新
+        if self.url_updated(new_url):
+            newlist.append(new_url)
+            
+        #wenode.cc
+        new_url = datetime.today().strftime('https://wenode.githubrowcontent.com/%Y/%m/%Y%m%d.yaml')
+        #链接是否已经更新
+        if self.url_updated(new_url):
+            newlist.append(new_url)
+        
+        #www.naidounode.com
+        new_url = datetime.today().strftime('https://www.naidounode.com/node/%Y%m%d-clash.yaml')
+        #链接是否已经更新
+        if self.url_updated(new_url):
+            newlist.append(new_url)
+            
+        #nodev2ray.com
+        #https://nodev2ray.com/uploads/2025/01/4-20250115.txt
+        new_url0 = datetime.today().strftime('https://nodev2ray.com/uploads/%Y/%m/0-%Y%m%d.yaml')
+        new_url1 = datetime.today().strftime('https://nodev2ray.com/uploads/%Y/%m/1-%Y%m%d.yaml')
+        new_url2 = datetime.today().strftime('https://nodev2ray.com/uploads/%Y/%m/2-%Y%m%d.yaml')
+        new_url3 = datetime.today().strftime('https://nodev2ray.com/uploads/%Y/%m/3-%Y%m%d.yaml')
+        new_url4 = datetime.today().strftime('https://nodev2ray.com/uploads/%Y/%m/4-%Y%m%d.yml')
+        #链接是否已经更新
+        if self.url_updated(new_url0):
+            newlist.append(new_url0)
+        if self.url_updated(new_url1):
+            newlist.append(new_url1)
+        if self.url_updated(new_url2):
+            newlist.append(new_url2)
+        if self.url_updated(new_url3):
+            newlist.append(new_url3)
+        if self.url_updated(new_url4):
+            newlist.append(new_url4)
+        
+        #clash-meta.github.io
+        #https://clash-meta.github.io/uploads/2025/01/4-20250117.yaml
+        new_url0 = datetime.today().strftime('https://clash-meta.github.io/uploads/%Y/%m/0-%Y%m%d.yaml')
+        new_url1 = datetime.today().strftime('https://clash-meta.github.io/uploads/%Y/%m/1-%Y%m%d.yaml')
+        new_url2 = datetime.today().strftime('https://clash-meta.github.io/uploads/%Y/%m/2-%Y%m%d.yaml')
+        new_url3 = datetime.today().strftime('https://clash-meta.github.io/uploads/%Y/%m/3-%Y%m%d.yaml')
+        new_url4 = datetime.today().strftime('https://clash-meta.github.io/uploads/%Y/%m/4-%Y%m%d.yaml')
+        #链接是否已经更新
+        if self.url_updated(new_url0):
+            newlist.append(new_url0)
+        if self.url_updated(new_url1):
+            newlist.append(new_url1)
+        if self.url_updated(new_url2):
+            newlist.append(new_url2)
+        if self.url_updated(new_url3):
+            newlist.append(new_url3)
+        if self.url_updated(new_url4):
+            newlist.append(new_url4)
+
+        #https://clashfree.github.io/
+        new_url0 = datetime.today().strftime('https://clashfree.github.io/uploads/%Y/%m/0-%Y%m%d.yaml')
+        new_url1 = datetime.today().strftime('https://clashfree.github.io/uploads/%Y/%m/1-%Y%m%d.yaml')
+        new_url2 = datetime.today().strftime('https://clashfree.github.io/uploads/%Y/%m/2-%Y%m%d.yaml')
+        new_url3 = datetime.today().strftime('https://clashfree.github.io/uploads/%Y/%m/3-%Y%m%d.yaml')
+        new_url4 = datetime.today().strftime('https://clashfree.github.io/uploads/%Y/%m/4-%Y%m%d.yaml')
+        #链接是否已经更新
+        if self.url_updated(new_url0):
+            newlist.append(new_url0)
+        if self.url_updated(new_url1):
+            newlist.append(new_url1)
+        if self.url_updated(new_url2):
+            newlist.append(new_url2)
+        if self.url_updated(new_url3):
+            newlist.append(new_url3)
+        if self.url_updated(new_url4):
+            newlist.append(new_url4)
+            
+        #再有此类网站添加至这里
+        
+        #返回带格式的字符串，订阅转换可用解析
+        newlist = '|'.join(newlist)#带'|'格式的地址组，订阅能解析
+        return newlist
+        
+        
+    def clashgithubUpdate(self,current_url):
         # 获取当天日期，格式为 YYYYMMDD
         today = datetime.today().strftime('%Y%m%d')
         # 动态生成 URL，替换日期部分
         new_url = f'https://clashgithub.com/wp-content/uploads/rss/{today}.txt'
-
         #链接是否已经更新
         if self.url_updated(new_url):
             return new_url
@@ -193,37 +243,14 @@ class update():
             else:
                 return current_url 
         return current_url
-    # ========== 抓取 kkzui.com 的节点 ==========
-    """
-    def kkzuiUpdate(self,current_url):
-        try:
-            res = requests.get("https://kkzui.com/jd?orderby=modified",headers=headers)
-            #搜索可以借鉴下面这个
-            #article_url = re.search(r'<h2 class="item-heading"><a href="(https://kkzui.com/(.*?)\.html)(.*?)个高速免费节点(.*?)</a></h2>',res.text).groups()[0]
-            article_url = re.search(r'<a href="(https://kkzui.com/(.*?)\.html)" title=',res.text).groups()[0]
-            res = requests.get(article_url,headers=headers)
-            #new_url = re.search(r'<p><strong>这是v2订阅地址</strong>：(.*?)</p>',res.text).groups()[0]
-            new_url = re.search(r'这是v2订阅地址：(https://(.*?))</p>',res.text).groups()[0]
-            #下面代码是获取订阅节点内容的，并且需要import base64
-            #res = requests.get(sub_url,headers=headers)
-            #merge += str(base64.b64decode(res.text.encode()),'utf-8').strip().replace('\r\n','\n').split('\n')
-        except:
-            traceback.print_exc()
-            return current_url
-        #链接是否已经更新
-        if self.url_updated(new_url):
-            return new_url
-        else:
-            return current_url   
-    """
+
     # ========== 抓取 https://www.cfmem.com/search/label/free 的订阅地址 ========== 
     def cfmemUpdate(self,current_url):  
         try:
             res = requests.get("https://www.cfmem.com/search/label/free",headers=headers)
     
             #搜索可以借鉴下面这个
-            article_url = re.findall("https://www.cfmem.com/(.*?)vpn.html",res.text)[0]
-            article_url = 'https://www.cfmem.com/'+ article_url +'vpn.html'
+            article_url = re.findall("https://www.cfmem.com/[^<>\\r\\n]+vpn.html",res.text)[0]
             res = requests.get(article_url,headers=headers)
             #sub_url = re.findall("https://oss.v2rayse.com/proxies/data/(.*?).yaml",res.text)[0]
             #sub_url = 'https://oss.v2rayse.com/proxies/data/'+ sub_url + '.yaml'
@@ -234,8 +261,8 @@ class update():
             try:
                 #sub_url = re.findall("https://oss.v2rayse.com/proxies/data/(.*?).txt",res.text)[0]
                 #sub_url = 'https://oss.v2rayse.com/proxies/data/'+ sub_url + '.txt'
-                sub_url = re.findall("https://fs.v2rayse.com(.*?)txt",res.text)[0]
-                sub_url = 'https://fs.v2rayse.com'+ sub_url + 'txt'
+                sub_url = re.findall("https://fs.v2rayse.com(.*?)yaml",res.text)[0]
+                sub_url = 'https://fs.v2rayse.com'+ sub_url + 'yaml'
             except:
                 traceback.print_exc()
                 sub_url = current_url
@@ -245,39 +272,6 @@ class update():
         else:
             return current_url  
 
-    # ========== 抓取 https://v2cross.com/archives/1884 的订阅地址 ==========  
-    def v2crossUpdate(self,current_url):  
-        try:
-            res = requests.get("https://v2cross.com/archives/1884",headers=headers)
-    
-            #搜索可以借鉴下面这个,https://blog.csdn.net/weixin_44799217/article/details/122069415
-            article_url = re.search(r'<h5>本次节点订阅地址：(http(.*?))</h5>',res.text)
-            if article_url:
-                article_url = article_url.groups()[0]
-                return article_url
-            else: 
-                return current_url
-        except:
-            traceback.print_exc()
-            return article_url
-        #链接是否已经更新
-        if self.url_updated(article_url):
-            return article_url
-        else:
-            return current_url  
-
-    # ========== 抓取 https://github.com/mianfeifq/share 的订阅地址 ==========
-    """
-    def mianfeifqUpdate(self,current_url):
-        try:
-            res_json = requests.get('https://api.github.com/repos/mianfeifq/share/contents/').json()
-            for file in res_json:
-                if file['name'].startswith('data'):
-                    return file['download_url'] 
-            return current_url
-        except Exception:
-            return current_url
-    """
     # ========== 抓取 https://github.com/changfengoss/pub 的订阅列表 长风网站：https://v2rayse.com ==========  
     def changfenggossUpdate(self,current_url):
         try:
@@ -297,156 +291,6 @@ class update():
             traceback.print_exc()
         subList = '|'.join(subList)#带'|'格式的地址组，订阅能解析
         return subList
-"""
-            id = sub['id']
-            current_url = sub['url']
-            try:
-                if sub['update_method'] != 'auto' and sub['enabled'] == True:
-                    print(f'Finding available update for ID{id}')
-                    if sub['update_method'] == 'change_date':
-                        new_url = self.change_date(id,current_url)
-                        if new_url == current_url:
-                            print(f'No available update for ID{id}\n')
-                        else:
-                            sub['url'] = new_url
-                            print(f'ID{id} url updated to {new_url}\n')
-                    elif sub['update_method'] == 'page_release':
-                        new_url = self.find_link(id,current_url)
-                        if new_url == current_url:
-                            print(f'No available update for ID{id}\n')
-                        else:
-                            sub['url'] = new_url
-                            print(f'ID{id} url updated to {new_url}\n')
-            except KeyError:
-                print(f'{id} Url not changed! Please define update method.')
-            
-            updated_list = json.dumps(self.raw_list, sort_keys=False, indent=2, ensure_ascii=False)
-            file = open(self.list_file, 'w', encoding='utf-8')
-            file.write(updated_list)
-            file.close()
 
-    def change_date(self,id,current_url):
-        if id == 40:
-            
-        if id == 36:
-            today = datetime.today().strftime('%Y%m%d')
-            this_month = datetime.today().strftime('%Y%m')
-            url_front = 'https://nodefree.org/dy/'
-            url_end = '.txt'
-            new_url = url_front + this_month + '/' + today + url_end
-        if id == 0:
-            today = datetime.today().strftime('%m%d')
-            url_front = 'https://raw.githubusercontent.com/pojiezhiyuanjun/freev2/master/'
-            url_end = '.txt'
-            new_url = url_front + today + url_end
-
-        if self.url_updated(new_url):
-            return new_url
-        else:
-            return current_url
-
-    def find_link(self,id,current_url):
-        if id == 38:
-            try:
-                res_json = requests.get('https://api.github.com/repos/mianfeifq/share/contents/').json()
-                for file in res_json:
-                    if file['name'].startswith('data'):
-                        return file['download_url'] 
-                else:
-                    return current_url
-            except Exception:
-                return current_url
-        if id == 33:
-            url_update = 'https://v2cross.com/archives/1884'
-
-            if self.url_updated(url_update):
-                try:
-                    resp = requests.get(url_update, timeout=5)
-                    raw_content = resp.text
-
-                    raw_content = raw_content.replace('amp;', '')
-                    pattern = re.compile(r'https://shadowshare.v2cross.com/publicserver/servers/temp/\w{16}')
-                    
-                    new_url = re.findall(pattern, raw_content)[0]
-                    return new_url
-                except Exception:
-                    return current_url
-            else:
-                return current_url
-"""
 if __name__ == '__main__':
     update(list_file_path)
-
-"""
-# re.sub的使用
-from datetime import date, datetime, timedelta, timezone
-import requests
-import json
-import re
-
-
-# update links in parameter file
-def update(filename):
-    with open(filename) as file:
-        # get today's date
-        today = date.today()
-        year = today.strftime("%Y")
-        month = today.strftime("%m")
-        day = today.strftime("%d")
-
-        # convert file to string
-        content = file.read()
-
-        # check url validity
-        def check_url(url):
-            try:
-                response = requests.get(url, timeout=3)
-            except requests.exceptions.ReadTimeout:
-                return 504
-            return response.status_code
-
-        types = ["yaml", "txt"]
-        for tp in types:
-            # check and update NodeFree link
-            NodeFree_url = f"https://nodefree.org/dy/{year}/{month}/{year}{month}{day}.{tp}"
-            if check_url(NodeFree_url) == 200:
-                content = re.sub("nodefree.org/dy/[0-9]{4}/[0-9]{2}/[0-9]{8}" + f".{tp}",
-                                 f"nodefree.org/dy/{year}/{month}/{year}{month}{day}.{tp}", content)
-
-            # check and update ClashNode link
-            ClashNode_url = f"https://clashnode.com/wp-content/uploads/{year}/{month}/{year}{month}{day}.{tp}"
-            if check_url(ClashNode_url) == 200:
-                content = re.sub("clashnode.com/wp-content/uploads/[0-9]{4}/[0-9]{2}/[0-9]{8}" + f".{tp}",
-                                 f"clashnode.com/wp-content/uploads/{year}/{month}/{year}{month}{day}.{tp}", content)
-
-        def is_commit_recent(user, repo):
-            response = requests.get(f'https://api.github.com/repos/{user}/{repo}/commits')
-            data = json.loads(response.text)
-            if response.status_code == 200 and data:
-                commit_time = datetime.strptime(data[0]['commit']['committer']['date'], "%Y-%m-%dT%H:%M:%SZ")
-                commit_time = commit_time.replace(tzinfo=timezone.utc)
-                now = datetime.now(timezone.utc)
-                if now - commit_time <= timedelta(hours=8):
-                    return True
-
-            return False
-
-        # update Pojiezhiyuanjun link
-        if is_commit_recent("Pojiezhiyuanjun", "2023"):
-            content = re.sub("[0-9]{4}clash\.yml", f"{month}{day}clash.yml", content)
-            content = re.sub("[0-9]{4}\.txt", f"{month}{day}.txt", content)
-
-        # open text file
-        new_file = open(filename, "w")
-        new_file.write(content)
-        new_file.close()
-
-
-if __name__ == "__main__":
-    update("README.md")
-    update("v2ray.md")
-    update("clash中文版.md")
-    update("v2ray中文版.md")
-    update("combine/clashsub.txt")
-    update("combine/v2raysub.txt")
-"""
