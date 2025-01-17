@@ -200,11 +200,11 @@ if __name__=='__main__':
 	
     #爬取订阅源
     old_sub_list = dict_url['机场订阅']
-    old_clash_list = dict_url['clash订阅']
-    old_v2_list = dict_url['v2订阅']
+    #old_clash_list = dict_url['clash订阅']
+    #old_v2_list = dict_url['v2订阅']
     new_sub_list.extend(old_sub_list)
-    new_clash_list.extend(old_clash_list)
-    new_v2_list.extend(old_v2_list)
+    #new_clash_list.extend(old_clash_list)
+    #new_v2_list.extend(old_v2_list)
     new_sub_list = list(set(new_sub_list))
     new_clash_list = list(set(new_clash_list))
     new_v2_list = list(set(new_v2_list))
