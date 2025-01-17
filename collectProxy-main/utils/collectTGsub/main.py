@@ -9,14 +9,16 @@ from tqdm import tqdm
 from retry import retry
 
 #爬取源
-TGconfigListPath = './utils/collectTGsub/config.yaml'
+TGconfigListPath = './config.yaml'
 #输出位置
-path_yaml = './utils/collectTGsub/TGsources.yaml'
-node_output_path = './sub/sources/crawlTGnode.txt'
+path_yaml = './TGsources.yaml'
+node_output_path = './crawlTGnode.txt'
 
 new_sub_list = []
 new_clash_list = []
 new_v2_list = []
+new_info_list = []
+
 
 @logger.catch
 def yaml_check(path_yaml):
@@ -27,6 +29,7 @@ def yaml_check(path_yaml):
     else:
         dict_url = {
             "机场订阅":[],
+            "机场信息":[],
             "clash订阅":[],
             "v2订阅":[]
         }
@@ -98,14 +101,85 @@ def filter_base64(text):
 def sub_check(url,bar):
     headers = {'User-Agent': 'ClashforWindows/0.18.1'}
     with thread_max_num:
-        @retry(tries=1)
+        @retry(tries=2)
         def start_check(url):
             res=requests.get(url,headers=headers,timeout=5)#设置5秒超时防止卡死
             if res.status_code == 200:
                 try: #有流量信息
                     info = res.headers['subscription-userinfo']
+                    #print(str(res.headers))
                     info_num = re.findall('\d+',info)
-                    new_sub_list.append(url)
+                    #info_num[3] - 到期时间 
+                    #info_num[2]- 总流量
+                    #info_num[1]-使用的下载流量
+                    #info_num[0] - 使用的上传流量
+                    time_now=int(time.time())
+                    # 剩余流量大于10MB
+                    if int(info_num[2])-int(info_num[1])-int(info_num[0])>10485760:
+                        if len(info_num) == 4: # 有时间信息
+                            if time_now <= int(info_num[3]): # 没有过期
+                                usetime = int(info_num[3])
+                                date_str = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(usetime))
+                                #date_str = time.strftime('%Y-%m-%d', time.localtime(usetime))
+                                liuliang_str = str((int(info_num[2])-int(info_num[1])-int(info_num[0]))/1024/1024/1024)
+                                #查看有节点再添加
+                                if res.text:
+                                    try:
+                                        proxyconfig = yaml.load(res.text, Loader=yaml.FullLoader)
+                                        #print('len = '+ str(len(proxyconfig['proxies'])))
+                                        node_num = len(proxyconfig['proxies'])
+                                        if node_num > 0:
+                                            #
+                                            url_yaml = {}
+                                            url_yaml['api'] = url
+                                            url_yaml['time'] = date_str
+                                            url_yaml['free'] = liuliang_str
+                                            url_yaml['nodes'] = str(node_num)
+                                            url_yaml['url'] = res.headers['profile-web-page-url']
+                                            #url_yaml['content-disposition'] = res.headers['content-disposition']
+                                            name = re.search(f"UTF-8''(.*)", res.headers['content-disposition'])
+                                            #如果获取到内容
+                                            if name:
+                                                url_yaml['name'] = urllib.parse.unquote(name.group(1))
+                                                #print("url_yaml['content-disposition'] = " + url_yaml['content-disposition'] )
+                                            print(url_yaml)
+                                            new_info_list.append(url_yaml)
+                                            new_sub_list.append(url)
+                                    except Exception as e: 
+                                        print('获取机场信息失败')
+                                        print(e)
+                                
+                                #print(url+' 到期时间：' + date_str +' -- 剩余流量：' + liuliang_str)
+                            else: # 已经过期
+                                old_list.append(url)
+                        else: # 没有时间信息
+                            liuliang_str = str((int(info_num[2])-int(info_num[1])-int(info_num[0]))/1024/1024/1024)
+                            #查看有节点再添加
+                            if res.text:
+                                try:
+                                    proxyconfig = yaml.load(res.text, Loader=yaml.FullLoader)
+                                    #print('len = '+ str(len(proxyconfig['proxies'])))
+                                    node_num = len(proxyconfig['proxies'])
+                                    if node_num > 0:
+                                        #
+                                        url_yaml = {}
+                                        url_yaml['api'] = url
+                                        url_yaml['time'] = '永久有效'
+                                        url_yaml['free'] = liuliang_str
+                                        url_yaml['nodes'] = str(node_num)
+                                        url_yaml['url'] = res.headers['profile-web-page-url']
+                                        #url_yaml['content-disposition'] = res.headers['content-disposition']
+                                        name = re.search(f"UTF-8''(.*)", res.headers['content-disposition'])
+                                        #如果获取到内容
+                                        if name:
+                                           url_yaml['name'] = urllib.parse.unquote(name.group(1))
+                                        print(url_yaml)
+                                        new_info_list.append(url_yaml)
+                                        new_sub_list.append(url)
+                                except Exception as e: 
+                                    print('获取机场信息失败')
+                                    print(e)
+                            #print(url+' 到期时间：无 -- 剩余流量：'+ liuliang_str)
                 except:
                     # 判断是否为clash
                     try:
@@ -127,8 +201,7 @@ def sub_check(url,bar):
             else:
                 pass
         try:
-            #start_check(url)
-            pass
+            start_check(url)
         except:
             pass
         bar.update(1)
@@ -193,15 +266,22 @@ if __name__=='__main__':
     old_sub_list = dict_url['机场订阅']
     old_clash_list = dict_url['clash订阅']
     old_v2_list = dict_url['v2订阅']
+    old_info_list = dict_url['机场信息']
     new_sub_list.extend(old_sub_list)
     new_clash_list.extend(old_clash_list)
     new_v2_list.extend(old_v2_list)
+    new_info_list.extend(old_info_list)
     new_sub_list = list(set(new_sub_list))
     new_clash_list = list(set(new_clash_list))
     new_v2_list = list(set(new_v2_list))
+    #new_info_list = list(set(new_info_list))
     dict_url.update({'机场订阅':new_sub_list})
     dict_url.update({'clash订阅': new_clash_list})
     dict_url.update({'v2订阅': new_v2_list})
+    dict_url.update({'机场信息': new_info_list})
+    print(str(new_info_list))
     with open(path_yaml, 'w',encoding="utf-8") as f:
         data = yaml.dump(dict_url, f,allow_unicode=True)
     logger.info('爬取订阅源写入文件结束---')
+    new_info_list = list(set(new_info_list))
+    print(str(new_info_list))
