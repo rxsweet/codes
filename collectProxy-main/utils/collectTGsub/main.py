@@ -18,6 +18,8 @@ new_sub_list = []
 new_clash_list = []
 new_v2_list = []
 
+
+
 @logger.catch
 def yaml_check(path_yaml):
     print(os.path.isfile(path_yaml))
@@ -98,14 +100,22 @@ def filter_base64(text):
 def sub_check(url,bar):
     headers = {'User-Agent': 'ClashforWindows/0.18.1'}
     with thread_max_num:
-        @retry(tries=1)
+        @retry(tries=2)
         def start_check(url):
             res=requests.get(url,headers=headers,timeout=5)#设置5秒超时防止卡死
             if res.status_code == 200:
                 try: #有流量信息
                     info = res.headers['subscription-userinfo']
                     info_num = re.findall('\d+',info)
-                    new_sub_list.append(url)
+                    if info_num :
+                        upload = int(info_num[0])
+                        download = int(info_num[1])
+                        total = int(info_num[2])
+                        unused = (total - upload - download) / 1024 / 1024 / 1024
+                        unused_rounded = round(unused, 2)#取小数点后的2位
+                        if unused_rounded > 0:#流量大于0
+                            new_sub_list.append(url)
+                            #play_list.append('可用流量:' + str(unused_rounded) + ' GB                    ' + url)
                 except:
                     # 判断是否为clash
                     try:
@@ -127,8 +137,7 @@ def sub_check(url,bar):
             else:
                 pass
         try:
-            #start_check(url)
-            pass
+            start_check(url)
         except:
             pass
         bar.update(1)
