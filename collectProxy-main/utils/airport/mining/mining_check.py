@@ -3,7 +3,7 @@ import time
 import requests
 import threading
 from tqdm import tqdm
-#from retry import retry
+from retry import retry
 from datetime import datetime
 import math
 import yaml
@@ -113,7 +113,7 @@ def list_rm(urlList):#列表去重
 def sub_check(url,alive_yaml,bar):
     headers = {'User-Agent': 'ClashforWindows/0.18.1'}
     with thread_max_num:
-        #@retry(tries=3)
+        @retry(tries=3)
         def start_check(url):
             res=requests.get(url,headers=headers,timeout=5)#设置5秒超时防止卡死
             if res.status_code == 200:
@@ -290,8 +290,7 @@ def getsub(url):
             #matches = re.findall(r"(http.*?)\r\n", r.text)
             #print(matches)
             res = re.search(
-                r".*?Clash订阅.*?(?P<clash>http.*?)\r\n"
-                r".*?v2rayN订阅.*?(?P<v2ray>http.*?)\r\n",
+                r".*?Clash订阅.*?(?P<clash>http.*?)\r\n",
                 r.text,
                 re.DOTALL
                 )
