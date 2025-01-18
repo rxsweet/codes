@@ -252,20 +252,9 @@ class update():
             #搜索可以借鉴下面这个
             article_url = re.findall("https://www.cfmem.com/[^<>\\r\\n]+vpn.html",res.text)[0]
             res = requests.get(article_url,headers=headers)
-            #sub_url = re.findall("https://oss.v2rayse.com/proxies/data/(.*?).yaml",res.text)[0]
-            #sub_url = 'https://oss.v2rayse.com/proxies/data/'+ sub_url + '.yaml'
-            sub_url = re.findall("https://fs.v2rayse.com(.*?)yaml",res.text)[0]
-            sub_url = 'https://fs.v2rayse.com'+ sub_url + 'yaml'
+            sub_url = sub_url = re.findall("https://fs.v2rayse.com[^<>\\r\\n]+yaml",res.text)[0]
         except:
             traceback.print_exc()
-            try:
-                #sub_url = re.findall("https://oss.v2rayse.com/proxies/data/(.*?).txt",res.text)[0]
-                #sub_url = 'https://oss.v2rayse.com/proxies/data/'+ sub_url + '.txt'
-                sub_url = re.findall("https://fs.v2rayse.com(.*?)yaml",res.text)[0]
-                sub_url = 'https://fs.v2rayse.com'+ sub_url + 'yaml'
-            except:
-                traceback.print_exc()
-                sub_url = current_url
         #链接是否已经更新
         if self.url_updated(sub_url):
             return sub_url
