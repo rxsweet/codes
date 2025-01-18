@@ -39,14 +39,12 @@ jobs:
         python ./utils/airport/mining/mining_check.py
     - name: 执行任务 - 2.collect nodes
       run: |
-       python ./utils/subconvert.py    './utils/airport/mining/mining_config.yaml'  'config'
-    - name: 执行任务 - 3.subconvert
-      run: |
+        python ./utils/subconvert.py    './utils/airport/mining/mining_config.yaml'  'config'
         python ./utils/subconvert.py    './sub/sources/miningAll.yaml'  'base64' './sub/mining64.txt'
         python ./utils/subconvert.py    './sub/sources/miningAll.yaml'  'clash' './sub/mining.yaml'
-    - name: 执行任务 - 4.log
+    - name: 执行任务 - 3.log
       run:
-       python ./utils/subConvert/log.py 'mining'
+        python ./utils/subConvert/log.py 'mining'
 #提交，推送
     - name: Commit
       id: commit
