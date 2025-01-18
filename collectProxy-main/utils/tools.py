@@ -27,7 +27,7 @@ def download(url, file, unpack_gzip=False):
 #下载 mmdb
 def mmdb_install():
     if not os.path.exists('./Country.mmdb'):
-        os.system("wget -O Country.mmdb https://github.com/Dreamacro/maxmind-geoip/releases/latest/download/Country.mmdb")       
+        os.system("wget -q -O Country.mmdb https://github.com/Dreamacro/maxmind-geoip/releases/latest/download/Country.mmdb")       
         print('======Country.mmdb 下载结束！======')
     else:
         print('======Country.mmdb已经安装过了，不用重复安装！======')
@@ -49,8 +49,8 @@ def clash_install(
 def subconverter_install():    
     #os.system()
     if not os.path.exists('./subconverter.tar.gz'):
-        os.system("wget -O subconverter.tar.gz https://github.com/tindy2013/subconverter/releases/latest/download/subconverter_linux64.tar.gz")
-        os.system("tar -zxvf subconverter.tar.gz -C ./")
+        os.system("wget -q -O subconverter.tar.gz https://github.com/tindy2013/subconverter/releases/latest/download/subconverter_linux64.tar.gz")
+        os.system("tar -zxf subconverter.tar.gz -C ./")
         os.system("chmod +x ./subconverter/subconverter && nohup ./subconverter/subconverter >./subconverter.log 2>&1 &")
     #if config_url and (config_cover or not os.path.exists(config_path)):
         #download(config_url, config_path)#下载config.yaml（实际就是节点文件）
