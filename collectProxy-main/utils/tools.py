@@ -47,17 +47,27 @@ def clash_install(
 
 #下载subconverter
 def subconverter_install():    
-    #os.system()
-    if not os.path.exists('./subconverter.tar.gz'):
-        os.system("wget -q -O subconverter.tar.gz https://github.com/tindy2013/subconverter/releases/latest/download/subconverter_linux64.tar.gz")
-        os.system("tar -zxf subconverter.tar.gz -C ./")
-        os.system("chmod +x ./subconverter/subconverter && nohup ./subconverter/subconverter >./subconverter.log 2>&1 &")
-    #if config_url and (config_cover or not os.path.exists(config_path)):
-        #download(config_url, config_path)#下载config.yaml（实际就是节点文件）
-    #os.system("docker run -d --restart always -p 25500:25500 tindy2013/subconverter")
-        print('======subconverter 下载安装结束！======')
-    else:
-        print('======subconverter已经安装过了，不用重复安装！======')
+    try:
+        #os.system()
+        if not os.path.exists('./subconverter.tar.gz'):
+            r=requests.get('https://github.com/lonelam/subconverter/releases/latest/download/subconverter_linux64.tar.gz')
+            if r.status_code==200:
+                os.system("wget -q -O subconverter.tar.gz https://github.com/lonelam/subconverter/releases/latest/download/subconverter_linux64.tar.gz")    #支持hy2
+            else:
+                os.system("wget -q -O subconverter.tar.gz https://github.com/tindy2013/subconverter/releases/latest/download/subconverter_linux64.tar.gz")  #-q安静模式(没有输出)
+            os.system("tar -zxf subconverter.tar.gz -C ./")
+            os.system("chmod +x ./subconverter/subconverter && nohup ./subconverter/subconverter >./subconverter.log 2>&1 &")
+            print('=subconverter已经启动=')
+        #if config_url and (config_cover or not os.path.exists(config_path)):
+            #download(config_url, config_path)#下载config.yaml（实际就是节点文件）
+        #os.system("docker run -d --restart always -p 25500:25500 tindy2013/subconverter")
+        else:
+            print('======subconverter已经下载过了，不用重复下载！======')
+    except Exception as err:
+        print(err)
+        print('subconverter安装失败')
+
+
 
 #安装全部功能，新功能添加至此    
 def all():
