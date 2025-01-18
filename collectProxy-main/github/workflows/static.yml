@@ -30,15 +30,11 @@ jobs:
         pip install -r ./utils/requirements.txt
         python ./utils/tools.py
 # 执行任务        
-    - name: 执行任务 - 1.Fetch subscription files
-      uses: rxsweet/subs-fetcher@main
-      with:
-        #config: https://raw.githubusercontent.com/rxsweet/test/refs/heads/main/config.yaml
-        config: /home/runner/work/collectProxy/collectProxy/utils/staticSub/static_config.yaml
-        token: ${{ secrets.GITHUB_TOKEN }}
+    - name: 执行任务 - 1.collect
+      run: |
+       python ./utils/subconvert.py    './utils/staticSub/static_config.yaml'  'config'
     - name: 执行任务 - 2.测速
       run: |
-       python ./utils/airport/mining/subconvert.py    './sub/sources/staticAll.yaml'  'rm'
        python ./utils/staticSub/speedtest.py
        python ./utils/clashspeedtest/main.py
     - name: 执行任务 - 3.log
