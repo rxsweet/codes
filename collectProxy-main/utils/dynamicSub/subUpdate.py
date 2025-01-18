@@ -250,7 +250,7 @@ class update():
             urlList = requests.get(cfurl).json()
             subList = []
             for index in urlList:
-                print('\n' + index['download_url'] + '\n')
+                #print('\n' + index['download_url'] + '\n')
                 subList.append(index['download_url'])
             #下面代码是将订阅地址写入文件的，暂时注释掉
             #subList = '\n'.join(subList)
