@@ -34,15 +34,8 @@ class update():
     def update_main(self):
         for sub in self.raw_list:
             current_remarks = sub ['remarks']
-            try:
-                if current_remarks == 'pojiezhiyuanjun':
-                    new_url = self.pojiezhiyuanjunUpdate(sub ['url'])
-                    if new_url == sub ['url']:
-                        print(f'No available update for ID {current_remarks}\n')
-                    else:
-                        sub['url'] = new_url
-                        print(f'ID {current_remarks} url updated to {new_url}\n')    
-                elif current_remarks == 'timeUpdate':
+            try:  
+                if current_remarks == 'timeUpdate':
                     new_url = self.timeUpdate(sub ['url'])
                     if new_url == sub ['url']:
                         print(f'No available update for ID {current_remarks}\n')
@@ -55,14 +48,7 @@ class update():
                         print(f'No available update for ID {current_remarks}\n')
                     else:
                         sub['url'] = new_url
-                        print(f'ID {current_remarks} url updated to {new_url}\n')         
-                elif current_remarks == 'clashgithub':
-                    new_url = self.clashgithubUpdate(sub ['url'])
-                    if new_url == sub ['url']:
-                        print(f'No available update for ID {current_remarks}\n')
-                    else:
-                        sub['url'] = new_url
-                        print(f'ID {current_remarks} url updated to {new_url}\n')   
+                        print(f'ID {current_remarks} url updated to {new_url}\n')          
                 elif current_remarks == 'mibei77':
                     new_url = self.mibei77Update(sub ['url'])
                     if new_url == sub ['url']:
@@ -96,16 +82,7 @@ class update():
             file.write(output_list)
             file.close()
                 
-    # ========== 抓取 https://github.com/pojiezhiyuanjun/freev2 的订阅地址 ==========
-    def pojiezhiyuanjunUpdate(self,current_url):
-        today = datetime.today().strftime('%m%d')
-        new_url = 'https://raw.githubusercontent.com/pojiezhiyuanjun/freev2/master/' + today + '.txt'
-        #链接是否已经更新
-        if self.url_updated(new_url):
-            return new_url
-        else:
-            return current_url
-
+##########################################################################################
     def timeUpdate(self,current_url):
         #url = f'https://clashgithub.com/wp-content/uploads/rss/{today}.txt'
         #nowtime = datetime.now()
@@ -115,9 +92,24 @@ class update():
         #s = str(year) + '/' + str(month) + '/' + str(today)
         
         newlist = []
+        
+        #github.com/pojiezhiyuanjun
+        today = datetime.today().strftime('%m%d')
+        new_url = 'https://raw.githubusercontent.com/pojiezhiyuanjun/freev2/master/' + today + '.txt'
+        #链接是否已经更新
+        if self.url_updated(new_url):
+            newlist.append(new_url)
+
+        #clashgithub.com
+        today = datetime.today().strftime('%Y%m%d')# 获取当天日期，格式为 YYYYMMDD
+        # 动态生成 URL，替换日期部分
+        new_url = f'https://clashgithub.com/wp-content/uploads/rss/{today}.txt'
+        #链接是否已经更新
+        if self.url_updated(new_url):
+            newlist.append(new_url)
+
         #nodefree.org
-        today = datetime.today().strftime('%Y/%m/%Y%m%d')
-        new_url = f'https://nodefree.githubrowcontent.com/{today}.yaml'
+        new_url = datetime.today().strftime('https://nodefree.githubrowcontent.com/%Y/%m/%Y%m%d.yaml')
         #链接是否已经更新
         if self.url_updated(new_url):
             newlist.append(new_url)
@@ -207,19 +199,7 @@ class update():
         #返回带格式的字符串，订阅转换可用解析
         newlist = '|'.join(newlist)#带'|'格式的地址组，订阅能解析
         return newlist
-        
-        
-    def clashgithubUpdate(self,current_url):
-        # 获取当天日期，格式为 YYYYMMDD
-        today = datetime.today().strftime('%Y%m%d')
-        # 动态生成 URL，替换日期部分
-        new_url = f'https://clashgithub.com/wp-content/uploads/rss/{today}.txt'
-        #链接是否已经更新
-        if self.url_updated(new_url):
-            return new_url
-        else:
-            return current_url  
-            
+
     def mibei77Update(self,current_url):
         try:
             r=requests.get('https://www.mibei77.com', headers=headers, timeout=5.0)
