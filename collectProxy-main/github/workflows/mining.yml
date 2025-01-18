@@ -37,16 +37,13 @@ jobs:
     - name: 执行任务 - 1.check urllist
       run: |
         python ./utils/airport/mining/mining_check.py
-        
-    - name: 执行任务 - 2.Fetch subscription files
-      uses: rxsweet/subs-fetcher@main
-      with:
-        config: /home/runner/work/collectProxy/collectProxy/utils/airport/mining/mining_config.yaml
-        token: ${{ secrets.GITHUB_TOKEN }}
+    - name: 执行任务 - 2.collect nodes
+      run: |
+       python ./utils/subconvert.py    './utils/airport/mining/mining_config.yaml'  'config'
     - name: 执行任务 - 3.subconvert
       run: |
-        python ./utils/airport/mining/subconvert.py    './sub/sources/miningAll.yaml'  'base64' './sub/mining64.txt'
-        python ./utils/airport/mining/subconvert.py    './sub/sources/miningAll.yaml'  'clash' './sub/mining.yaml'
+        python ./utils/subconvert.py    './sub/sources/miningAll.yaml'  'base64' './sub/mining64.txt'
+        python ./utils/subconvert.py    './sub/sources/miningAll.yaml'  'clash' './sub/mining.yaml'
     - name: 执行任务 - 4.log
       run:
        python ./utils/subConvert/log.py 'mining'
