@@ -177,6 +177,17 @@ def filter(config):
                     proxies_list.pop(begin)
                     length -= 1
                     begin -= 1
+            #出现的错误：TLS must be true with h2/grpc network
+            try:
+                if 'network' in proxies_list[begin]:
+                    if proxies_list[begin]['network'] == 'grpc' or proxies_list[begin]['network'] == 'h2':  
+                        if 'tls' not in proxies_list[begin] or proxies_list[begin]['tls'] != True:    #
+                            #print(proxies_list[begin])
+                            proxies_list.pop(begin)
+                            length -= 1
+                            begin -= 1
+            except:
+                pass
             begin += 1 
         print(f'去重后剩余总数:{len(proxies_list)}')
     #查找不能用的节点删除		
