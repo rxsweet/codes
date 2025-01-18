@@ -254,8 +254,8 @@ class update():
             res = requests.get(article_url,headers=headers)
             #sub_url = re.findall("https://oss.v2rayse.com/proxies/data/(.*?).yaml",res.text)[0]
             #sub_url = 'https://oss.v2rayse.com/proxies/data/'+ sub_url + '.yaml'
-            sub_url = re.findall("https://fs.v2rayse.com(.*?)txt",res.text)[0]
-            sub_url = 'https://fs.v2rayse.com'+ sub_url + 'txt'
+            sub_url = re.findall("https://fs.v2rayse.com(.*?)yaml",res.text)[0]
+            sub_url = 'https://fs.v2rayse.com'+ sub_url + 'yaml'
         except:
             traceback.print_exc()
             try:
