@@ -7,7 +7,7 @@ from tqdm import tqdm
 from init import init, cleanup
 import subprocess
 import outputsub
-
+from datetime import datetime
 
 if __name__ == '__main__':
     with Manager() as manager:
@@ -35,3 +35,10 @@ if __name__ == '__main__':
             outputsub.output()
         else:
             print('speedtest done, ---> No alive node!')
+            #记录错误,保存错误文件
+            time = datetime.today().strftime('%Y-%m-%d %H:%M:%S')
+            filetime = '[' + time + ']: ' + 'speedtest done, ---> No alive node!' + '  file:' + source + '\n'
+            # r只读，w可写，a追加
+            file = open('./sub/log_clash.txt', 'a', encoding= 'utf-8')
+            file.write(filetime)
+            file.close()

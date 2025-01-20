@@ -243,20 +243,11 @@ def filter(config):
                     continue
             except:
                 continue
-        #else:#已升级clash到meta,开放测速vless,hy2
-            #continue
-        elif x['type'] == 'hysteria2':
-            try:
-                if 'obfs' in x:
-                    if x['obfs'] == 'none' or 'obfs-password' not in x:#"Parse config error: proxy 2632: missing obfs password"
-                        continue
-            except:
-                continue
+        else:
+            continue
         clash['proxies'].append(x)
         clash['proxy-groups'][0]['proxies'].append(x['name'])
         clash['proxy-groups'][1]['proxies'].append(x['name'])
-    #pnums = len(clash['proxies'])
-    #print(f'Parse done, proxies num = {pnums}')
     return clash
     
     """       
