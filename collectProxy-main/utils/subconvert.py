@@ -34,32 +34,37 @@ def collect_sub(source,ERR_PATH = './sub/sources/err.yaml'):
             config = yaml.load(f.read(), Loader=yaml.FullLoader)
         except Exception as err:
             print(f"读取{source}文件失败")
-    #获取订阅转成yaml
-    if config['sources'][0]['options']['urls']:
-        #下载安装subconverter
-        subconverter_install()
-        time.sleep(3)
-        #转成subconverter可识别的字符串
-        urllist = '|'.join(config['sources'][0]['options']['urls']) 
-        temp = convert_remote(urllist,'YAML')
-        try:
-            yaml_list = yaml.safe_load(temp)
-        except yaml.YAMLError as exc:
-            print(exc)
-            print(f'sweetrx: subconvert.py  collect_sub中yaml.safe_load解析返回的tamp值时，出错了！错误文件保存至{ERR_PATH}')
-            #记录错误,保存错误文件
-            log_err(str(exc))
-            with open(ERR_PATH, 'w') as f:
-                f.write(temp)
-            return
-        yaml_list['proxies'] = proxies_rm(yaml_list['proxies'])
-        
-        #写入,配置文件的写入地址config['sources'][0]['output']
-        with open(config['sources'][0]['output'], 'w',encoding = 'utf-8') as file:
-            file = yaml.dump(yaml_list, file, allow_unicode=True, indent=2)
-        #调整显示方式
-        sub_convert(config['sources'][0]['output'],'YAML',config['sources'][0]['output'])
-
+    if len(config['sources']) > 0:
+        i = 0
+        while i < len(config['sources']):
+            #获取订阅转成yaml
+            if config['sources'][i]['options']['urls']:
+                #下载安装subconverter
+                subconverter_install()
+                time.sleep(3)
+                #转成subconverter可识别的字符串
+                urllist = '|'.join(config['sources'][i]['options']['urls']) 
+                temp = convert_remote(urllist,'YAML')
+                try:
+                    yaml_list = yaml.safe_load(temp)
+                except yaml.YAMLError as exc:
+                    print(exc)
+                    print(f'sweetrx: subconvert.py  collect_sub中yaml.safe_load解析返回的tamp值时，出错了！错误文件保存至{ERR_PATH}')
+                    #记录错误,保存错误文件
+                    log_err(str(exc))
+                    with open(ERR_PATH, 'w') as f:
+                        f.write(temp)
+                    return
+                yaml_list['proxies'] = proxies_rm(yaml_list['proxies'])
+                
+                #写入,配置文件的写入地址config['sources'][i]['output']
+                with open(config['sources'][i]['output'], 'w',encoding = 'utf-8') as file:
+                    file = yaml.dump(yaml_list, file, allow_unicode=True, indent=2)
+                #调整显示方式
+                sub_convert(config['sources'][i]['output'],'YAML',config['sources'][i]['output'])
+            i = i+1
+    else:
+        print(f"sweetrx: subconvert.py，collect_sub()中config.yaml no url！")
 #dict列表去重
 def proxies_rm(proxies_list):
     # 去重复，重名，空名，float型password
