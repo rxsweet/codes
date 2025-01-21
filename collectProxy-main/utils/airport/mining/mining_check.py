@@ -232,19 +232,22 @@ def yaml_rm(alive_yaml):#列表去重
         proxy_compared = alive_yaml[begin]
         begin_2 = begin + 1
         while begin_2 <= (length - 1):
-            if proxy_compared['name'] == alive_yaml[begin_2]['name']:
-                if proxy_compared['time'] == '永久有效' or alive_yaml[begin_2]['time'] == '永久有效':
-                    alive_yaml.pop(begin_2)
-                else:
-                    date_obj = datetime.strptime(proxy_compared['time'], "%Y-%m-%d %H:%M:%S")
-                    date_obj1 = datetime.strptime(alive_yaml[begin_2]['time'], "%Y-%m-%d %H:%M:%S")
-                    if date_obj < date_obj1:
-                        alive_yaml[begin]['api'] = alive_yaml[begin_2]['api']
-                        alive_yaml[begin]['time'] = alive_yaml[begin_2]['time']
-                    alive_yaml.pop(begin_2)
-                length -= 1
-                begin_2 -= 1
-                rm += 1
+            try:
+                if proxy_compared['name'] == alive_yaml[begin_2]['name']:
+                    if proxy_compared['time'] == '永久有效' or alive_yaml[begin_2]['time'] == '永久有效':
+                        alive_yaml.pop(begin_2)
+                    else:
+                        date_obj = datetime.strptime(proxy_compared['time'], "%Y-%m-%d %H:%M:%S")
+                        date_obj1 = datetime.strptime(alive_yaml[begin_2]['time'], "%Y-%m-%d %H:%M:%S")
+                        if date_obj < date_obj1:
+                            alive_yaml[begin]['api'] = alive_yaml[begin_2]['api']
+                            alive_yaml[begin]['time'] = alive_yaml[begin_2]['time']
+                        alive_yaml.pop(begin_2)
+                    length -= 1
+                    begin_2 -= 1
+                    rm += 1
+            except:
+                pass
             begin_2 += 1
         begin += 1
     print(f'重复数量 {rm}\n-----去重结束-----\n')
