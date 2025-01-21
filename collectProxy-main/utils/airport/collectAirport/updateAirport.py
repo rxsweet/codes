@@ -21,6 +21,31 @@ valid_list={
   'rx':'https://ghraw.eu.org/rxsweet/getAirport/refs/heads/main/data/valid-domains.txt',
   }
 """
+
+def cfg_alive(url):#测试原机场文件trial.cfg中机场是否能用
+    headers={
+    "User-Agent":"okhttp/3.15",
+    "Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9"
+    }
+    try:
+        r=requests.get(url,headers=headers, timeout=5.0)
+        if r.status_code==200:
+            #print(url)
+            return url
+    except requests.exceptions.RequestException as e:  
+        #print(f'获取{url}内容时出错')
+        try:
+            if 'https://' in url:
+                url = re.sub('https://', 'http://', url)
+                r=requests.get(url,headers=headers, timeout=5.0)
+                if r.status_code==200:
+                    #print(url)
+                    return url
+        except requests.exceptions.RequestException as e:  
+            #print(f'获取{url}内容时出错')
+            pass
+    return  False
+    
 def list_rm(urlList):#列表去重
     begin = 0
     rm = 0
@@ -80,19 +105,6 @@ def fetchApiUrl(list):#获取列表网站的json内容，再获取的内容中�
                 return []           
     return domainsList
 
-def getGoodApi(validList,airportList):
-    new = []
-    for valid in validList:
-        isIn = False
-        for airport in airportList:
-            if valid in airport:
-                isIn = True
-                continue
-        if isIn == False:
-            new.append(valid)
-    airportList.extend(new)            
-    return airportList
-    
 def url_rm(validList):
     #先列表去重
     validList = list_rm(validList)
@@ -124,12 +136,27 @@ def editUrl(validList):
     return newList
 
 def updateAirport():
+    aliveList = []
     #打开机场列表文件
     if os.path.exists(AIRPORTFILE) and os.path.isfile(AIRPORTFILE):
-        file = open(AIRPORTFILE, 'r')
+        file = open(AIRPORTFILE, 'r', encoding='utf-8')
         airportlist_content = file.read()
         file.close()
         airportlist = re.split(r'\n+',airportlist_content)
+
+    #机场的起始行数,找到可用的，删除原始数据
+    i= 20   
+    lens = len(airportlist)
+    alive = []
+    while i < lens:
+        if airportlist[i]:
+            #给文件中的机场添加https前缀
+            airportlist[i] = 'https://'+airportlist[i]
+            url = cfg_alive(airportlist[i])
+            if url:
+                alive.append(url)
+        airportlist.pop(i)
+        lens = lens -1
     
     #打开自己抓取到的最新机场list
     if os.path.exists(COLLECTFILE) and os.path.isfile(COLLECTFILE):
@@ -142,16 +169,19 @@ def updateAirport():
     
     if validList and collcet_list and airportlist:
         #合并
-        validList.extend(collcet_list)
+        aliveList.extend(alive)
+        aliveList.extend(validList)
+        aliveList.extend(collcet_list)
         #去重
-        validList = url_rm(validList)
+        aliveList = url_rm(aliveList)
         #去掉http头
-        validList = editUrl(validList)
+        aliveList = editUrl(aliveList)
         #添加到机场列表
-        alive = getGoodApi(validList,airportlist)
+        airportlist.extend(aliveList)
         #保存
-        saveList(alive,AIRPORTFILE)
+        saveList(airportlist,AIRPORTFILE)
 if "__name__==__main__":#主程序开始的地方
+
     nowtime = datetime.now()
     if nowtime.weekday() == 4 and nowtime.hour > 20:#每周五更新晚20点后更新
         print("更新机场开始！")
