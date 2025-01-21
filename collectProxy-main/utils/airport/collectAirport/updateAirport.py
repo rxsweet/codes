@@ -2,9 +2,10 @@ import re
 import os
 import requests
 from datetime import datetime   #时间
+import yaml
 
 #文件路径
-
+INFO_YAML = './utils/airport/collectAirport/data/sub_info.yaml'
 AIRPORTFILE = './utils/airport/mailCloud/trial.cfg'
 COLLECTFILE = './utils/airport/collectAirport/data/valid-domains.txt'
 valid_list={
@@ -164,6 +165,16 @@ def updateAirport():
         collcet_content = file.read()
         file.close()
         collcet_list = re.split(r'\n+',collcet_content)
+    
+    #有订阅信息的机场列表
+    url_info = []
+    with open(INFO_YAML,encoding="UTF-8") as f:
+        dict_url = yaml.load(f, Loader=yaml.FullLoader)
+    if dict_url:
+        for url in dict_url:
+            if url['url']:
+                url_info.append(url['url'])
+            
     #抓取其他大佬更新的机场
     validList = fetchApiUrl(valid_list)
     
@@ -172,6 +183,7 @@ def updateAirport():
         aliveList.extend(alive)
         aliveList.extend(validList)
         aliveList.extend(collcet_list)
+        aliveList.extend(url_info)
         #去重
         aliveList = url_rm(aliveList)
         #去掉http头
@@ -181,7 +193,6 @@ def updateAirport():
         #保存
         saveList(airportlist,AIRPORTFILE)
 if "__name__==__main__":#主程序开始的地方
-
     nowtime = datetime.now()
     if nowtime.weekday() == 4 and nowtime.hour > 20:#每周五更新晚20点后更新
         print("更新机场开始！")
