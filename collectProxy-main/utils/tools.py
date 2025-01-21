@@ -36,7 +36,8 @@ def mmdb_install():
 #现用版https://github.com/Dreamacro/clash/releases/download/v1.11.8/clash-linux-amd64-v1.18.0.gz
 def clash_install(
     #clash_url='https://raw.githubusercontent.com/rxsweet/all/main/githubTools/clash-linux-amd64-v1.18.0.gz',
-    clash_url='https://github.com/MetaCubeX/mihomo/releases/download/v1.19.1/mihomo-linux-amd64-v1.19.1.gz',#变成meta
+    #clash_url='https://github.com/MetaCubeX/mihomo/releases/download/v1.19.1/mihomo-linux-amd64-v1.19.1.gz',#变成meta
+    clash_url='https://raw.githubusercontent.com/rxsweet/all/refs/heads/main/githubTools/mihomo-linux-amd64-v1.19.1.gz',#变成meta
     clash_path='./clash-linuxamd64',
 ):
     if not os.path.exists(clash_path):   #os.path.exists()就是判断括号里的文件是否存在，括号内的可以是文件路径

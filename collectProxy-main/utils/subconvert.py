@@ -17,7 +17,7 @@ import yaml
 INI_CONFIG = 'https://raw.githubusercontent.com/rxsweet/all/main/githubTools/clashConfig.ini'
 
 #记录错误,出错时，错误文件有默认地址
-def log_err(msg,log_path = './sub/log.txt'):
+def log_err(msg,log_path = './sub/err.txt'):
     time = datetime.today().strftime('%Y-%m-%d %H:%M:%S')
     filetime = '[' + time + ']: ' + msg + '\n'
     # r只读，w可写，a追加
