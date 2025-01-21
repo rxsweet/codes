@@ -1,0 +1,239 @@
+[www.mmsbs.buzz]
+buy  period=onetime_price&plan_id=1
+disabled  local variable 'sub' referenced before assignment
+email  lffbjoss429@gmail.com
+fail_n  7
+name  Xboard
+sub_url  http://www.mmsbs.buzz/api/v1/client/subscribe?token=4dfcc6f0ff1790d53cc64906389ac6b7
+time  2024-07-31 07:37:23.730935+08:00
+type  v2board
+更新订阅链接/续费续签失败  注册失败(dmajgli880@gmail.com): 'NoneType' object is not subscriptable
+
+[xfsnet.com]
+buy  period=onetime_price&plan_id=1
+email  skaygim139@gmail.com
+fail_n  12
+name  XFS Network
+node_n  7
+sub_info  0B  100G  永不过期  (剩余 100G)
+sub_url  https://xfsnet.com/api/v1/client/subscribe?token=824f17374c75e1118e5ab03c2eec6d72
+time  2024-07-12 10:16:43.107826+08:00
+type  v2board
+更新旧订阅失败  (https://xfsnet.com/api/v1/client/subscribe?token=824f17374c75e1118e5ab03c2eec6d72): 502 Bad Gateway '<!DOCTYPE html>\n<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->\n<!--[if IE 7]> <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->\n<!--[if IE 8]> <html class="no-js ie8 oldie" lang="en-US"> <![endif]-->\n<!--[if gt IE 8]><!--> <html class="no-js" lang="en-US"> <!--<![endif]-->\n<head>\n\n\n<title>xfsnet.com | 502: Bad gateway</title>\n<meta charset="UTF-8" />\n<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />\n<meta http-equiv="X-UA-Compatible" content="IE=Edge" />\n<meta name="robots" content="noindex, nofollow" />\n<meta name="viewport" content="width=device-width,initial-scale=1" />\n<link rel="stylesheet" id="cf_styles-css" href="/cdn-cgi/styles/main.css" />\n\n\n</head>\n<body>\n<div id="cf-wrapper">\n <div id="cf-error-details" class="p-0">\n <header class="mx-auto pt-10 lg:pt-6 lg:px-8 w-240 lg:w-full mb-8">\n <h1 class="inline-block sm:block sm:mb-2 font-light text-60 lg:text-4xl text-black-dark leading-tight mr-2">\n <span class="inline-block">Bad gateway</span>\n <span class="code-label">Error code 502</span>\n </h1>\n <div>\n Visit <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_502&utm_campaign=xfsnet.com" target="_blank" rel="noopener noreferrer">cloudflare.com</a> for more information.\n </div>\n <div class="mt-3">2024-08-04 23:38:10 UTC</div>\n </header>\n <div class="my-8 bg-gradient-gray">\n <div class="w-240 lg:w-full mx-auto">\n <div class="clearfix md:px-8">\n \n<div id="cf-browser-status" class=" relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">\n <div class="relative mb-10 md:m-0">\n \n <span class="cf-icon-browser block md:hidden h-20 bg-center bg-no-repeat"></span>\n <span class="cf-icon-ok w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>\n \n </div>\n <span class="md:block w-full truncate">You</span>\n <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">\n \n Browser\n \n </h3>\n <span class="leading-1.3 text-2xl text-green-success">Working</span>\n</div>\n\n<div id="cf-cloudflare-status" class=" relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">\n <div class="relative mb-10 md:m-0">\n <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_502&utm_campaign=xfsnet.com" target="_blank" rel="noopener noreferrer">\n <span class="cf-icon-cloud block md:hidden h-20 bg-center bg-no-repeat"></span>\n <span class="cf-icon-ok w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>\n </a>\n </div>\n <span class="md:block w-full truncate">San Jose</span>\n <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">\n <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_502&utm_campaign=xfsnet.com" target="_blank" rel="noopener noreferrer">\n Cloudflare\n </a>\n </h3>\n <span class="leading-1.3 text-2xl text-green-success">Working</span>\n</div>\n\n<div id="cf-host-status" class="cf-error-source relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">\n <div class="relative mb-10 md:m-0">\n \n <span class="cf-icon-server block md:hidden h-20 bg-center bg-no-repeat"></span>\n <span class="cf-icon-error w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>\n \n </div>\n <span class="md:block w-full truncate">xfsnet.com</span>\n <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">\n \n Host\n \n </h3>\n <span class="leading-1.3 text-2xl text-red-error">Error</span>\n</div>\n\n </div>\n </div>\n </div>\n\n <div class="w-240 lg:w-full mx-auto mb-8 lg:px-8">\n <div class="clearfix">\n <div class="w-1/2 md:w-full float-left pr-6 md:pb-10 md:pr-0 leading-relaxed">\n <h2 class="text-3xl font-normal leading-1.3 mb-4">What happened?</h2>\n <p>The web server reported a bad gateway error.</p>\n </div>\n <div class="w-1/2 md:w-full float-left leading-relaxed">\n <h2 class="text-3xl font-normal leading-1.3 mb-4">What can I do?</h2>\n <p class="mb-6">Please try again in a few minutes.</p>\n </div>\n </div>\n </div>\n\n <div class="cf-error-footer cf-wrapper w-240 lg:w-full py-10 sm:py-4 sm:px-8 mx-auto text-center sm:text-left border-solid border-0 border-t border-gray-300">\n <p class="text-13">\n <span class="cf-footer-item sm:block sm:mb-1">Cloudflare Ray ID: <strong class="font-semibold">8ae26128fcb32385</strong></span>\n <span class="cf-footer-separator sm:hidden">&bull;</span>\n <span id="cf-footer-item-ip" class="cf-footer-item hidden sm:block sm:mb-1">\n Your IP:\n <button type="button" id="cf-footer-ip-reveal" class="cf-footer-ip-reveal-btn">Click to reveal</button>\n <span class="hidden" id="cf-footer-ip">52.159.145.240</span>\n <span class="cf-footer-separator sm:hidden">&bull;</span>\n </span>\n <span class="cf-footer-item sm:block sm:mb-1"><span>Performance &amp; security by</span> <a rel="noopener noreferrer" href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_502&utm_campaign=xfsnet.com" id="brand_link" target="_blank">Cloudflare</a></span>\n \n </p>\n <script>(function(){function d(){var b=a.getElementById("cf-footer-item-ip"),c=a.getElementById("cf-footer-ip-reveal");b&&"classList"in b&&(b.classList.remove("hidden"),c.addEventListener("click",function(){c.classList.add("hidden");a.getElementById("cf-footer-ip").classList.remove("hidden")}))}var a=document;document.addEventListener&&a.addEventListener("DOMContentLoaded",d)})();</script>\n</div><!-- /.error-footer -->\n\n\n </div>\n</div>\n</body>\n</html>\n'
+
+[sub.anrunix.xyz]
+buy  period=month_price&plan_id=2
+email  clytocs824@gmail.com
+fail_n  10
+name  Anrun Network
+sub_info  0B  20G  2024-08-12 10:19:49+08:00  (剩余 20G 21 days, 15:42:15.036359)
+sub_url  sub.anrunix.xyz/api/v1/client/subscribe?token=2464e03eb0066ccc18d0b39170bd5df2
+time  2024-07-12 10:16:42.848112+08:00
+type  v2board
+更新旧订阅失败  HTTPSConnectionPool(host='sub.anrunix.xyz', port=443): Max retries exceeded with url: /api/v1/passport/auth/login (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fe9e311a140>: Failed to resolve 'sub.anrunix.xyz' ([Errno -2] Name or service not known)"))
+
+[freeair.colacloud.free.hr]
+disabled  local variable 'sub' referenced before assignment
+email  ckiiwofzi990@gmail.com
+fail_n  11
+name  免费空气
+sub_url  https://blueAir.colacloud.free.hr/api/v1/client/subscribe?token=834dce32a9c0fd266afab58b5cdc0fbd
+time  2024-07-18 07:38:35.778694+08:00
+type  v2board
+更新订阅链接/续费续签失败  注册失败(inrhuki58@gmail.com): 解析 json 失败: Expecting value: line 2 column 1 (char 1) (200 OK '\n<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">\n<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs" lang="cs">\n<head>\n<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />\n<meta name="keywords" content="" />\n<meta name="description" content="" />\n<meta name="robots" content="index,follow" />\n\n<link rel="shortcut icon" href="/favicon.ico" />\n<link rel="stylesheet" href="/css/style.css" type="text/css" media="screen,projection" />\n\n<title></title>\n\n</head>\n\n<body>\n<br />\n<div id="page">\n\t<a href=\'https://subreg.cz\'><div id="info"><h1>This page is parked in Subreg.CZ<br />Tato stránka je zaparkována u Subreg.CZ</h1></div></a>\n\t<div id="logo"></div>\n\t<div id="offer">\n\t\t<h2 class="title">Nabízíme</h2>\n\t\t<p>\n\t\t\t<table>\n\t\t\t\t<tr>\n\t\t\t\t\t<td valign="top">\n\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t<li><a href="https://subreg.cz/">Registrace domén celého světa</a></li>\n\t\t\t\t\t\t\t<li><a href="https://subreg.cz/">Plně automatická administrace</a></li>\n\t\t\t\t\t\t\t<li><a href="https://subreg.cz/">Zajištění lokálních kontaktů</a></li>\n\t\t\t\t\t\t\t<li><a href="https://subreg.cz/">Prodeje domén přes síť AfterNIC</a></li>\n\t\t\t\t\t\t\t<li><a href="https://subreg.cz/">Aukce domén, Escrow služby</a></li>\n\t\t\t\t\t\t\t<li><a href="https://subreg.cz/">Reseller a Registrar Panel</a></li>\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t</td>\n\t\t\t\t\t<td valign="top">\n\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t<li><a href="https://subreg.cz/">Stovky vlastních akreditací</a></li>\n\t\t\t\t\t\t\t<li><a href="https://subreg.cz/">Rozsáhle API - SOAP, EPP</a></li>\n\t\t\t\t\t\t\t<li><a href="https://redirect.host/">Přesměrování Domén</a> | <a href="https://redirect.host/">Domain Redirect</a></li>\n\t\t\t\t\t\t\t<li><a href="https://subreg.cz/cz/domeny/parkovani-domen/">Parkování domén</a></li>\n\t\t\t\t\t\t\t<li><a href="https://subreg.cz/cz/domeny/odchyt-domen/">Odchyt domén</a></li>\n\t\t\t\t\t\t\t<li><a href="https://subreg.cz/">WhiteLabel systém</a></li>\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t</table>\n\t\t</p>\n\t</div>\n</div>\n</html>\n')
+
+[my.cat66.lol]
+buy  pass
+disabled  订阅链接无效/无试用/无节点/已过期 https://my.catfaka.com/api/v1/client/subscribe?token=e4dbfc714c52d85726fdcda912f7a037 200 OK ''
+email  jlkzrjj877@gmail.com
+fail_n  6
+name  猫狗机场
+sub_url  https://my.catfaka.com/api/v1/client/subscribe?token=e4dbfc714c52d85726fdcda912f7a037
+time  2024-07-26 07:37:20.750477+08:00
+type  v2board
+
+[portal.speedyyun.com]
+buy  period=onetime_price&plan_id=2
+email  xjfguqlvn366@wfes.site
+fail_n  12
+name  速迪云加速
+node_n  2
+sub_info  0B  100G  永不过期  (剩余 100G)
+sub_url  https://portal.speedyyun.com/api/v1/client/subscribe?token=e35b430556c840b1cc35d7fb5199af59
+time  2024-07-12 10:16:46.805657+08:00
+type  v2board
+更新旧订阅失败  invalid literal for int() with base 10: ''
+
+[aa.dabai.in]
+auto_invite  F
+buy  shop=31
+email  xteylvlbf318@gmail.com
+last_checkin  2024-08-14 07:37:18.004951+08:00
+name  大白
+node_n  7
+sub_info  39.93M  1T  2024-09-10 18:38:24+08:00  (剩余 1T 27 days, 11:00:56.189051)
+sub_url  https://link1.db-sub.xyz/link/rfkRm5Pt118M7acl?clash=1
+time  2024-08-11 18:38:27.160525+08:00
+type  sspanel
+
+[qlgq.top]
+auto_invite  F
+buy  pass
+email  iwgpygk374@haihantnc.xyz
+last_checkin  2024-08-14 07:37:33.974225+08:00
+name  墙了个墙
+node_n  34
+sub_info  0B  888G  2024-08-15 07:37:33+08:00  (剩余 888G 23:59:56.719985)
+sub_url  https://www.qlgq.top/link/986fc10e8ad10335?clash=1
+time  2024-08-14 07:37:34.764063+08:00
+type  sspanel
+
+[v2.bujidao.org]
+api_host  app.bujidao.org
+fail_n  10
+name  小小布吉岛～
+type  sspanel
+更新订阅链接/续费续签失败  注册失败(prkssngoh27@gmail.com): 解析 json 失败: Expecting value: line 1 column 1 (char 0) (405 Method Not Allowed '')
+
+[www.wordvlog.link]
+fail_n  13
+name  Internet Acceleration
+type  v2board
+更新订阅链接/续费续签失败  注册失败(dfdzjypxp291@gmail.com): 解析 json 失败: Expecting value: line 1 column 1 (char 0) (405 Method Not Allowed '')
+
+[mgnet.vip]
+auto_invite  F
+buy  pass
+email  wykigscpp290@gmail.com
+last_checkin  2024-08-14 07:37:18.008602+08:00
+name  MG Network
+node_n  11
+sub_info  1.44G  6.927G  2024-08-14 19:39:43+08:00  (剩余 5.486G 12:02:21.988629)
+sub_url  https://www.mgnet.sbs/link/jZ66BTknsQpbLqTh?sub=3
+time  2024-08-12 18:39:44.589348+08:00
+type  sspanel
+
+[vip666.xyz]
+buy  pass
+email  jzkjptn238@gmail.com
+name  vip666.xyz
+node_n  9
+sub_info  0B  5G  2024-08-17 07:37:23+08:00  (剩余 5G 2 days, 23:59:57.634817)
+sub_url  http://106.53.180.235:8001/?url=https://vip666.xyz/api/v1/client/subscribe?token=e1cca5e7c83943e3f45feda4ad719f3d
+time  2024-08-14 07:37:23.746417+08:00
+type  v2board
+
+[nahidacloud.top]
+api_host  www.02er.com
+banned_domains  guerrillamail.biz  jkb.tmmad.com  guerrillamail.net  adxp.haihantnc.xyz  linshiyou.com  lplso.tmmad.com  wj1.haihantnc.xyz  ktse.haihantnc.xyz  grr.la  bareed.ws
+fail_n  11
+name  LINGER 云加速
+type  v2board
+更新订阅链接/续费续签失败  获取邮箱验证码超时(idbbgmd300@bareed.ws)
+
+[2.flybar20.cc]
+auto_invite  T
+banned_domains  tmails.net  psnator.com  moakt.co  mydefipet.live  tmpmail.org  tmpmail.net  femailtor.com
+buy  shop=9
+disabled  0流量
+email  ficcremm870@jkd.tmmad.com
+fail_n  3
+invite_code  qrmB  9999
+last_checkin  2024-08-12 07:38:33.432189+08:00
+name  飞翔吧
+node_n  48
+sub_info  0B  0B  2024-08-11 18:38:39+08:00  (剩余 0B -3 days, 11:01:09.615126)
+sub_url  https://service-cicbrnbg-1309305287.gz.apigw.tencentcs.com/link/GzEif62rf6PLRi5y?sub=4
+time  2024-08-10 18:38:41.156690+08:00
+type  sspanel
+更新订阅链接/续费续签失败  获取邮箱失败: 设置 rootsh.com 账户失败: 200 OK '{"message":"邮箱申请太频繁，请2秒后再试！","user":"bmxljpiin336@jkb.tmmad.com","success":"false"}'
+
+[portal.passgfw.top]
+buy  period=month_price&plan_id=15
+disabled  订阅链接无效/无试用/无节点/已过期 https://sub.passgfw.top/api/v1/client/subscribe?token=045a2783c0529eb4fbf4866ce9c64bb7 200 OK ''
+email  wpbmlfan258@gmail.com
+fail_n  6
+name  WindyCloud
+sub_url  https://sub.passgfw.top/api/v1/client/subscribe?token=045a2783c0529eb4fbf4866ce9c64bb7
+time  2024-07-30 18:39:28.772677+08:00
+type  v2board
+
+[xn--mes358a.art]
+disabled  未知类型
+fail_n  4
+
+[vipxgyun.com]
+auto_invite  F
+buy  pass
+disabled  local variable 'sub' referenced before assignment
+email  krekmpbc283@gmail.com
+fail_n  2
+last_checkin  2024-08-14 07:37:18.003724+08:00
+name  西瓜皮是真的皮
+node_n  15
+sub_info  0B  10.12G  2024-08-12 10:02:26+08:00  (剩余 10.12G -1 day, 15:22:36.253529)
+sub_url  https://dy2.dx035.top/link/sZ0vmzXDOszP1kyQ?sub=3
+time  2024-08-12 18:39:49.317723+08:00
+type  sspanel
+更新订阅链接/续费续签失败  注册失败(jpqqeyks211@gmail.com): 解析 json 失败: Expecting value: line 1 column 1 (char 0) (302 Found '')
+
+[hk.bros.us.kg]
+fail_n  10
+name  兄弟云
+type  v2board
+更新订阅链接/续费续签失败  注册失败(xuzbcfgq675@gmail.com): HTTPSConnectionPool(host='hk.bros.us.kg', port=443): Read timed out. (read timeout=10)
+
+[www.360vpn.org]
+buy  period=month_price&plan_id=1
+disabled  订阅链接无效/无试用/无节点/已过期 https://www.360vpn.org/api/v1/client/subscribe?token=1b7c9460df476a5c78838e804528a6de 200 OK ''
+email  fpgtyro921@gmail.com
+fail_n  6
+name  360vpn
+node_n  3
+sub_info  11.27K  100G  2024-08-26 07:37:17+08:00  (剩余 100G 26 days, 23:58:58.138648)
+sub_url  https://www.360vpn.org/api/v1/client/subscribe?token=1b7c9460df476a5c78838e804528a6de
+time  2024-08-14 07:37:23.168177+08:00
+type  v2board
+
+[xbod.fqycloud.top]
+buy  period=onetime_price&plan_id=1
+email  batpmas298@gmail.com
+fail_n  7
+name  无极链
+node_n  1
+sub_info  0B  1000G  永不过期  (剩余 1000G)
+sub_url  http://xbod.fqycloud.top/api/v1/client/subscribe?token=56159c383aebd861752dafd2865355ce
+time  2024-07-26 07:37:19.694178+08:00
+type  v2board
+更新旧订阅失败  invalid literal for int() with base 10: ''
+
+[cloudcat.top]
+disabled  订阅链接无效/无试用/无节点/已过期 https://cloudcat.top/api/v1/client/subscribe?token=c85b7d84f69e06ff8f6e6f2b0bc13b3f 200 OK ''
+email  zwmikjbc655@gmail.com
+fail_n  1
+name  云猫机场-免费公益
+sub_url  https://cloudcat.top/api/v1/client/subscribe?token=c85b7d84f69e06ff8f6e6f2b0bc13b3f
+time  2024-08-14 07:37:19.161882+08:00
+type  v2board
+
+[www.iovevpn.com]
+email  bsqpqfr206@gmail.com
+name  爱连VPN-好用稳定的VPN服务
+node_n  7
+sub_info  0B  999G  2024-08-14 10:37:19+08:00  (剩余 999G 2:59:51.237708)
+sub_url  https://qqq.ma24dfu3wfm.top/api/v1/client/subscribe?token=0b05733622cf6b2c77691d5413d734bb
+time  2024-08-14 07:37:20.127893+08:00
+type  v2board
+
+[ninecloud.pages.dev]
+disabled  订阅转换失败(可能订阅链接无效/无试用/无节点/已过期) https://ninecloud.pages.dev/api/v1/client/subscribe?token=ad0cbc85aaeb1f0b59d7326d633b1f25 400 Bad Request 'No nodes were found!'
+email  mfqytxku217@gmail.com
+fail_n  1
+name  ninecloud
+sub_url  https://ninecloud.pages.dev/api/v1/client/subscribe?token=ad0cbc85aaeb1f0b59d7326d633b1f25
+time  2024-08-14 07:37:20.569483+08:00
+type  v2board
+
+[jc.sux.lol]
+disabled  判别类型失败: HTTPSConnectionPool(host='jc.sux.lol', port=443): Max retries exceeded with url: /api/v1/guest/comm/config (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7ff8611095d0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+fail_n  1
