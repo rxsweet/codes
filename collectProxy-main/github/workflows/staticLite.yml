@@ -1,0 +1,69 @@
+name: static lite
+
+# 触发条件
+on:
+  workflow_dispatch:
+#  workflow_run:
+#    workflows: ["static Sub"]
+#    types: [completed]
+#  schedule:
+# 表达式生成  https://crontab.guru/ 
+#    - cron: '10 0,6,12,18 * * *'
+
+jobs:
+  deploy:
+# 基本系统配置
+    runs-on: ubuntu-latest
+    steps:
+    - name: 迁出代码
+      uses: actions/checkout@v4
+    - name: 安装Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10' 
+    - name: 设置时区
+      run: sudo timedatectl set-timezone 'Asia/Shanghai'
+# 安装依赖和工具
+    - name: 安装依赖
+      run: |
+        pip install -r ./utils/requirements.txt
+#执行任务
+    - name: 1.set config  ----input&output位置
+      run: |
+        python ./utils/staticSub/litespeedtest.py       
+    - name: 2.安装测速工具并运行liteSpeedtest --- 输出out.json & speedtest.log
+      run: |
+        sudo sh ./utils/litespeedtest/speedtest.sh
+    - name: 3.输出并转换 --- output & base64 and clash
+      run: |
+        python ./utils/litespeedtest/output.py
+#    - name: out.json & speedtest.log --- rm & mv
+#      run: |       
+#        rm ./sub/checkBakup/out.json
+#        rm ./sub/checkBakup/speedtest.log
+#        mv ./out.json ./sub/out.json
+#        mv ./speedtest.log ./sub/speedtest.log
+
+    - name: commit
+      run: |                 
+        git config --local user.email "actions@github.com"
+        git config --local user.name "GitHub Actions"
+        git pull origin main
+        git add ./sub
+        git commit -m "$(date '+%Y-%m-%d %H:%M:%S') staticSub litespeedtest done"
+    - name: 推送更改
+      uses:  ad-m/github-push-action@master
+      with:
+        # github_token: ${{ secrets.TOKEN }}
+        branch: main
+
+    - name: Pushes to proxies
+      uses: rxsweet/copy_file_to_another_repo_action@main
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.ACTIONS_USE }}
+      with:
+        source_file: 'sub/'
+        destination_repo: 'rxsweet/proxies'
+        user_email: 'actions@github.com'
+        user_name: 'GitHub Actions'
+        commit_message: 'staticSub litespeedtest done'

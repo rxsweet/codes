@@ -1,0 +1,66 @@
+name: dynamic
+# 触发条件
+on:
+  workflow_dispatch:
+  schedule:
+   - cron: '0 12 * * *'  #实际时间：20:00
+   #- cron: '0 4,13 * * *'
+  #  实际时间： 12:00   21:00
+  # 表达式生成  https://crontab.guru/
+jobs:
+  deploy:
+# 基本系统配置
+    runs-on: ubuntu-latest
+    steps:
+    - name: 迁出代码
+      uses: actions/checkout@v4
+    - name: 安装Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10' 
+    - name: 设置时区
+      run: sudo timedatectl set-timezone 'Asia/Shanghai'     
+# 安装依赖和工具
+    - name: 安装依赖和工具
+      run: |
+        pip install -r ./utils/requirements.txt
+        python ./utils/tools.py
+# 执行任务        
+    - name: 执行任务 - 1.获取订阅节点
+      run: |
+        python ./utils/dynamicSub/subUpdate.py
+        #python ./utils/dynamicSub/urllist2sub.py
+        python ./utils/subconvert.py    './utils/dynamicSub/dynamic_config.yaml'  'config'
+    - name: 执行任务 - 2.测速
+      run: |
+        #python ./utils/dynamicSub/speedtest.py
+        python ./utils/clashspeedtest/main.py   './sub/sources/dynamicAll.yaml' './sub/rx.yaml'
+        python ./utils/subconvert.py    './sub/rx.yaml'  'clash' './sub/rx.yaml'
+        python ./utils/subconvert.py    './sub/rx.yaml'  'base64' './sub/rx64.txt'
+    - name: 执行任务 - 3.log
+      run: |
+        python ./utils/subConvert/log.py 'dynamic sub'
+# 提交           
+    - name: 提交更改
+      run: |                 
+        git config --local user.email "actions@github.com"
+        git config --local user.name "GitHub Actions"
+        git pull origin main
+        git add ./utils/dynamicSub
+        git add ./sub
+        git commit -m "$(date '+%Y-%m-%d %H:%M:%S') dynamic sub update"
+    - name: 推送更改
+      uses:  ad-m/github-push-action@master
+      with:
+        branch: main
+
+    - name: Pushes to proxies
+      uses: rxsweet/copy_file_to_another_repo_action@main
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.ACTIONS_USE }}
+      with:
+        source_file: 'sub/'
+        destination_repo: 'rxsweet/proxies'
+        user_email: 'actions@github.com'
+        user_name: 'GitHub Actions'
+        commit_message: 'dynamic sub update'

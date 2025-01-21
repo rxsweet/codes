@@ -1,0 +1,51 @@
+name: down
+on:
+  workflow_dispatch:
+permissions: write-all
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #DDAL_EMAIL: ${{ secrets.DDAL_EMAIL }}
+      #DDAL_PASSWORD: ${{ secrets.DDAL_PASSWORD }}
+    steps:
+      - name: 设置时区
+        run: sudo timedatectl set-timezone 'Asia/Shanghai' 
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Prepare #禁用了chrome
+        run: pip install requests beautifulsoup4 ruamel.yaml json5
+      - name: 执行任务 -down clash
+        run: |
+          python ./utils/clashdown.py
+          #cp ./Clash_Android.apk ./tools/Clash_Android.apk
+          cp ./ClashMeta_Android.apk ./tools/ClashMeta_Android.apk
+      - name: Commit
+        id: commit
+        continue-on-error: true
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions"
+          git add ./tools/
+          git commit -m "$(date '+%Y-%m-%d %H:%M:%S') down done"
+          #git commit -m "${{ github.workflow }} https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          git pull --rebase
+      - uses: ad-m/github-push-action@master
+        if: ${{ steps.commit.outcome == 'success' }}
+      #- name: Run get_trial_update_url.py
+        #run: python get_trial_update_url.py
+      - name: Pushes to proxies
+        uses: rxsweet/copy_file_to_another_repo_action@main
+        env:
+         API_TOKEN_GITHUB: ${{ secrets.ACTIONS_USE }}
+        with:
+          source_file: 'tools/'
+          destination_repo: 'rxsweet/proxies'
+          user_email: 'actions@github.com'
+          user_name: 'GitHub Actions'
+          commit_message: 'down done'
