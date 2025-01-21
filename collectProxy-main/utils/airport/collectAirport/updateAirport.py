@@ -6,7 +6,7 @@ import yaml
 
 #文件路径
 INFO_YAML = './utils/airport/collectAirport/data/sub_info.yaml'
-AIRPORTFILE = './utils/airport/mailCloud/trial.cfg'
+AIRPORTFILE = './utils/airport/airportRegister/trial.cfg'
 COLLECTFILE = './utils/airport/collectAirport/data/valid-domains.txt'
 valid_list={
   'polarxy':'https://raw.githubusercontent.com/polarxy/aggregator/refs/heads/main/data/valid-domains.txt',
