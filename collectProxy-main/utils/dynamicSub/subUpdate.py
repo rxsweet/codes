@@ -157,7 +157,19 @@ class update():
         #链接是否已经更新
         if self.url_updated(new_url):
             newlist.append(new_url)
+        
+        #free.datiya.com
+        new_url = datetime.today().strftime('https://free.datiya.com/uploads/%Y%m%d-clash.yaml')
+        #链接是否已经更新
+        if self.url_updated(new_url):
+            newlist.append(new_url)
             
+        #a.nodeshare.xyz
+        new_url = datetime.today().strftime('https://a.nodeshare.xyz/uploads/%Y/%m/%Y%m%d.txt')
+        #链接是否已经更新
+        if self.url_updated(new_url):
+            newlist.append(new_url)
+        
         #nodev2ray.com
         #https://nodev2ray.com/uploads/2025/01/4-20250115.txt
         new_url0 = datetime.today().strftime('https://nodev2ray.com/uploads/%Y/%m/0-%Y%m%d.yaml')
