@@ -165,7 +165,7 @@ class update():
             newlist.append(new_url)
             
         #a.nodeshare.xyz
-        new_url = datetime.today().strftime('https://a.nodeshare.xyz/uploads/%Y/%m/%Y%m%d.txt')
+        new_url = datetime.today().strftime('https://a.nodeshare.xyz/uploads/%Y/%-m/%Y%m%d.txt')
         #链接是否已经更新
         if self.url_updated(new_url):
             newlist.append(new_url)
