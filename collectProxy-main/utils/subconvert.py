@@ -62,7 +62,7 @@ def collect_sub(source):
                         except:
                             print(f"{url} 解析出错！")
                             #记录错误,保存错误文件
-                            log_err(f'{url}\n{str(exc)}')
+                            log_err(f' 源文件{source}中，{url}\n{str(exc)}')
                             #将得到的错误内容写入文件，暂时不需要
                             #print(f'错误文件保存至{ERR_PATH}')
                             #with open(ERR_PATH, 'w') as f:
