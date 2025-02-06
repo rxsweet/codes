@@ -29,6 +29,7 @@ def log_err(msg,log_path = './sub/err.txt'):
 #获取cofig.yaml列表节点,出错时，错误文件有默认地址
 #def collect_sub(source,ERR_PATH = './sub/sources/err.yaml'):#暂时不需要将错误内容写入文件,只记录错误信息
 def collect_sub(source):
+    print(f'collect {source} begin:')
     #读取yaml文件
     with open(source, 'r',encoding = 'utf-8') as f:
         try:
@@ -296,5 +297,4 @@ if __name__=='__main__':
         if act == 'rm': #匹配去重
             YAML_rm(source)
         elif act == 'config':   #匹配config文件
-            print('collect config.yaml')
             collect_sub(source)
