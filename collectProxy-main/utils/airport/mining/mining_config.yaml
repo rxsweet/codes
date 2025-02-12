@@ -1,0 +1,38 @@
+sources:
+- fetcher: url
+  name: subs
+  options:
+    urls:
+    - https://d7b12d59-21aa-9561-087f-89c834ac7fe8.372372.xyz/api/v1/client/subscribe?token=5d8d7e20b02946587c9db997b91e3fcc&amp;amp;amp;flag=shadowrocket
+    - https://subscribe.xxmad.com/api/v1/client/subscribe?token=5a31e90bf806b5f4037bc1cc7f001a41
+    - https://getinfo.bigbigwatermelon.com/s?token=46a05a9cca3d964ba59c8549d9259904
+    - https://aaa.yunduanjc.top/api/v1/client/subscribe?token=4a2f7cda082d6a5ff77e88320a8d8995
+    - http://sub.xn--4gq62f8yih87b.xyz/yiyuan?token=1072b3a13f4fb5d8b2335f8edd6dce3e
+    - https://api.xyurl.site/api/v1/client/subscribe?token=fed4ab7c582c2a41a08a858f91644430
+    - https://api.e986532.top/api/v1/client/subscribe?token=779f18d02602c1252fe4ab7a085d299c
+    - https://qingyun.zybs.eu.org/api/v1/client/subscribe?token=86058fb34ed37912f9dbc0d1141bf49d
+    - https://rgergergergerg6555.saojc.xyz/api/v1/client/subscribe?token=750810736ea0883ffd61f1b1c416b885
+    - https://dj.taipeicity.news/api/v1/client/subscribe?token=cf91323e1d09b9a7839efdaeff866595
+    - http://csgo3.fask511.cfd:1588/api/v1/client/subscribe?token=145b15f91f224adcb7fff14c738aa737
+    - https://www.kuaidog010.top/api/v1/client/subscribe?token=1456da0a14533383c40d3757a9ce5e61
+    - https://subscribe.famint.net/api/v1/client/subscribe?token=47f216c5ec7a8f4da47e6311c71eb687
+    - https://sub.bxy.org.uk/api/v1/client/subscribe?token=e57e0cae5405ee66d3eb9059a4e7e13a
+    - https://within.sephirah.icu/api/v1/client/subscribe?token=c0b61f8408a06c4c1f53f9f5ab45f2e5
+    - https://cloudfisher.top/jsk34?token=b7f55ce12c227c39c89f65a1998ab8ba
+    - https://dl.vfkum.website/api/v1/client/subscribe?token=4240dcfb7ece63763eddae2c5132e705
+    - http://g3i.buzz/v3/subscr?id=16cc70663cb340018a7ad5a146cc8428
+    - http://101.200.14.80:3325/api/v1/client/subscribe?token=465325a70b0a58f7592cb2acf2215274
+    - http://filusdt.461553.best:1588/api/v1/client/subscribe?token=0bce276074604f32f207b7d1dd31aa2d
+    - https://szdol.com/search/userid?token=6fb57d016a90ba7b099f1c78daa30787
+    - https://ag.bnpm.dynu.net:30443/api/v1/client/subscribe?token=58783846cbee6647784c16bb08d58918
+    - http://8.129.23.122/s/85846bdd83e7db7df6970e9931a725e5
+    - https://let.bnsubservdom.com/api/v1/client/subscribe?token=910fe708e5910f6384253887e0f405d6
+    - https://2G7bUP.absslk.xyz/97483d4812ec5543043471d590426e78
+    - https://Yu7lu0.tosslk.xyz/abc0835f8b5a33959fe576a084d3b7ed
+    - https://N2VOlP.mcsslk.xyz/4bff219c81c989ca5dba7c3e8f4f8f62
+    - http://subssr.xfxvpn.me/api/v1/client/subscribe?token=58a33160d7de2b9ac3831f702b850a13
+    - https://xueyejiasu.com/api/v1/client/subscribe?token=1132c81985298ae292841f7e52561d19
+    - https://needss.link/api/v1/client/subscribe?token=1373da361bb90bf82754d100ba843c24
+    - https://dashuai.us/api/v1/client/subscribe?token=3be31231c0c018cb58c06eb4783b4d9c
+    - https://subscription-gov.lianjiasub.work/api/v1/client/subscribe?token=6600a4a018cd998708050d4d81c49954
+  output: sub/sources/miningAll.yaml
