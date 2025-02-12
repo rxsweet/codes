@@ -1,0 +1,68 @@
+name: collect TG sub sources
+
+# 触发条件
+on:
+  workflow_dispatch:
+  schedule:
+   - cron: '0 7 * * *'
+   #- cron: '0 7,22 * * *'
+#   实际时间：6:00   15:00
+  # 表达式生成  https://crontab.guru/
+
+
+jobs:
+  fetch:
+# 系统设置开始
+    runs-on: ubuntu-latest
+    steps:
+    - name: 迁出代码
+      uses: actions/checkout@v4
+    - name: 安装Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10' 
+    - name: 加载缓存
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/run_in_Actions/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+    - name: 设置时区
+      run: sudo timedatectl set-timezone 'Asia/Shanghai'
+# 系统设置结束
+
+    - name: 安装依赖
+      run: |
+        pip install -r ./utils/collectTGsub/requirements.txt
+    - name: 执行任务 - 1.collect
+      run: |
+        python ./utils/collectTGsub/main.py
+    - name: 执行任务 - 2.log
+      run:
+       python ./utils/subConvert/log.py 'TG'
+    - name: Commit
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        git pull origin main
+        git add ./utils/collectTGsub
+        git add ./sub   #这是pre_check.py定义的输出路径
+        git commit -m "🍀$(date '+%Y-%m-%d %H:%M:%S')  collect TG sources"
+        
+    - name: 推送更改
+      uses:  ad-m/github-push-action@master
+      with:
+         # github_token: ${{ secrets.TOKEN }}
+         branch: main
+
+    - name: Pushes to proxies
+      uses: rxsweet/copy_file_to_another_repo_action@main
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.ACTIONS_USE }}
+      with:
+        source_file: 'sub/'
+        destination_repo: 'rxsweet/proxies'
+        user_email: 'actions@github.com'
+        user_name: 'GitHub Actions'
+        commit_message: 'collect TG sources'

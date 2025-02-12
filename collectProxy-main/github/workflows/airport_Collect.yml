@@ -1,0 +1,80 @@
+name: airport Collect 
+on:
+  schedule:
+    - cron: "01 4,14 * * *"#每天12,22更新
+    #- cron: "01 4,9,14,22 * * *"#每天6,12,17,22更新
+    #- cron: "01 16 * * 5"#每周五,16:01,实际是周六00:01
+  workflow_dispatch:
+concurrency:
+  group: ${{ github.repository }}
+  cancel-in-progress: true
+env:
+  # time zone
+  TZ: Asia/Shanghai
+  # github access token
+  GIST_PAT: ${{ secrets.GIST_PAT }}
+  # github username and gist id, separated by '/'
+  GIST_LINK: ${{ secrets.GIST_LINK }}
+  # the url to the list of airports that you maintain yourself
+  # each line include domain, coupon and invitation code, the domain must be included, and the latter two items are optional
+  CUSTOMIZE_LINK: ${{ secrets.CUSTOMIZE_LINK }}
+  # include special protocols, such as vless hysteria2 and hysteria
+  ENABLE_SPECIAL_PROTOCOLS: ${{ vars.ENABLE_SPECIAL_PROTOCOLS }}
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Prepare
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+          architecture: "x64"
+          cache: "pip"
+      - name: Install
+        run: pip3 install -r ./utils/airport/collectAirport/requirements.txt
+      - name: Collect
+        run: |
+          python -u utils/airport/collectAirport/subscribe/collect.py
+          cp ./utils/airport/collectAirport/data/v2ray.txt ./sub/free.txt
+          cp ./utils/airport/collectAirport/data/clash.yaml ./sub/free.yaml
+          cp ./utils/airport/collectAirport/data/sub_info.yaml ./sub/sources/airport_info.txt
+          #cp ./utils/airport/collectAirport/workflow.log ./utils/airport/collectAirport/log.txt
+          #python -u subscribe/collect.py --all --overwrite --skip
+      - name: check upate airport info
+        run: |
+          python -u utils/airport/collectAirport/get_airport_info.py
+          python -u utils/airport/collectAirport/updateAirport.py
+      - name: 执行任务 - log
+        run: python ./utils/subConvert/log.py 'collect AP' 
+      - name: Commit Changes
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            echo "Changes detected in the repository."
+            git config core.ignorecase false
+            git config --local user.email "actions@github.com"
+            git config --local user.name "GitHub Action"
+            git add ./utils/airport/collectAirport/data/
+            git add ./utils/airport/airportRegister/trial.cfg
+            git add ./utils/airport/collectAirport/subconverter.tar.gz
+            git add ./sub/
+            git commit -m "collect Airport at $(date '+%Y-%m-%d %H:%M:%S')"
+            git push
+          else
+            echo "No changes detected in the repository."
+          fi
+      - name: Timestamp
+        run: date
+      - name: Pushes to proxies
+        uses: rxsweet/copy_file_to_another_repo_action@main
+        env:
+         API_TOKEN_GITHUB: ${{ secrets.ACTIONS_USE }}
+        with:
+          source_file: 'sub/'
+          destination_repo: 'rxsweet/proxies'
+          user_email: 'actions@github.com'
+          user_name: 'GitHub Actions'
+          commit_message: 'collect airport update done'

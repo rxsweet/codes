@@ -1,0 +1,28 @@
+sources:
+- fetcher: url
+  name: subs
+  options:
+    urls:
+    - https://fs.v2rayse.com/share/20250211/fysza21xz0.yaml
+    - http://mm.mibei77.com/202502/02.11Clashiln.yaml
+    - ''
+    - https://raw.githubusercontent.com/pojiezhiyuanjun/freev2/master/0211.txt
+    - https://clashgithub.com/wp-content/uploads/rss/20250211.txt
+    - https://nodefree.githubrowcontent.com/2025/02/20250211.yaml
+    - https://v2rayshare.githubrowcontent.com/2025/02/20250211.yaml
+    - https://oneclash.githubrowcontent.com/2025/02/20250211.yaml
+    - https://wenode.githubrowcontent.com/2025/02/20250211.yaml
+    - https://www.naidounode.com/node/20250211-clash.yaml
+    - https://free.datiya.com/uploads/20250211-clash.yaml
+    - https://a.nodeshare.xyz/uploads/2025/2/20250211.txt
+    - https://clash-meta.github.io/uploads/2025/02/0-20250211.txt
+    - https://clash-meta.github.io/uploads/2025/02/1-20250211.txt
+    - https://clash-meta.github.io/uploads/2025/02/2-20250211.txt
+    - https://clash-meta.github.io/uploads/2025/02/3-20250211.txt
+    - https://clash-meta.github.io/uploads/2025/02/4-20250211.txt
+    - https://clashfree.github.io/uploads/2025/02/0-20250211.txt
+    - https://clashfree.github.io/uploads/2025/02/1-20250211.txt
+    - https://clashfree.github.io/uploads/2025/02/2-20250211.txt
+    - https://clashfree.github.io/uploads/2025/02/3-20250211.txt
+    - https://clashfree.github.io/uploads/2025/02/4-20250211.txt
+  output: sub/sources/dynamicAll.yaml
