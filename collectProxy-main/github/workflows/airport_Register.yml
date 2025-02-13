@@ -31,10 +31,11 @@ jobs:
       - name: 执行任务 -1.Run get_trial.py
         run: |
           cd ./utils/airport/airportRegister/
-          python check_airport.py
           python get_trial.py
+          python airport_info.py
       - name: 执行任务 -2.copy to ./sub/
         run: |
+          cp ./utils/airport/airportRegister/sub_info.yaml ./sub/sources/airport_info1.txt
           python ./utils/subconvert.py    './utils/airport/airportRegister/trial'  'clash' './sub/free1.yaml'
           python ./utils/subconvert.py    './utils/airport/airportRegister/trial'  'base64' './sub/free1.txt'
           #python ./utils/airport/airportRegister/copy_to_sub.py
@@ -68,4 +69,4 @@ jobs:
           destination_repo: 'rxsweet/proxies'
           user_email: 'actions@github.com'
           user_name: 'GitHub Actions'
-          commit_message: 'mailCloud update done'
+          commit_message: 'airport register done'
