@@ -1,0 +1,33 @@
+[
+    {
+        "last_chapter_rule": "js:\neval(fetch('hiker://files/rules/xyq/rxcr.js'));chapter();",
+        "title": "影视-sex",
+        "author": "rx",
+        "version": 2,
+        "type": "all",
+        "url": "hiker://files/rules/xyq/rxcr.txt",
+        "col_type": "movie_3",
+        "class_name": "",
+        "class_url": "",
+        "area_name": "",
+        "area_url": "",
+        "sort_name": "",
+        "year_name": "",
+        "sort_url": "",
+        "year_url": "",
+        "find_rule": "js:\neval(fetch('hiker://files/rules/xyq/rxcr.js'));zywhm();",
+        "searchFind": "js:\neval(fetch('hiker://files/rules/xyq/rxcr.js'));zywsea();",
+        "search_url": "hiker://$$$?wd=**&pg=1&ac=list$$$fypage",
+        "titleColor": "",
+        "group": "sex合集",
+        "detail_col_type": "movie_1",
+        "detail_find_rule": "js:\r\neval(fetch('hiker://files/rules/xyq/rxcr.js',{}));\nTWEJ();",
+        "sdetail_col_type": "movie_1",
+        "sdetail_find_rule": "js:\neval(fetch('hiker://files/rules/xyq/rxcr.js'));zywerj();",
+        "ua": "mobile",
+        "preRule": "function uprulefile() {\n    try {\n        let jiasu = 'https://github.moeyy.xyz/';\n        var ruletxt = fetch('https://rxsub.eu.org/hiker/api/cr.txt', {});\n        var rulejs = fetch('https://rxsub.eu.org/hiker/rules/xyq/zywcj.js', {});\n    } catch (e) {\n        rulejs = \"\";\n        ruletxt = \"\";\n    }\n    if (rulejs.search(/lazyRule/) != -1) {\n        writeFile(\"hiker://files/rules/xyq/rxcr.js\", rulejs);\n        writeFile(\"hiker://files/rules/xyq/rxcr.txt\", ruletxt);\n    } else {\n        setError('规则文件获取失败，可能网络有问题。')\n    };\n};\n\n//检测是否有规则与JS文件\nif (fileExist(\"hiker://files/rules/xyq/rxcr.js\") && fileExist(\"hiker://files/rules/xyq/rxcr.txt\")) {\n    //执行预处理\n    var lac = fetch('hiker://files/rules/xyq/rxcr.js');\n    if(lac.includes('codeberg')){\n        writeFile(\"hiker://files/rules/xyq/rxcr.js\", fetch('https://rxsub.eu.org/hiker/rules/xyq/zywcj.js', {}));\n    }\n    if (lac.search(/lazyRule/) != -1) {\n        eval(lac);\n        if (filter(base64Decode('VklQ'))) {\n            zywpre();\n        } else {\n            uprulefile();\n        };\n    } else {\n        //如果本地文件不对将尝试自修复\n        uprulefile();\n        eval(fetch('hiker://files/rules/xyq/rxcr.js'));\n        zywpre();\n    };\n} else {\n    uprulefile();\n    //执行预处理\n    eval(fetch('hiker://files/rules/xyq/rxcr.js'));\n    zywpre();\n};",
+        "pages": "[]",
+        "proxy": "",
+        "icon": "http://fastgit.cc/https://raw.githubusercontent.com/xyq254245/HikerRule/main/zywcj.png"
+    }
+]
