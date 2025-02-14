@@ -1,0 +1,55 @@
+#music update
+name: update_music
+# 触发条件
+on:
+  workflow_dispatch:
+  schedule:
+   - cron: '0 20 * * *'
+  #实际时间：+ 8小时  = 5:00
+  #这个实际每天5:00执行
+  #表达式生成  https://crontab.guru/
+permissions: write-all
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #DDAL_EMAIL: ${{ secrets.DDAL_EMAIL }}
+      #DDAL_PASSWORD: ${{ secrets.DDAL_PASSWORD }}
+    steps:
+      - name: 设置时区
+        run: sudo timedatectl set-timezone 'Asia/Shanghai' 
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: 安装依赖和工具
+        run: |
+          pip install -r ./music/musicFree/requirements.txt
+      - name: 执行任务 -update musicFree
+        run: |
+          cd ./music/musicFree
+          python update.py
+      - name: 执行任务 -update lx
+        run: |
+          #cd ../..
+          cd ./music/lx
+          python lx_update.py
+      - name: 测试api是否可用
+        run: |
+          python ./music/testMusicApi.py
+      - name: Commit
+        id: commit
+        continue-on-error: true
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions"
+          git add ./music
+          git commit -m "$(date '+%Y-%m-%d %H:%M:%S') update music done"
+          git pull --rebase
+      - name: 推送更改
+        uses:  ad-m/github-push-action@master
+        with:
+          branch: main
