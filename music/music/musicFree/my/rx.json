@@ -1,7 +1,0 @@
-{"plugins": [
-{"name": "网易云", "url": "https://rxsub.eu.org/music/musicFree/my/wy.js", "version": "0.0.1"}, 
-{"name": "酷狗", "url": "https://rxsub.eu.org/music/musicFree/my/kg.js", "version": "0.0.1"}, 
-{"name": "酷我", "url": "https://rxsub.eu.org/music/musicFree/my/kw.js", "version": "0.0.1"}, 
-{"name": "QQ", "url": "https://rxsub.eu.org/music/musicFree/my/qq.js", "version": "0.0.1"}, 
-{"name": "酷歌词", "url": "https://rxsub.eu.org/music/musicFree/my/klrc.js", "version": "0.0.1"}
-]}
