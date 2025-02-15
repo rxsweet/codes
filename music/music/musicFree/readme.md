@@ -25,8 +25,6 @@ def getUrlContent(url):
         
 if "__name__==__main__":#主程序开始
     getUrlContent('https://ikun.laoguantx.top:19742/url/kw/228908/128k')
-    getUrlContent('https://m-api.ceseet.me/url/kw/228908/128k')
-    getUrlContent('https://lxmusic.ikunshare.com/url/kw/228908/128k')
 #kw,kg,wy,mg,tx
 ```
 
@@ -39,7 +37,7 @@ https://ikun.laoguantx.top:19742/url/kw/228908/128k
   "msg": "内部服务器错误",
   "data": null
 }
-https://m-api.ceseet.me/url/kw/228908/128k
+
 {
   "code": 2,
   "msg": "failed",
@@ -50,7 +48,7 @@ https://m-api.ceseet.me/url/kw/228908/128k
   "msg": "failed",
   "data": null
 }
-https://lxmusic.ikunshare.com/url/kw/228908/128k
+https://ikun.laoguantx.top:19742/url/kw/228908/128k
 {
   "code": 0,
   "info": "酷我音乐_None_228908_标准音质 128K",
