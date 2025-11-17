@@ -52,6 +52,7 @@ def airport_info():
                     num = re.search(r'(\d+)', cachelines[i+j]).group(1)
                     if int(num) > 5:
                         bad = re.search(r'\[(.*?)\]', cachelines[i]).group(1)
+                        print(f'{bad} 失败数为：{num}')
                         bads.append(bad)#将失败5次以上的不可用机场记录
                 if cachelines[i+j].startswith("["):#机场信息结束，下个机场位置
                     if fail == False:
@@ -65,11 +66,13 @@ def airport_info():
         data = yaml.dump(aiport_info, f,allow_unicode=True)
         
     #删除不可用的机场
-    i = 20  #需要检测的机场开始的行数
+    
     lens = len(cfglines)
     print(f'开始删除失败次数大于5的机场：')
-    print(f'删除前机场数量：{lens - 20}')
+    print(f'删除前机场数量：{lens - 15}')
     for bad in bads:
+        print(f'bad = {bad}')
+        i = 15  #需要检测的机场开始的行数
         while i < lens:
             if 'buy  period=' in cfglines[i]:
                 url = re.search(r'(.*?)  buy  period=', cfglines[i]).group(1)
@@ -84,7 +87,7 @@ def airport_info():
                 lens = lens -1
                 break
             i = i + 1
-    print(f'删除后机场数量：{lens - 20}')
+    print(f'删除后机场数量：{lens - 15}')
     #将检测完的机场信息保存
     with open(CFG_PATH, 'w', encoding='utf-8') as file:
         for item in cfglines:
