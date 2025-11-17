@@ -1,3 +1,4 @@
+#修改过103行左右，使用了自己的clash.ini文件
 import os
 import re
 from base64 import b64decode, b64encode, urlsafe_b64encode
@@ -99,6 +100,8 @@ def _get_by_any(session: Session, url: str | Iterable[str], retry_400=99) -> Res
 
 @cached
 def _sc_config_url():
+    #直接返回ini，因为调用_sc_config_url()偶尔会出错,自己的ini没有rules，使用的话会出错
+    return 'https://raw.githubusercontent.com/zsokami/ACL4SSR/main/ACL4SSR_Online_Full_Mannix.ini'
     try:
         data = Session().get(
             'https://api.github.com/repos/zsokami/ACL4SSR/git/refs/heads/main',
