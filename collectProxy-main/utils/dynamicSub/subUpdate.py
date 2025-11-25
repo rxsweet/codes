@@ -241,7 +241,7 @@ class update():
                 r1=requests.get(node_url,headers=headers, timeout=5.0)
                 if r.status_code==200:
                     r.encoding='utf-8'    #编码方式
-                    new_url = re.search("(http://mm.mibei77.com(.*).yaml)", r1.text).group(0)#http://mm.mibei77.com/202501/01.11Clashopl.yaml
+                    new_url = re.search("(https?://mm.mibei77.com(.*).yaml)", r1.text).group(0)#http://mm.mibei77.com/202501/01.11Clashopl.yaml
                 else:
                     return current_url
             else:
@@ -264,9 +264,11 @@ class update():
             #搜索可以借鉴下面这个
             article_url = re.findall("https://www.cfmem.com/[^<>\\r\\n]+vpn.html",res.text)[0]
             res = requests.get(article_url,headers=headers)
-            sub_url = sub_url = re.findall("https://fs.v2rayse.com[^<>\\r\\n]+yaml",res.text)[0]
+            #sub_url = re.findall("https://fs.v2rayse.com[^<>\\r\\n]+yaml",res.text)[0]
+            sub_url = re.findall(r'https?://[^\s\'\"<>]+\.yaml',res.text)[0]
         except:
             traceback.print_exc()
+            return current_url
         #链接是否已经更新
         if self.url_updated(sub_url):
             return sub_url
