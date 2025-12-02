@@ -44,6 +44,15 @@ def collect_sub(source):
                 #下载安装subconverter
                 subconverter_install()
                 time.sleep(3)
+                #检测列表里面不能用的网站print出来,暂时不删，自己查看actions时，看哪个不能用，手动删除
+                for url in config['sources'][i]['options']['urls']:
+                    try:
+                        r=requests.get(url)
+                        if r.status_code!=200:
+                            print(f'bad: {url}')
+                    except Exception as err:
+                        print(err)
+                        print(f'bad and err: {url}')
                 #转成subconverter可识别的字符串
                 urllist = '|'.join(config['sources'][i]['options']['urls']) 
                 temp = convert_remote(urllist,'YAML')
@@ -62,8 +71,14 @@ def collect_sub(source):
                             yaml_list['proxies'].extend(url_yaml_list['proxies'])
                         except:
                             print(f"{url} 解析出错！")
+                            
                             #记录错误,保存错误文件
-                            log_err(f' 源文件{source}中，{url}\n{str(exc)}')
+                            #现将下面保存错误提示关掉，需要时打开下一行代码就可以保存错误日志
+                            #log_err(f' 源文件{source}中，转换{url}时，解析出错！下面是错误信息：\n{str(exc)}')
+                            
+                            #现将上面的保存错误提示，改成下一行的显示错误提示信息
+                            print(f' 源文件{source}中，转换{url}时，解析出错！下面是错误信息：\n{str(exc)}')
+                            
                             #将得到的错误内容写入文件，暂时不需要
                             #print(f'错误文件保存至{ERR_PATH}')
                             #with open(ERR_PATH, 'w') as f:
