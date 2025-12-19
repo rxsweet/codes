@@ -116,7 +116,104 @@ def _sc_config_url():
         print(f'_sc_config_url: 获取 sha 失败，使用 main: {e}')
         return 'https://raw.githubusercontent.com/zsokami/ACL4SSR/main/ACL4SSR_Online_Full_Mannix.ini'
 
+#def _base_clash_config()是AI帮忙修改的，尝试跳过出现的错误，原版在代码下面
+@cached
+def _base_clash_config():
+    session = Session(user_agent='ClashforWindows')
+    url = f"sub?target=clash&config={_sc_config_url()}&url=ss://YWVzLTEyOC1nY206YWJj@c.c:1%231"
+    
+    try:
+        res = _get_by_any(session, url)
+        if not res or not res.content:
+            raise ValueError("响应为空")
+        
+        y = _yaml()
+        cfg = y.load(res.content)
+        
+        # 尝试读取本地 base.yaml（如果存在的话，优先使用）
+        try:
+            base_yaml = read('base.yaml', reader=y.load)
+        except:
+            # 如果本地也没有，就用下面的硬编码备用
+            raise FileNotFoundError("本地 base.yaml 未找到")
+        
+        group_to_provider_map = {g['name']: g['use'][0] for g in base_yaml['proxy-groups'] if 'use' in g}
+        groups = base_yaml['proxy-groups'] = cfg['proxy-groups']
+        
+        for g in groups:
+            if (p := group_to_provider_map.get(g['name'])):
+                if 'proxies' in g:
+                    del g['proxies']
+                g['use'] = [p]
+                base_yaml['proxy-providers'].setdefault(p, None)
+        
+        rules = _remove_redundant_rules(cfg['rules'])
+        print("成功从远程获取并合并基础 Clash 配置")
+        return base_yaml, group_to_provider_map, rules
+        
+    except Exception as e:
+        print(f"_cache_base_clash_config: 获取基本 clash 配置失败 ({e})，使用内置最小备用配置继续运行")
+        
+        # 内置最小可靠备用配置（可根据你的实际需求调整）
+        minimal_base_yaml = {
+            'proxy-providers': {
+                'p1': None,
+                'p2': None,
+                'p3': None,
+                'p4': None,
+                'p5': None,
+            },
+            'proxy-groups': [
+                {
+                    'name': 'Proxy',
+                    'type': 'select',
+                    'use': ['p1', 'p2', 'p3', 'p4', 'p5'],
+                },
+                {
+                    'name': 'Auto',
+                    'type': 'url-test',
+                    'use': ['p1', 'p2', 'p3', 'p4', 'p5'],
+                    'url': 'http://www.gstatic.com/generate_204',
+                    'interval': 300,
+                },
+                {
+                    'name': 'LoadBalance',
+                    'type': 'load-balance',
+                    'use': ['p1', 'p2', 'p3', 'p4', 'p5'],
+                    'url': 'http://www.gstatic.com/generate_204',
+                    'interval': 300,
+                },
+                {
+                    'name': 'Direct',
+                    'type': 'direct',
+                },
+                {
+                    'name': 'Reject',
+                    'type': 'reject',
+                },
+            ],
+        }
+        
+        # 对应的 group -> provider 映射（与上面的 use 顺序保持一致）
+        group_to_provider_map = {
+            'Proxy': 'p1',          # 默认选中 p1
+            'Auto': 'p1',
+            'LoadBalance': 'p1',
+        }
+        
+        # 一个最基本的规则集（避免规则为空导致问题）
+        minimal_rules = [
+            'DOMAIN-SUFFIX,google.com,Proxy',
+            'DOMAIN-SUFFIX,apple.com,Proxy',
+            'DOMAIN-SUFFIX,microsoft.com,Proxy',
+            'GEOIP,CN,Direct',
+            'MATCH,Auto',
+        ]
+        
+        return minimal_base_yaml, group_to_provider_map, minimal_rules
 
+#原代码上面是AI修改的
+"""
 @cached
 def _base_clash_config():
     session = Session(user_agent='ClashforWindows')
@@ -137,7 +234,7 @@ def _base_clash_config():
         return base_yaml, group_to_provider_map, rules
     except Exception as e:
         raise Exception(f'_cache_base_clash_config: 获取基本 clash 配置失败: {e}')
-
+"""
 
 def _base_yaml():
     return _base_clash_config()[0]
