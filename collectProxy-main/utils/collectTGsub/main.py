@@ -7,6 +7,7 @@ import requests
 from loguru import logger
 from tqdm import tqdm
 from retry import retry
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 #爬取源
 TGconfigListPath = './utils/collectTGsub/config.yaml'
@@ -96,52 +97,53 @@ def filter_base64(text):
     return False
 
 
-@logger.catch
-def sub_check(url,bar):
-    headers = {'User-Agent': 'ClashforWindows/0.18.1'}
-    with thread_max_num:
-        @retry(tries=2)
-        def start_check(url):
-            res=requests.get(url,headers=headers,timeout=5)#设置5秒超时防止卡死
-            if res.status_code == 200:
-                try: #有流量信息
-                    info = res.headers['subscription-userinfo']
-                    info_num = re.findall('\d+',info)
-                    if info_num :
-                        upload = int(info_num[0])
-                        download = int(info_num[1])
-                        total = int(info_num[2])
-                        unused = (total - upload - download) / 1024 / 1024 / 1024
-                        unused_rounded = round(unused, 2)#取小数点后的2位
-                        if unused_rounded > 0:#流量大于0
-                            new_sub_list.append(url)
-                            #play_list.append('可用流量:' + str(unused_rounded) + ' GB                    ' + url)
-                except:
-                    # 判断是否为clash
-                    try:
-                        u = re.findall('proxies:', res.text)[0]
-                        if u == "proxies:":
-                            new_clash_list.append(url)
-                    except:
-                        # 判断是否为v2
-                        try:
-                            # 解密base64
-                            text = res.text[:64]
-                            text = base64.b64decode(text)
-                            text = str(text)
-                            if filter_base64(text):
-                                new_v2_list.append(url)
-                        # 均不是则非订阅链接
-                        except:
-                            pass
-            else:
-                pass
-        try:
-            start_check(url)
-        except:
-            pass
-        bar.update(1)
+def check_single_url(url):
+    """检查单个订阅链接，返回是否处理完成（始终返回 True，便于 tqdm 更新）"""
+    
+    #暂时先关闭，需要调试的时候打开，查看哪个网址慢
+    #logger.debug(f"正在检查: {url}")  # 关键：记录每个开始检查的 URL
 
+    headers = {'User-Agent': 'ClashforWindows/0.18.1'}
+    
+    try:
+        with requests.get(url, headers=headers, timeout=5) as res:
+            if res.status_code == 200:
+                try:  # 有流量信息
+                    info = res.headers.get('subscription-userinfo')
+                    if info:
+                        info_num = re.findall(r'\d+', info)
+                        if info_num:
+                            upload = int(info_num[0])
+                            download = int(info_num[1])
+                            total = int(info_num[2])
+                            unused = (total - upload - download) / 1024 / 1024 / 1024
+                            unused_rounded = round(unused, 2)
+                            if unused_rounded > 0:
+                                new_sub_list.append(url)
+                                # play_list.append('可用流量:' + str(unused_rounded) + ' GB                    ' + url)
+                except Exception:
+                    # 判断是否为 clash 配置
+                    try:
+                        if "proxies:" in res.text:
+                            new_clash_list.append(url)
+                    except Exception:
+                        # 判断是否为 v2ray 订阅（base64）
+                        try:
+                            text = res.text[:64]
+                            decoded = base64.b64decode(text).decode('utf-8', errors='ignore')
+                            if filter_base64(decoded):
+                                new_v2_list.append(url)
+                        except Exception:
+                            pass
+            # else: 状态码不是 200，直接跳过
+    except Exception as e:
+        # 所有异常（超时、连接错误等）都捕获，不影响其他线程
+        #暂时先关掉，需要调试查看时打开
+        #logger.debug(f"检查失败（已跳过）: {url} ")
+        pass
+    
+    return True  # 表示这个 URL 已处理完
+    
 def list_rm(urlList):  
     begin = 0
     length = len(urlList)
@@ -150,7 +152,7 @@ def list_rm(urlList):
         proxy_compared = urlList[begin]
         begin_2 = begin + 1
         while begin_2 <= (length - 1):
-            if proxy_compared == urlList[begin_2] or 'https://t.me/' in urlList[begin_2] or 'telegram-cdn.org' in urlList[begin_2]:
+            if proxy_compared == urlList[begin_2] or 'https://t.me/' in urlList[begin_2] or 'http://t.me/' in urlList[begin_2] or 'telegram-cdn.org' in urlList[begin_2] or 'https://github.com' in urlList[begin_2] or 'dl5.cdnhost.lol' in urlList[begin_2]:
                 urlList.pop(begin_2)
                 length -= 1
             begin_2 += 1
@@ -178,26 +180,20 @@ if __name__=='__main__':
     f.write(subnodes)
     f.close()
     logger.info('爬取节点写入文件结束---')
-	
+    
     #列表去重和删除无用的网站
     list_rm(url_list)
-	
+    
     logger.info('开始筛选订阅源---')
-    thread_max_num = threading.Semaphore(32)  # 32线程
-    bar = tqdm(total=len(url_list), desc='订阅源筛选：')
-    thread_list = []
-    for url in url_list:
-        # 为每个新URL创建线程
-        t = threading.Thread(target=sub_check, args=(url, bar))
-        # 加入线程池并启动
-        thread_list.append(t)
-        t.daemon=True
-        t.start()
-    for t in thread_list:
-        t.join()
-    bar.close()
+    # 使用 ThreadPoolExecutor，最大并发 16
+    with ThreadPoolExecutor(max_workers=16) as executor:
+        # 提交所有任务
+        futures = [executor.submit(check_single_url, url) for url in url_list]
+        # 使用 as_completed + tqdm 显示进度条
+        for _ in tqdm(as_completed(futures), total=len(url_list), desc='订阅源筛选：'):
+            pass  # 这里不需要 future.result()，因为异常已在函数内处理
     logger.info('筛选完成')
-	
+    
     #爬取订阅源
     old_sub_list = dict_url['机场订阅']
     #old_clash_list = dict_url['clash订阅']
