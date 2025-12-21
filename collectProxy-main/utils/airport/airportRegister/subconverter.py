@@ -1,4 +1,4 @@
-#修改过103行左右，使用了自己的clash.ini文件
+#修改版，不出现错误，不好用的话，使用上一版
 import os
 import re
 from base64 import b64decode, b64encode, urlsafe_b64encode
@@ -8,22 +8,15 @@ from random import randint
 from time import time
 from typing import Callable, Iterable
 from urllib.parse import quote, urljoin
-
 from ruamel.yaml import YAML
-
 from apis import Response, Session
 from get_trial_update_url import get_pp_url
 from utils import (DOMAIN_SUFFIX_Tree, IP_CIDR_SegmentTree, cached,
                    clear_files, get_name, list_file_paths, re_non_empty_base64,
                    read, read_cfg, write)
-
 GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
-
-
 class SCError(Exception):
     pass
-
-
 @cached
 def subconverters():
     try:
@@ -33,18 +26,13 @@ def subconverters():
         pass
     print('本地订阅转换不可用，使用远程订阅转换')
     return [row[0] for row in read_cfg('subconverters.cfg')['default']]
-
-
 def _yaml():
     yaml = YAML()
     yaml.version = (1, 1)
     yaml.width = float('inf')
     return yaml
-
-
 def _get_by_any(session: Session, url: str | Iterable[str], retry_400=99) -> Response | list[Response]:
     r = None
-
     if isinstance(url, str):
         def get():
             nonlocal retry_400, r
@@ -65,7 +53,7 @@ def _get_by_any(session: Session, url: str | Iterable[str], retry_400=99) -> Res
             try:
                 r = [session.get(url) for url in url]
                 if any(r.ok for r in r):
-                    for i, u in enumerate(url):
+                    for i in enumerate(url):
                         for _ in range(5):
                             if r[i].ok:
                                 break
@@ -78,7 +66,6 @@ def _get_by_any(session: Session, url: str | Iterable[str], retry_400=99) -> Res
             except Exception:
                 pass
             return False
-
     session.allow_redirects = 0
     o_base = session.base
     if o_base:
@@ -96,8 +83,6 @@ def _get_by_any(session: Session, url: str | Iterable[str], retry_400=99) -> Res
     if not r:
         raise Exception('_get_by_any: not r')
     return r
-
-
 @cached
 def _sc_config_url():
     #直接返回ini，因为调用_sc_config_url()偶尔会出错,自己的ini没有rules，使用的话会出错
@@ -115,45 +100,44 @@ def _sc_config_url():
     except Exception as e:
         print(f'_sc_config_url: 获取 sha 失败，使用 main: {e}')
         return 'https://raw.githubusercontent.com/zsokami/ACL4SSR/main/ACL4SSR_Online_Full_Mannix.ini'
-
 #def _base_clash_config()是AI帮忙修改的，尝试跳过出现的错误，原版在代码下面
 @cached
 def _base_clash_config():
     session = Session(user_agent='ClashforWindows')
     url = f"sub?target=clash&config={_sc_config_url()}&url=ss://YWVzLTEyOC1nY206YWJj@c.c:1%231"
-    
+   
     try:
         res = _get_by_any(session, url)
         if not res or not res.content:
             raise ValueError("响应为空")
-        
+       
         y = _yaml()
         cfg = y.load(res.content)
-        
+       
         # 尝试读取本地 base.yaml（如果存在的话，优先使用）
         try:
             base_yaml = read('base.yaml', reader=y.load)
         except:
             # 如果本地也没有，就用下面的硬编码备用
             raise FileNotFoundError("本地 base.yaml 未找到")
-        
+       
         group_to_provider_map = {g['name']: g['use'][0] for g in base_yaml['proxy-groups'] if 'use' in g}
         groups = base_yaml['proxy-groups'] = cfg['proxy-groups']
-        
+       
         for g in groups:
             if (p := group_to_provider_map.get(g['name'])):
                 if 'proxies' in g:
                     del g['proxies']
                 g['use'] = [p]
                 base_yaml['proxy-providers'].setdefault(p, None)
-        
+       
         rules = _remove_redundant_rules(cfg['rules'])
         print("成功从远程获取并合并基础 Clash 配置")
         return base_yaml, group_to_provider_map, rules
-        
+       
     except Exception as e:
         print(f"_cache_base_clash_config: 获取基本 clash 配置失败 ({e})，使用内置最小备用配置继续运行")
-        
+       
         # 内置最小可靠备用配置（可根据你的实际需求调整）
         minimal_base_yaml = {
             'proxy-providers': {
@@ -193,14 +177,14 @@ def _base_clash_config():
                 },
             ],
         }
-        
+       
         # 对应的 group -> provider 映射（与上面的 use 顺序保持一致）
         group_to_provider_map = {
-            'Proxy': 'p1',          # 默认选中 p1
+            'Proxy': 'p1', # 默认选中 p1
             'Auto': 'p1',
             'LoadBalance': 'p1',
         }
-        
+       
         # 一个最基本的规则集（避免规则为空导致问题）
         minimal_rules = [
             'DOMAIN-SUFFIX,google.com,Proxy',
@@ -209,9 +193,8 @@ def _base_clash_config():
             'GEOIP,CN,Direct',
             'MATCH,Auto',
         ]
-        
+       
         return minimal_base_yaml, group_to_provider_map, minimal_rules
-
 #原代码上面是AI修改的
 """
 @cached
@@ -235,19 +218,12 @@ def _base_clash_config():
     except Exception as e:
         raise Exception(f'_cache_base_clash_config: 获取基本 clash 配置失败: {e}')
 """
-
 def _base_yaml():
     return _base_clash_config()[0]
-
-
 def _group_to_provider_map():
     return _base_clash_config()[1]
-
-
 def _rules():
     return _base_clash_config()[2]
-
-
 def _remove_redundant_rules(rules):
     keywords = []
     domain_tree = DOMAIN_SUFFIX_Tree()
@@ -274,13 +250,9 @@ def _remove_redundant_rules(rules):
         i += 1
     del rules[i:]
     return rules
-
-
 def _get_info(r: Response):
     info = r.headers.get('subscription-userinfo')
     return dict(kv.split('=') for kv in info.split('; ')) if info else None
-
-
 def get(url: str, suffix=None):
     session = Session(user_agent='ClashforWindows')
     _url = quote('|'.join(f'{part}#{time()}' for part in url.split('|')))
@@ -289,7 +261,6 @@ def get(url: str, suffix=None):
         params += '&rename=' + quote(f'$@{suffix}')
     clash_url = f'sub?target=clash&udp=true&scv=true&expand=false&classic=true&{params}&url={_url}'
     base64_url = f'sub?target=mixed&{params}&url={_url}'
-
     res = _get_by_any(session, clash_url, retry_400=1)
     if not res.ok:
         _urls = url.split('|')
@@ -308,24 +279,16 @@ def get(url: str, suffix=None):
                 res.headers.update(_res.headers)
         else:
             res = _get_by_any(session, clash_url)
-
     if not res.ok or b'proxies:' not in res.content:
         raise SCError(f'订阅转换失败(可能订阅链接无效/无试用/无节点/已过期) {url} {res}')
-
     clash = res.content
     clash_url = urljoin(session.base, clash_url)
-
     base64 = _get_by_any(session, base64_url).content
     base64_url = urljoin(session.base, base64_url)
-
     return _get_info(res), base64, clash, base64_url, clash_url
-
-
 def _is_all_in(a, b):
     b_n_to_p = {p['name']: p for p in b}
     return all(p == b_n_to_p.get(p['name']) for p in a)
-
-
 def select(urls: list[str], is_clash: Callable[[str], bool]) -> str:
     if len(urls) == 1:
         return urls[0]
@@ -359,8 +322,6 @@ def select(urls: list[str], is_clash: Callable[[str], bool]) -> str:
             urls.append(u)
             name_set.update(p['name'] for p in ps)
     return '|'.join(urls)
-
-
 def _parse_node_groups(y: YAML, clash, exclude: re.Pattern = None):
     cfg = y.load(clash)
     g_to_p = _group_to_provider_map()
@@ -377,8 +338,6 @@ def _parse_node_groups(y: YAML, clash, exclude: re.Pattern = None):
             if proxies:
                 provider_map[g_to_p[name]] = proxies
     return name_to_node_map, provider_map
-
-
 def _read_and_merge_providers(y: YAML, providers_dirs, exclude: re.Pattern = None):
     name_to_node_map = {}
     provider_map = defaultdict(list)
@@ -392,25 +351,19 @@ def _read_and_merge_providers(y: YAML, providers_dirs, exclude: re.Pattern = Non
                     name_to_node_map |= kvs
                     provider_map[name] += (k for k, _ in kvs)
     return name_to_node_map, provider_map
-
-
 def _split_providers(provider_map: dict[str, list[str]]):
     to_order = defaultdict(lambda: 99, ((k, i) for i, k in enumerate(_base_yaml()['proxy-providers'])))
-
     node_to_providers = defaultdict(list)
     for k, v in sorted(provider_map.items(), key=lambda kv: to_order[kv[0]]):
         for node in v:
             node_to_providers[node].append(k)
-
     providers_to_nodes = defaultdict(list)
     for k, v in node_to_providers.items():
         providers_to_nodes[tuple(v)].append(k)
-
     provider_to_providers = defaultdict(list)
     for k in providers_to_nodes:
         for provider in k:
             provider_to_providers[provider].append(k)
-
     to_real_providers_kvs = []
     providers_to_name = {}
     providers_set = set()
@@ -421,26 +374,20 @@ def _split_providers(provider_map: dict[str, list[str]]):
             if len(v) == 1:
                 providers_to_name[v[0]] = k
             to_real_providers_kvs.append((k, v))
-
     real_provider_kvs = []
     for k, v in providers_to_nodes.items():
         if k not in providers_to_name:
             providers_to_name[k] = f"p_{'_'.join(k)}"
         real_provider_kvs.append((providers_to_name[k], v))
-
     for k, v in to_real_providers_kvs:
         for i, providers in enumerate(v):
             v[i] = providers_to_name[providers]
         v.sort(key=lambda k: to_order[k])
-
     to_real_providers_kvs.sort(key=lambda kv: to_order[kv[0]])
     to_real_providers = dict(to_real_providers_kvs)
     real_provider_kvs.sort(key=lambda kv: to_order[kv[0]])
     real_provider_map = dict(real_provider_kvs)
-
     return to_real_providers, real_provider_map
-
-
 def _exclude_p_Other(to_real_providers, real_provider_map, name_to_node_map):
     if 'Other' in to_real_providers:
         excluded = []
@@ -454,8 +401,6 @@ def _exclude_p_Other(to_real_providers, real_provider_map, name_to_node_map):
             del real_provider_map['Other']
         for p in excluded:
             del name_to_node_map[p]
-
-
 def _split_and_write_providers(y: YAML, providers_dir, clash=None, providers_dirs=None, exclude=None):
     if clash:
         name_to_node_map, provider_map = _parse_node_groups(y, clash, exclude)
@@ -472,8 +417,6 @@ def _split_and_write_providers(y: YAML, providers_dir, clash=None, providers_dir
     provider_map = {k: [p for name in v for p in real_provider_map[name]] for k, v in to_real_providers.items()}
     real_providers = [*real_provider_map]
     return provider_map, to_real_providers, real_providers, name_to_node_map
-
-
 def _add_proxy_providers(cfg, real_providers, providers_dir):
     providers = {}
     base_provider = _base_yaml()['proxy-providers']['All']
@@ -483,8 +426,6 @@ def _add_proxy_providers(cfg, real_providers, providers_dir):
         provider['path'] = f'{providers_dir}/{k}.yaml'
         providers[k] = provider
     cfg['proxy-providers'] = providers
-
-
 def _remove_redundant_groups(cfg, provider_map):
     groups = cfg['proxy-groups']
     removed_groups = set()
@@ -505,56 +446,56 @@ def _remove_redundant_groups(cfg, provider_map):
                     proxies[i] = name
                     i += 1
             del proxies[i:]
-
-
 def _to_real_providers(cfg, to_real_providers):
     for g in cfg['proxy-groups']:
         if 'use' in g:
             g.pop('url', None)
             g.pop('interval', None)
             g['use'] = to_real_providers[g['use'][0]]
-
-
 def _to_proxies(cfg, provider_map):
     for g in cfg['proxy-groups']:
         if 'use' in g:
             g['proxies'] = provider_map[g['use'][0]]
             del g['use']
-
-
 def gen_base64_and_clash_config(base64_path, clash_path, clash_pp_path, providers_dir, base64=None, base64_paths=None, clash=None, providers_dirs=None, exclude=None):
     y = _yaml()
     split_result = _split_and_write_providers(
         y, providers_dir, clash, providers_dirs, re.compile(exclude, re.I) if exclude else None)
     provider_map, to_real_providers, real_providers, name_to_node_map = split_result
+    
+    # 修改这里：无节点时不 raise 错误，而是生成空配置继续运行
     if not name_to_node_map:
-        raise SCError('无可用节点')
-    base64_node_n = _gen_base64_config(base64_path, name_to_node_map, base64, base64_paths)
+        print("警告: 无可用节点，使用空节点配置继续生成文件")
+        name_to_node_map = {}  # 空映射
+        provider_map = {}
+        to_real_providers = {}
+        real_providers = []
+        # 生成空的 base64 文件（只一个换行）
+        write(base64_path, b'\n')
+        base64_node_n = 0
+    else:
+        base64_node_n = _gen_base64_config(base64_path, name_to_node_map, base64, base64_paths)
+    
     _gen_clash_config(y, clash_path, clash_pp_path, providers_dir, name_to_node_map,
                       provider_map, to_real_providers, real_providers)
-    if base64_node_n != len(name_to_node_map):
+    
+    if 'base64_node_n' in locals() and base64_node_n != len(name_to_node_map):
         print(f'base64 ({base64_node_n}) 与 clash {len(name_to_node_map)} 节点数量不一致')
-    return base64_node_n
-
+    return len(name_to_node_map)  # 返回实际节点数（无节点时返回 0）
 
 def _gen_clash_config(y, clash_path, clash_pp_path, providers_dir, name_to_node_map, provider_map, to_real_providers, real_providers):
     cfg = deepcopy(_base_yaml())
     del cfg['proxy-providers']
     _remove_redundant_groups(cfg, provider_map)
     hardcode_cfg = deepcopy(cfg)
-
     _to_real_providers(cfg, to_real_providers)
     _add_proxy_providers(cfg, real_providers, providers_dir)
     cfg['rules'] = _rules()
-
     _to_proxies(hardcode_cfg, provider_map)
-    hardcode_cfg['proxies'] = [*name_to_node_map.values()]
+    hardcode_cfg['proxies'] = list(name_to_node_map.values())  # 无节点时为空列表
     hardcode_cfg['rules'] = _rules()
-
     write(clash_path, lambda f: y.dump(hardcode_cfg, f))
     write(clash_pp_path, lambda f: y.dump(cfg, f))
-
-
 def _gen_base64_config(base64_path, name_to_node_map, base64=None, base64_paths=None):
     if base64_paths:
         base64s = (read(path, True) for path in base64_paths)
