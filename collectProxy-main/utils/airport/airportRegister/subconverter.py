@@ -96,38 +96,38 @@ def _sc_config_url():
 def _base_clash_config():
     session = Session(user_agent='ClashforWindows')
     url = f"sub?target=clash&config={_sc_config_url()}&url=ss://YWVzLTEyOC1nY206YWJj@c.c:1%231"
-  
+ 
     try:
         res = _get_by_any(session, url)
         if not res or not res.content:
             raise ValueError("响应为空")
-      
+     
         y = _yaml()
         cfg = y.load(res.content)
-      
+     
         # 尝试读取本地 base.yaml（如果存在的话，优先使用）
         try:
             base_yaml = read('base.yaml', reader=y.load)
         except:
             raise FileNotFoundError("本地 base.yaml 未找到")
-      
+     
         group_to_provider_map = {g['name']: g['use'][0] for g in base_yaml['proxy-groups'] if 'use' in g}
         groups = base_yaml['proxy-groups'] = cfg['proxy-groups']
-      
+     
         for g in groups:
             if (p := group_to_provider_map.get(g['name'])):
                 if 'proxies' in g:
                     del g['proxies']
                 g['use'] = [p]
                 base_yaml['proxy-providers'].setdefault(p, None)
-      
+     
         rules = _remove_redundant_rules(cfg['rules'])
         print("成功从远程获取并合并基础 Clash 配置")
         return base_yaml, group_to_provider_map, rules
-      
+     
     except Exception as e:
         print(f"_cache_base_clash_config: 获取基本 clash 配置失败 ({e})，使用内置最小备用配置继续运行")
-      
+     
         # 内置最小可靠备用配置
         minimal_base_yaml = {
             'proxy-providers': {
@@ -167,13 +167,13 @@ def _base_clash_config():
                 },
             ],
         }
-      
+     
         group_to_provider_map = {
             'Proxy': 'p1',
             'Auto': 'p1',
             'LoadBalance': 'p1',
         }
-      
+     
         minimal_rules = [
             'DOMAIN-SUFFIX,google.com,Proxy',
             'DOMAIN-SUFFIX,apple.com,Proxy',
@@ -181,7 +181,7 @@ def _base_clash_config():
             'GEOIP,CN,Direct',
             'MATCH,Auto',
         ]
-      
+     
         return minimal_base_yaml, group_to_provider_map, minimal_rules
 
 def _base_yaml():
@@ -240,7 +240,9 @@ def get(url: str, suffix=None):
         if not _res.ok:
             raise Exception(f'({_url}): {_res}')
         if not (re_non_empty_base64.fullmatch(_res.content) or b'proxies:' in _res.content):
-            raise SCError(f'订阅链接无效/无试用/无节点/已过期 {_url} {_res}')
+            raise SCError(
+                f'订阅链接无效/无试用/无节点/已过期 {_url} {_res}'
+            )
         if session.hostname == 'localhost' and len(_urls) == 1:
             _url = 'data:text/plain;base64,' + urlsafe_b64encode(_res.content).decode()
             clash_url = f'sub?target=clash&udp=true&scv=true&expand=false&classic=true&{params}&url={_url}'
@@ -251,7 +253,9 @@ def get(url: str, suffix=None):
         else:
             res = _get_by_any(session, clash_url)
     if not res.ok or b'proxies:' not in res.content:
-        raise SCError(f'订阅转换失败(可能订阅链接无效/无试用/无节点/已过期) {url} {res}')
+        raise SCError(
+            f'订阅转换失败(可能订阅链接无效/无试用/无节点/已过期) {url} {res}'
+        )
     clash = res.content
     clash_url = urljoin(session.base, clash_url)
     base64 = _get_by_any(session, base64_url).content
@@ -276,7 +280,9 @@ def select(urls: list[str], is_clash: Callable[[str], bool]) -> str:
         if r.ok and r.content.startswith(b'proxies:')
     ]
     if not urls_and_rs:
-        raise SCError(f'订阅转换失败(可能订阅链接无效/无试用/无节点/已过期) {urls}')
+        raise SCError(
+            f'订阅转换失败(可能订阅链接无效/无试用/无节点/已过期) {urls}'
+        )
     if len(urls_and_rs) == 1:
         return urls_and_rs[0][0]
     y = _yaml()
@@ -410,18 +416,18 @@ def _add_proxy_providers(cfg, real_providers, providers_dir):
             'url': 'https://example.com/All.yaml',  # 实际会替换
             'interval': 3600,
             'health-check': {
-                'enable': true,
+                'enable': True,  # 已修正为 Python 正确的布尔值
                 'url': 'http://www.gstatic.com/generate_204',
                 'interval': 300
             }
         }
-    
+   
     for k in real_providers:
         provider = deepcopy(base_provider)
         provider['url'] = get_pp_url(f'{providers_dir}/{k}.yaml')
         provider['path'] = f'{providers_dir}/{k}.yaml'
         providers[k] = provider
-    
+   
     cfg['proxy-providers'] = providers
 
 def _remove_redundant_groups(cfg, provider_map):
@@ -463,7 +469,7 @@ def gen_base64_and_clash_config(base64_path, clash_path, clash_pp_path, provider
     split_result = _split_and_write_providers(
         y, providers_dir, clash, providers_dirs, re.compile(exclude, re.I) if exclude else None)
     provider_map, to_real_providers, real_providers, name_to_node_map = split_result
-   
+  
     if not name_to_node_map:
         print("警告: 无可用节点，使用空节点配置继续生成文件")
         name_to_node_map = {}
@@ -474,10 +480,10 @@ def gen_base64_and_clash_config(base64_path, clash_path, clash_pp_path, provider
         base64_node_n = 0
     else:
         base64_node_n = _gen_base64_config(base64_path, name_to_node_map, base64, base64_paths)
-   
+  
     _gen_clash_config(y, clash_path, clash_pp_path, providers_dir, name_to_node_map,
                       provider_map, to_real_providers, real_providers)
-   
+  
     total_node_n = len(name_to_node_map)
     if base64_node_n != total_node_n:
         print(f'base64 ({base64_node_n}) 与 clash {total_node_n} 节点数量不一致')
