@@ -31,9 +31,11 @@ def getContent(url):#获取网站的内容，将获取的内容返回
             r.encoding='utf-8'    #编码方式
             return r.text
     except requests.exceptions.RequestException as e:  
+        print(f'获取{url}内容时出错,下面是出错内容：')
+        print(f'------------------------------------')
         print(e)
+        print(f'------------------------------------')
         #print('getContent()功能中出现的错误！获取内容失败，或者打开网址错误!')
-        print(f'获取{url}内容时出错')
         return []
         
 # 流量byte转字符串str大小
@@ -154,9 +156,10 @@ def sub_check(url,bar):
                                                 #print("url_yaml['content-disposition'] = " + url_yaml['content-disposition'] )
                                             sub_info.append(url_yaml)
                                     except Exception as e: 
-                                        print('获取机场信息失败')
+                                        print(f'获取{url}机场信息失败，下面是出错内容：')
+                                        print(f'------------------------------------')
                                         print(e)
-                                
+                                        print(f'------------------------------------')
                                 #print(url+' 到期时间：' + date_str +' -- 剩余流量：' + liuliang_str)
                             else: # 已经过期
                                 old_list.append(url)
@@ -183,8 +186,10 @@ def sub_check(url,bar):
                                            url_yaml['name'] = urllib.parse.unquote(name.group(1))
                                         sub_info.append(url_yaml)
                                 except Exception as e: 
-                                    print('获取机场信息失败')
+                                    print(f'获取{url}机场信息失败，下面是出错内容：')
+                                    print(f'------------------------------------')
                                     print(e)
+                                    print(f'------------------------------------')
                             #print(url+' 到期时间：无 -- 剩余流量：'+ liuliang_str)
                     else: # 流量小于10MB
                         #old_list.append(url)
@@ -304,11 +309,15 @@ def fetch_airport(airport_info_yaml):
             if k in domain:
                 keys = re.split('@#@#',domain)#以‘@#@#’切割成字符串列表
                 if keys[1] != '\t\t':#如果有优惠码
-                    coupon_code = keys[1].replace('\t','')  #row = row.replace('\r','').replace('\n','').replace('\t','')去掉这些特殊字符
-                    coupon_code = urllib.parse.quote(coupon_code, safe='')
-                    buy_code = f"  buy  period={airport_info_yaml[k]['period']}&plan_id={airport_info_yaml[k]['plan_id']}&coupon_code={coupon_code}"
-                    airport_info_yaml[k]['buy_code'] = buy_code
-                    #k = k + buy_code
+                    #防止异常代码终止
+                    try:
+                        coupon_code = keys[1].replace('\t','')  #row = row.replace('\r','').replace('\n','').replace('\t','')去掉这些特殊字符
+                        coupon_code = urllib.parse.quote(coupon_code, safe='')
+                        buy_code = f"  buy  period={airport_info_yaml[k]['period']}&plan_id={airport_info_yaml[k]['plan_id']}&coupon_code={coupon_code}"
+                        airport_info_yaml[k]['buy_code'] = buy_code
+                        #k = k + buy_code
+                    except:
+                        pass
                     continue
     
 if __name__=='__main__':
@@ -350,12 +359,13 @@ if __name__=='__main__':
         alive.append(url['api'])
         cunzai = 0
         for key,value in airport_info_yaml.items():
-            if url['name'] == value['name']:#将相同名字的机场信息合并到airport_info_yaml
-                value['api']   = url['api']
-                value['time']  = url['time']
-                value['free']  = url['free']
-                value['nodes'] = url['nodes']
-                cunzai = 1
+            if 'name' in url and 'name' in value:
+                if url['name'] == value['name']:#将相同名字的机场信息合并到airport_info_yaml
+                    value['api']   = url['api']
+                    value['time']  = url['time']
+                    value['free']  = url['free']
+                    value['nodes'] = url['nodes']
+                    cunzai = 1
         if cunzai == 0:#airport_info_yaml中没有的机场,先保存，准备后面添加，现在添加好像会出错
             temp.append(url)
     #将不重复的机场添加到airport_info_yaml
