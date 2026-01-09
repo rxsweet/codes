@@ -1,5 +1,14 @@
 大佬仓库 - https://github.com/wzdnzd/aggregator
 
+# 需要关注
+
+***是否有更新（抓取机场的功能）：https://github.com/wzdnzd/aggregator/blob/main/subscribe/crawl.py***
+```
+2026.1.9更新过
+```
+***crawl.py --文件，collect_airport()抓取TG，和网站的免费机场，内部函数比较多***
+
+## 下面是自己修改过的地方
 collect.py --文件，主程序入口，修改较多
 
 ```
