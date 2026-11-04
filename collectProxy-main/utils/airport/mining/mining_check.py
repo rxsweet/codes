@@ -19,14 +19,7 @@ year = nowtime.year
 month = nowtime.month
 today = datetime.today().strftime('%Y%m%d')
 s = str(year) + '/' + str(month) + '/' + str(today)
-urlList = [
-'https://ghraw.eu.org/abshare/abshare.github.io/refs/heads/main/README.md',
-'https://ghraw.eu.org/abshare3/abshare3.github.io/refs/heads/main/README.md',
-'https://ghraw.eu.org/tolinkshare2/tolinkshare2.github.io/refs/heads/main/README.md',
-'https://ghraw.eu.org/toshare5/toshare5.github.io/refs/heads/main/README.md',
-'https://ghraw.eu.org/mkshare3/mkshare3.github.io/refs/heads/main/README.md',
-'https://ghraw.eu.org/mksshare/mksshare.github.io/refs/heads/main/README.md'
-]
+
 """
 
 urlList = [
@@ -297,6 +290,10 @@ def getsub(url):
                 r.text,
                 re.DOTALL
                 )
+            #判断如果没有获取到信息，直接返回
+            if not res:
+                print(f'订阅链接未捕获:{url}')
+                return []
             #返回的是dict格式,,clash:https://Gjre6H.absslk.xyz/719235ba9270100542db0a0a5b835f77
             links = res.groupdict()
             if links:
@@ -304,8 +301,9 @@ def getsub(url):
                     subs.append(value)
                 return subs
         return []
-    except requests.exceptions.RequestException as e:  
-        print(f'订阅链接未捕获:{url}')
+    #except requests.exceptions.RequestException as e: #暂时使用下面捕获所有异常 
+    except Exception:
+        print(f'订阅链接捕获时出错:{url}')
         return []
 def getSubs(urlList):
     subs = []
